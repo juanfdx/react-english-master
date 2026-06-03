@@ -5,22 +5,22 @@ import { ScrollToTop } from '../../components/shared/ScrollToTop';
 const lessonLinks = [
   {
     title: "Vocabulary",
-    path: "/path/vocabulary",
+    path: "/vocabulary",
     icon: "📚",
   },
   {
     title: "Grammar",
-    path: "/path/grammar",
+    path: "/grammar",
     icon: "✍️",
   },
   {
     title: "Nouns",
-    path: "/path/nouns",
+    path: "/nouns",
     icon: "🏷️",
   },
   {
     title: "Verbs",
-    path: "/path/verbs",
+    path: "/verbs",
     icon: "🏃",
   },
 ];
@@ -94,7 +94,7 @@ export default function PathLayout() {
         </aside>
 
         {/* CONTENT */}
-        <main className="flex-1 px-6 pt-8 pb-12">
+        <main className="flex-1 px-6 pb-12">
           <div className="max-w-6xl mx-auto">
             <Outlet />
           </div>

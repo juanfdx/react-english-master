@@ -26,7 +26,7 @@ export default function HomePage() {
           {paths.map((path) => (
             <Link
               key={path.title}
-              to={`/path/${path.href}`}
+              to={`${path.href}`}
               className={`group ${path.color} rounded-3xl p-8 border border-slate-100 shadow-xl shadow-slate-200/50 hover:-translate-y-2 transition-all duration-300`}
             >
               <div className="text-5xl mb-6">{path.icon}</div>

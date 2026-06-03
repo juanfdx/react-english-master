@@ -9,3 +9,52 @@
 body {
   font-family: 'Inter', sans-serif;
 }
+
+
+/* ===== Noun Game Mechanics CSS ===== */
+.correct-match {
+  background-color: #10b981 !important;
+  /* emerald-500 */
+  border-color: #059669 !important;
+  /* emerald-600 */
+  color: white !important;
+  animation: celebrate 0.5s ease-out;
+}
+
+.wrong-match {
+  background-color: #f43f5e !important;
+  /* rose-500 */
+  border-color: #e11d48 !important;
+  /* rose-600 */
+  color: white !important;
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-8px);
+  }
+
+  75% {
+    transform: translateX(8px);
+  }
+}

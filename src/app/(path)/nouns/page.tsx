@@ -6,7 +6,7 @@ import { CategoryList } from '../../../components/ui/CategoryList';
 import { Filter } from '../../../components/ui/Filter';
 import { SearchInput } from '../../../components/form/SearchInput';
 // data
-import { nounCategories } from '../../../data/nouns';
+import { nounCategories } from '../../../data/nouns/nouns';
 
 
 
@@ -38,8 +38,6 @@ export default function NounsPage() {
 
   return (
     <section className='flex flex-col '>
-
-      <h1 className='text-3xl font-bold'>Nouns</h1>
 
       <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-5 pt-10 pb-12">
         {/* FILTER */}

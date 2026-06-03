@@ -12,13 +12,11 @@ export const Filter = ({ level, setLevel }: Props) => {
 
 
   return (
-    <div className=" bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+    <div className="max-w-7xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
 
-          <FilterButton level={level} setLevel={setLevel} />
+        <FilterButton level={level} setLevel={setLevel} />
 
-        </div>
       </div>
     </div>
   )
