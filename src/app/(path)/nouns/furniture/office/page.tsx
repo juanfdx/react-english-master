@@ -1,41 +1,46 @@
 import { useEffect, useState } from "react";
-import { shuffle } from '../../../../../utils/functions';
+import { playWord, shuffle } from "../../../../../utils/functions";
 
 type FurnitureItem = {
   id: string;
   label: string;
+  word?: string;
 };
 
 const furnitureNames: FurnitureItem[] = [
-  { id: "desk", label: "Desk" },
-  { id: "chair", label: "Office Chair" },
-  { id: "cabinet", label: "Filing Cabinet" },
-  { id: "bookshelf", label: "Bookshelf" },
-  { id: "lamp", label: "Desk Lamp" },
+  { id: "desk", label: "Desk", word: "desk" },
+  { id: "chair", label: "Office Chair", word: "office-chair" },
+  { id: "cabinet", label: "Filing Cabinet", word: "filing-cabinet" },
+  { id: "bookshelf", label: "Bookshelf", word: "bookshelf" },
+  { id: "lamp", label: "Desk Lamp", word: "desk-lamp" },
+  { id: "monitor", label: "Monitor", word: "monitor" },
+  { id: "keyboard", label: "Keyboard", word: "keyboard" },
+  { id: "wastebasket", label: "Wastebasket", word: "wastebasket" },
 ];
 
 const markers = [
-  { id: "desk", top: "57%", left: "34%" },
-  { id: "chair", top: "45%", left: "49.4%" },
-  { id: "cabinet", top: "37.5%", left: "86%" },
-  { id: "bookshelf", top: "22%", left: "61.3%" },
-  { id: "lamp", top: "35%", left: "18.5%" },
+  { id: "desk", top: "50.5%", left: "30%" },
+  { id: "chair", top: "48%", left: "11.2%" },
+  { id: "cabinet", top: "42.5%", left: "89.3%" },
+  { id: "bookshelf", top: "6.7%", left: "72%" },
+  { id: "lamp", top: "17.5%", left: "19.5%" },
+  { id: "monitor", top: "24%", left: "50.2%" },
+  { id: "keyboard", top: "47%", left: "45%" },
+  { id: "wastebasket", top: "85%", left: "63%" },
 ];
-
 
 export default function OfficePage() {
 
   const [matches, setMatches] = useState(0);
   const [errors, setErrors] = useState(0);
   const [placed, setPlaced] = useState<Record<string, string>>({});
-  const [draggedId, setDraggedId] = useState<string | null>(null);
+  const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
   const [shuffled, setShuffled] = useState<FurnitureItem[]>(() =>
     shuffle(furnitureNames)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
-  // add a delay before showing the win screen
   useEffect(() => {
     if (matches === furnitureNames.length) {
       const timer = setTimeout(() => {
@@ -47,23 +52,28 @@ export default function OfficePage() {
   }, [matches]);
 
 
-  function handleDrop(markerId: string) {
-    if (!draggedId) return;
-    
-    //This prevents accidental interactions with solved markers.
+
+  function handleMarkerClick(markerId: string) {
+    if (!selectedWord) return;
     if (placed[markerId]) return;
 
-    if (draggedId === markerId) {
-      setPlaced((prev) => ({ ...prev, [markerId]: draggedId }));
+    if (selectedWord === markerId) {
+      setPlaced((prev) => ({
+        ...prev,
+        [markerId]: selectedWord,
+      }));
+
       setMatches((m) => m + 1);
+      setSelectedWord(null);
+
+      // 🗣️ PRONUNCIATION
+      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns");
+
     } else {
       setErrors((e) => e + 1);
 
       setWrongMarker(markerId);
-
-      setTimeout(() => {
-        setWrongMarker(null);
-      }, 500);
+      setTimeout(() => setWrongMarker(null), 500);
     }
   }
 
@@ -71,14 +81,14 @@ export default function OfficePage() {
     setMatches(0);
     setErrors(0);
     setPlaced({});
-    setDraggedId(null);
+    setSelectedWord(null);
     setWrongMarker(null);
     setShuffled(shuffle(furnitureNames));
     setShowWinScreen(false);
   }
 
-  
-  
+
+
   return (
     <div className="flex flex-col text-slate-900">
 
@@ -86,15 +96,16 @@ export default function OfficePage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/5
+            Matches: {matches}/{furnitureNames.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
           </div>
         </div>
       </div>
-     
+
       <main className="flex-1 max-w-7xl mx-auto flex flex-col items-center">
+
         {showWinScreen ? (
           // WIN MESSAGE
           <div className="mt-10 sm:mt-14 text-center bg-white p-10 rounded-3xl shadow-xl border border-slate-100">
@@ -115,83 +126,109 @@ export default function OfficePage() {
           </div>
 
         ) : (
-         <>
-          {/* TITLE */}
-          <div className="text-center mb-10">
-            <h1 className="text-4xl font-black">
-              The <span className="text-indigo-600">Office</span> Inspector
-            </h1>
-            <p className="text-slate-500 text-sm mt-2">
-              Drag the furniture names onto the correct objects.
-            </p>
-          </div>
+          <>
+            {/* TITLE */}
+            <div className="text-center mb-6">
+              <h1 className="text-4xl font-black">
+                The <span className="text-indigo-600">Office</span> Inspector
+              </h1>
 
-          {/* IMAGE AREA */}
-          <div className="w-full bg-white rounded-4xl md:rounded-[3rem] p-4 md:p-6 shadow-2xl shadow-slate-200/60 border border-slate-100 relative mb-12 overflow-hidden">
-            <div className="aspect-video w-full rounded-3xl bg-slate-100 border border-slate-200 relative overflow-hidden flex items-center justify-center text-slate-300">
-              <img
-                src="/images/nouns/office.png"
-                alt="office"
-                className="w-full h-full object-cover"
-              />
-
-              {/* MARKERS */}
-              {markers.map((m) => {
-                const isPlaced = placed[m.id];
-                const isWrong = wrongMarker === m.id;
-
-                return (
-                  <div
-                    key={m.id}
-                    onDragOver={(e) => e.preventDefault()}
-                    onDrop={() => handleDrop(m.id)}
-                    className={`absolute w-12 h-12 rounded-full flex items-center justify-center  border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition ${
-                      isPlaced
-                        ? "correct-match"
-                        : "bg-white/70 border-dashed border-white text-indigo-600"
-                    }
-                      ${isWrong ? "wrong-match" : ""}
-                    `}
-                    style={{ top: m.top, left: m.left }}
-                  >
-                    {isPlaced
-                      ? furnitureNames.find((f) => f.id === m.id)?.label
-                      : "?"}
-                  </div>
-                );
-              })}
+              <p className="text-slate-500 text-sm mt-2">
+                Tap a word, then tap the correct object.
+              </p>
             </div>
-          </div>
 
-          {/* VOCABULARY BANK */}
-          <div className="sm:mt-10 w-full max-w-4xl bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
-            <h3 className="text-center text-indigo-900 font-bold mb-6 text-sm uppercase tracking-widest">
-              Vocabulary Bank
-            </h3>
+            {/* IMAGE AREA */}
+            <div className="w-full bg-white rounded-4xl md:rounded-[3rem] p-4 md:p-6 shadow-2xl border border-slate-100 relative mb-12 overflow-hidden">
 
-            <div className="flex flex-wrap justify-center gap-3">
-              {shuffled.map((item) => {
-                const isHidden = Object.values(placed).includes(item.id);
+              <div className="aspect-video w-full rounded-3xl bg-slate-100 border border-slate-200 relative overflow-hidden">
 
-                if (isHidden) return null;
+                <img
+                  src="/images/nouns/office.webp"
+                  alt="office"
+                  className="w-full h-full object-cover"
+                />
 
-                return (
-                  <div
-                    key={item.id}
-                    draggable
-                    onDragStart={() => setDraggedId(item.id)}
-                    className="bg-white text-sm sm:text-base px-4 sm:px-6 py-2 sm:py-3 rounded-xl shadow-md cursor-grab active:cursor-grabbing font-bold text-indigo-600 border border-indigo-100 hover:scale-105 transition active:scale-95"
-                  >
-                    {item.label}
-                  </div>
-                );
-              })}
+                {/* MARKERS */}
+                {markers.map((m) => {
+                  const isPlaced = placed[m.id];
+                  const isWrong = wrongMarker === m.id;
+
+                  return (
+                    <div
+                      key={m.id}
+                      onClick={() => handleMarkerClick(m.id)}
+                      className={`
+                        absolute w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
+                        ${
+                          isPlaced
+                            ? "correct-match text-xs md:text-base lg:text-xl"
+                            : "bg-white/70 border-dashed border-white text-indigo-600"
+                        }
+
+                        ${isWrong ? "wrong-match" : ""}
+                      `}
+                      style={{ top: m.top, left: m.left }}
+                    >
+                      {isPlaced
+                        ? furnitureNames.find((f) => f.id === m.id)?.label
+                        : "?"}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-         </> 
+
+            {/* VOCABULARY BANK */}
+            <div className="w-full max-w-4xl bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
+              <h3 className="text-center text-indigo-900 font-bold mb-6 text-sm uppercase tracking-widest">
+                Vocabulary Bank
+              </h3>
+
+              <div className="flex flex-wrap justify-center gap-3">
+                {shuffled.map((item) => {
+                  
+                  const isHidden = Object.values(placed).includes(item.id);
+
+                  const isSelected = selectedWord === item.id;
+
+                  if (isHidden) return null;
+
+                  return (
+                    <div
+                      key={item.id}
+                      onClick={() =>setSelectedWord(item.id)}
+                      className={`
+                          relative
+                          bg-white
+                          text-sm md:text-base px-4 md:px-6 py-2 md:py-3
+                          rounded-xl shadow-md cursor-pointer
+                          font-bold text-indigo-600 border transition
+                        ${
+                          isSelected
+                            ? "scale-105 "
+                            : "border-indigo-100 hover:scale-105"
+                        }
+                      `}
+                    >
+                      {item.label}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
         )}
-
       </main>
     </div>
   );
 }
+
+
+// const oldMarkers = [
+//   { id: "desk", top: "57%", left: "34%" },
+//   { id: "chair", top: "45%", left: "49.6%" },
+//   { id: "cabinet", top: "37.5%", left: "86.5%" },
+//   { id: "bookshelf", top: "22%", left: "61.7%" },
+//   { id: "lamp", top: "34.5%", left: "18.5%" },
+// ];

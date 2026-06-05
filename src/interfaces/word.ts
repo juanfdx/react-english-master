@@ -1,14 +1,12 @@
 export interface Word {
   id: string;
   word: string;
-  meaning: string;
-  example: string;
-  level: 'beginner' | 'intermediate' | 'advanced';
-
-  partOfSpeech: 'noun' | 'verb' | 'adjective' | 'adverb' | 'phrase';
-
+  type: string; // noun, verb, adjective
   category: string; // food, travel, emotions, etc.
-
-  pronunciation?: string;
-  audioUrl?: string;
+  icon?: string;
+  image?: string;
+  audio?: {
+    male?: string;
+    female?: string;
+  };
 }

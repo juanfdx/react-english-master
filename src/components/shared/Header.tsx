@@ -6,7 +6,7 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white backdrop-blur-md border-b border-slate-200">
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <nav className="px-6 py-4 flex justify-between items-center">
         {/* LOGO */}
         <Link
           to="/"

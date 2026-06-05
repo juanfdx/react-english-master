@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router';
 import SiteLayout  from './site/layout';
 import PathLayout from './(path)/layout';
 import FurnitureLayout from './(path)/nouns/furniture/layout';
+import AnimalsLayout from './(path)/nouns/animals/layout';
 // Pages
 import HomePage from './site/home/page';
 import VocabularyPage from './(path)/vocabulary/page';
@@ -10,6 +11,15 @@ import VocabularyPage from './(path)/vocabulary/page';
 import NounsPage from './(path)/nouns/page';
 import FurniturePage from './(path)/nouns/furniture/page';
 import OfficePage from './(path)/nouns/furniture/office/page';
+import KitchenPage from './(path)/nouns/furniture/kitchen/page';
+import BedroomPage from './(path)/nouns/furniture/bedroom/page';
+import LivingRoomPage from './(path)/nouns/furniture/livingRoom/page';
+import BathroomPage from './(path)/nouns/furniture/bathroom/page';
+import LaundryRoomPage from './(path)/nouns/furniture/laundryRoom/page';
+import BackyardPage from './(path)/nouns/furniture/backyard/page';
+// Animals
+import AnimalsPage from './(path)/nouns/animals/page';
+import FlipCardsPage from './(path)/nouns/animals/flipCards/page';
 
 import GrammarPage from './(path)/grammar/page';
 // System
@@ -52,7 +62,7 @@ export const router = createBrowserRouter([
             element: <NounsPage />,
           },
           {
-            path: 'furniture', 
+            path: 'home-furniture', 
             element: <FurnitureLayout />,
             children: [
               {
@@ -63,8 +73,46 @@ export const router = createBrowserRouter([
                 path: 'office',
                 element: <OfficePage />,
               },
+              {
+                path: 'kitchen',
+                element: <KitchenPage />,
+              },
+              {
+                path: 'bedroom',
+                element: <BedroomPage />,
+              },
+              {
+                path: 'living-room',
+                element: <LivingRoomPage />,
+              },
+              {
+                path: 'bathroom',
+                element: <BathroomPage />,
+              },
+              {
+                path: 'laundry-room',
+                element: <LaundryRoomPage />,
+              },
+              {
+                path: 'backyard',
+                element: <BackyardPage />,
+              },
             ]
           },
+          {
+            path: 'animals', 
+            element: <AnimalsLayout />,
+            children: [
+              {
+                index: true,
+                element: <AnimalsPage />,
+              },
+              {
+                path: 'flip-cards',
+                element: <FlipCardsPage />,
+              },
+            ]
+          }
         ]
       },
       {
