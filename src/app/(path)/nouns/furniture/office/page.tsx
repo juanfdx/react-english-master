@@ -67,7 +67,7 @@ export default function OfficePage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns");
+      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns", "male");
 
     } else {
       setErrors((e) => e + 1);

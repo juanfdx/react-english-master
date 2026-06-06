@@ -21,10 +21,10 @@ const furnitureNames: FurnitureItem[] = [
 
 const markers = [
   { id: "fence", top: "34.5%", left: "85%" },
-  { id: "grill", top: "53%", left: "78.5%" },
+  { id: "grill", top: "53%", left: "78.1%" },
   { id: "patio-swing", top: "49%", left: "31.5%" },
-  { id: "watering-can", top: "76.5%", left: "53.4%" },
-  { id: "patio-chair", top: "56%", left: "91.9%" },
+  { id: "watering-can", top: "76.8%", left: "53.1%" },
+  { id: "patio-chair", top: "56%", left: "91.5%" },
   { id: "birdhouse", top: "36%", left: "68.8%" },
   { id: "fire-pit", top: "76%", left: "74%" },
   { id: "lawnmower", top: "62%", left: "21%" },

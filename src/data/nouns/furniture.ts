@@ -7,7 +7,9 @@ export const furniture: Category[] = [
     name: "Office",
     icon: "🖥️",
     href: "office",
-    category: 'nouns',
+    type: "noun",
+    domain: 'furniture',
+    activity_type: 'inspector',
     level: 'beginner',
   },
   {
@@ -15,7 +17,9 @@ export const furniture: Category[] = [
     name: "Kitchen",
     icon: "🍳",
     href: "kitchen",
-    category: 'nouns',
+    type: "noun",
+    domain: 'furniture',
+    activity_type: 'inspector',
     level: 'beginner',
   },
   {
@@ -23,7 +27,9 @@ export const furniture: Category[] = [
     name: "Bedroom",
     icon: "🛏️",
     href: "bedroom",
-    category: 'nouns',
+    type: "noun",
+    domain: 'furniture',
+    activity_type: 'inspector',
     level: 'beginner',
   },
   {
@@ -31,7 +37,9 @@ export const furniture: Category[] = [
     name: "Living Room",
     icon: "🛋️",
     href: "living-room",
-    category: 'nouns',
+    type: "noun",
+    domain: 'furniture',
+    activity_type: 'inspector',
     level: 'beginner',
   },
   {
@@ -39,7 +47,9 @@ export const furniture: Category[] = [
     name: "Bathroom",
     icon: "🚽",
     href: "bathroom",
-    category: 'nouns',
+    type: "noun",
+    domain: 'furniture',
+    activity_type: 'inspector',
     level: 'beginner',
   },
   {
@@ -47,7 +57,9 @@ export const furniture: Category[] = [
     name: "Laundry Room",
     icon: "🧺",
     href: "laundry-room",
-    category: 'nouns',
+    type: "noun",
+    domain: 'furniture',
+    activity_type: 'inspector',
     level: 'beginner',
   },
   {
@@ -55,7 +67,9 @@ export const furniture: Category[] = [
     name: "Backyard",
     icon: "🌳",
     href: "backyard",
-    category: 'nouns',
+    type: "noun",
+    domain: 'furniture',
+    activity_type: 'inspector',
     level: 'beginner',
   }
 ];

@@ -28,22 +28,4 @@ export const paths: Path[] = [
     color: "bg-sky-100",
     href: "/grammar",
   },
-  {
-    id: '7c1a5855-7259-495f-b80e-7ec24a5e347b',
-    title: "Nouns",
-    description:
-      "Understand how nouns, verbs, adjectives, and pronouns work in English.",
-    icon: "🏷️",
-    color: "bg-amber-100",
-    href: "/nouns",
-  },
-  {
-    id: '230d2fa4-47b8-490a-9f15-0bad018f164d',
-    title: "Verbs",
-    description:
-      "Learn English with quizzes, memory games, challenges, and fun activities.",
-    icon: "🏃",
-    color: "bg-rose-100",
-    href: "/verbs",
-  },
 ];

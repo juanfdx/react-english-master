@@ -1,11 +1,17 @@
 import type { Level } from './levels';
-// type CategoryType = 'nouns' | 'verbs' | 'adjectives';
+type ActivityType =
+  | "flip-cards"
+  | "quiz"
+  | "matching"
+  | "inspector";
 
 export interface Category {
   id: string;
   name: string;
   icon: string;
   href: string;
-  category?: string // nouns, verbs, adjectives
+  type: string, // noun, verb, adjective
+  domain: string,  // furniture, animals...
+  activity_type?: ActivityType,  
   level?: Level
 }

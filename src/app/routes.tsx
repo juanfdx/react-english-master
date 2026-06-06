@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router';
 // Layouts
 import SiteLayout  from './site/layout';
 import PathLayout from './(path)/layout';
@@ -6,7 +6,6 @@ import FurnitureLayout from './(path)/nouns/furniture/layout';
 import AnimalsLayout from './(path)/nouns/animals/layout';
 // Pages
 import HomePage from './site/home/page';
-import VocabularyPage from './(path)/vocabulary/page';
 
 import NounsPage from './(path)/nouns/page';
 import FurniturePage from './(path)/nouns/furniture/page';
@@ -21,7 +20,6 @@ import BackyardPage from './(path)/nouns/furniture/backyard/page';
 import AnimalsPage from './(path)/nouns/animals/page';
 import FlipCardsPage from './(path)/nouns/animals/flipCards/page';
 
-import GrammarPage from './(path)/grammar/page';
 // System
 import ErrorPage from './ErrorPage';
 import NotFound from './NotFound';
@@ -48,77 +46,90 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'vocabulary', 
-        element: <VocabularyPage />,
-      },
-      {
-        path: 'grammar', 
-        element: <GrammarPage />,
-      },
-      {
-        path: 'nouns', 
         children: [
           {
             index: true,
-            element: <NounsPage />,
+            element: <Navigate to="nouns" replace />,
           },
           {
-            path: 'home-furniture', 
-            element: <FurnitureLayout />,
+            path: 'nouns', 
             children: [
               {
                 index: true,
-                element: <FurniturePage />,
+                element: <NounsPage />,
               },
               {
-                path: 'office',
-                element: <OfficePage />,
+                path: 'home-furniture', 
+                element: <FurnitureLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <FurniturePage />,
+                  },
+                  {
+                    path: 'office',
+                    element: <OfficePage />,
+                  },
+                  {
+                    path: 'kitchen',
+                    element: <KitchenPage />,
+                  },
+                  {
+                    path: 'bedroom',
+                    element: <BedroomPage />,
+                  },
+                  {
+                    path: 'living-room',
+                    element: <LivingRoomPage />,
+                  },
+                  {
+                    path: 'bathroom',
+                    element: <BathroomPage />,
+                  },
+                  {
+                    path: 'laundry-room',
+                    element: <LaundryRoomPage />,
+                  },
+                  {
+                    path: 'backyard',
+                    element: <BackyardPage />,
+                  },
+                ]
               },
               {
-                path: 'kitchen',
-                element: <KitchenPage />,
-              },
-              {
-                path: 'bedroom',
-                element: <BedroomPage />,
-              },
-              {
-                path: 'living-room',
-                element: <LivingRoomPage />,
-              },
-              {
-                path: 'bathroom',
-                element: <BathroomPage />,
-              },
-              {
-                path: 'laundry-room',
-                element: <LaundryRoomPage />,
-              },
-              {
-                path: 'backyard',
-                element: <BackyardPage />,
-              },
+                path: 'animals', 
+                element: <AnimalsLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <AnimalsPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <FlipCardsPage />,
+                  },
+                ]
+              }
             ]
           },
           {
-            path: 'animals', 
-            element: <AnimalsLayout />,
-            children: [
-              {
-                index: true,
-                element: <AnimalsPage />,
-              },
-              {
-                path: 'flip-cards',
-                element: <FlipCardsPage />,
-              },
-            ]
-          }
+            path: 'verbs', 
+            element: <VerbsPage />,
+          },
         ]
       },
       {
-        path: 'verbs', 
-        element: <VerbsPage />,
-      },
+        path: 'grammar',
+        children: [
+          {
+            index: true,
+            element: <Navigate to="to-be" replace />,
+          },{
+            path: 'to-be',
+            element: <div>To Be</div>,
+          }
+        ]
+      }
     ]
   },
   {

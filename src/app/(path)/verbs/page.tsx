@@ -39,8 +39,6 @@ export default function VerbsPage() {
   return (
     <section className='flex flex-col'>
 
-      <h1 className='text-3xl font-bold'>Verbs</h1>
-
       <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-5 pt-10 pb-12">
         {/* FILTER */}
         <Filter level={statusFilter} setLevel={handleFilterChange} />

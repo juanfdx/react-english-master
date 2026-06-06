@@ -7,7 +7,9 @@ export const animalsCategories: Category[] = [
     name: "Flip Cards",
     icon: "🃏",
     href: "flip-cards",
-    category: 'nouns',
+    type: 'noun',
+    domain: 'animals',
+    activity_type: 'flip-cards',
     level: 'beginner',
   },
   {
@@ -15,7 +17,9 @@ export const animalsCategories: Category[] = [
     name: "Kitchen",
     icon: "🍳",
     href: "kitchen",
-    category: 'nouns',
+    type: "noun",
+    domain: 'furniture',
+    activity_type: 'inspector',
     level: 'beginner',
   },
 

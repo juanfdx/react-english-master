@@ -1,36 +1,59 @@
 import { useState } from 'react';
-import { Link, NavLink, Outlet } from 'react-router';
+import { Link, NavLink, Outlet, useLocation } from 'react-router';
 import { ScrollToTop } from '../../components/shared/ScrollToTop';
 import {  FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import { IoMdMenu } from "react-icons/io";
 import { useWindowSize } from '../../hooks/useWindowSize';
 
-const lessonLinks = [
-  {
-    title: "Vocabulary",
-    path: "/vocabulary",
-    icon: "📚",
-  },
-  {
-    title: "Grammar",
-    path: "/grammar",
-    icon: "✍️",
-  },
+const vocabularyLinks = [
   {
     title: "Nouns",
-    path: "/nouns",
+    path: "vocabulary/nouns",
     icon: "🏷️",
   },
   {
     title: "Verbs",
-    path: "/verbs",
+    path: "vocabulary/verbs",
     icon: "🏃",
+  },
+  {
+    title: "Adjectives",
+    path: "vocabulary/adjectives",
+    icon: "🎨",
+  },
+  {
+    title: "Adverbs",
+    path: "vocabulary/adverbs",
+    icon: "⚡",
+  },
+  {
+    title: "Prepositions",
+    path: "vocabulary/prepositions",
+    icon: "🧭",
+  },
+]
+
+const grammarLinks = [
+  { 
+    title: "To Be", 
+    path: "/grammar/to-be", 
+    icon: "🟢" 
+  },
+  { 
+    title: "Present Simple", 
+    path: "/grammar/present-simple", 
+    icon: "☀️" 
   },
 ];
 
 
+
+
 export default function PathLayout() {
 
+  const location = useLocation();
+  const pathName = location.pathname.split("/")[1];
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -39,6 +62,13 @@ export default function PathLayout() {
   if (width <= 1024 && isSidebarOpen) {
     setIsSidebarOpen(false);
   }
+
+  // shows sidebar links depending on path
+  const sidebarLinks = pathName === "vocabulary" 
+    ? vocabularyLinks 
+    : pathName === "grammar" 
+    ? grammarLinks 
+    : []
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -93,7 +123,9 @@ export default function PathLayout() {
               <div className={`text-sm font-semibold uppercase tracking-wider text-slate-400 `}>
                 {isSidebarOpen ? (
                   <div className="flex justify-between items-center mb-4">
-                    <h2>Learning Paths</h2>
+
+                    <h2>{pathName}</h2>
+
                     <button className='cursor-pointer' onClick={toggleSidebar}>
                       <FaArrowLeftLong className='text-black w-5 h-5' />
                     </button>
@@ -108,7 +140,7 @@ export default function PathLayout() {
               </div>
 
               <nav className="space-y-2">
-                {lessonLinks.map((link) => (
+                {sidebarLinks.map((link) => (
                   <NavLink
                     key={link.path}
                     to={link.path}
@@ -141,7 +173,7 @@ export default function PathLayout() {
           {isMenuOpen && (          
             <>
               <nav className='md:hidden flex flex-col items-center gap-3 py-3'>
-                {lessonLinks.map((link) => (
+                {sidebarLinks.map((link) => (
                   <NavLink
                     key={link.path}
                     to={link.path}
