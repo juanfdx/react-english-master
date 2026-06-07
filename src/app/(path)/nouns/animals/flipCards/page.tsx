@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { formatToSlug, playWord, shuffleArray } from '../../../../../utils/functions';
 import { animalData, type AnimalType } from '../../../../../data/nouns/animals';
+// components
 import FilterBar from '../../../../../components/shared/FilterBar';
 import FlipCard from '../../../../../components/shared/FlipCard';
 
@@ -22,7 +23,7 @@ export default function FlipCardsPage() {
    const handleDiscover = (name: string) => {
     const word = formatToSlug(name);
     // 🗣️ PRONUNCIATION
-    playWord(word, "nouns", "male");
+    playWord(word, "male");
   };
 
 

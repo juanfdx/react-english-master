@@ -23,7 +23,8 @@ import FlipCardsPage from './(path)/nouns/animals/flipCards/page';
 // System
 import ErrorPage from './ErrorPage';
 import NotFound from './NotFound';
-import VerbsPage from './(path)/verbs/page';
+import VerbsPage from './(path)/vocabulary/verbs/page';
+import QuizCardPage from './(path)/nouns/animals/quizCard/page';
 
 
 
@@ -107,6 +108,10 @@ export const router = createBrowserRouter([
                   {
                     path: 'flip-cards',
                     element: <FlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <QuizCardPage />,
                   },
                 ]
               }

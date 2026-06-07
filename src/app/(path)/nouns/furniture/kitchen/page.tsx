@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffle } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from "../../../../../utils/functions";
 
-type FurnitureItem = {
+type HouseItem = {
   id: string;
-  label: string;
-  word?: string;
+  word: string;
 };
 
-const furnitureNames: FurnitureItem[] = [
-  { id: "refrigerator", label: "Refrigerator", word: "refrigerator" },
-  { id: "stove", label: "Stove", word: "stove" },
-  { id: "microwave", label: "Microwave", word: "microwave" },
-  { id: "dishwasher", label: "Dishwasher", word: "dishwasher" },
-  { id: "cabinet", label: "Cabinet", word: "cabinet" },
-  { id: "tap", label: "Tap", word: "tap" },
-  { id: "countertop", label: "Countertop", word: "countertop" },
-  { id: "kitchen-island", label: "Kitchen Island", word: "kitchen-island" },
-  { id: "bar-stools", label: "Bar Stools", word: "bar-stools" },
-  { id: "drawers", label: "Drawers", word: "drawers" },
-  { id: "stove-burners", label: "Stove Burners", word: "stove-burners" },
-  { id: "pantry-cabinet", label: "Pantry Cabinet", word: "pantry-cabinet" },
+const kitchenItems: HouseItem[] = [
+  { id: "refrigerator", word: "Refrigerator" },
+  { id: "stove", word: "Stove" },
+  { id: "microwave", word: "Microwave" },
+  { id: "dishwasher", word: "Dishwasher" },
+  { id: "cabinet", word: "Cabinet" },
+  { id: "tap", word: "Tap" },
+  { id: "countertop", word: "Countertop" },
+  { id: "kitchen-island", word: "Kitchen Island" },
+  { id: "bar-stools", word: "Bar Stools" },
+  { id: "drawers", word: "Drawers" },
+  { id: "stove-burners", word: "Stove Burners" },
+  { id: "pantry-cabinet", word: "Pantry Cabinet" },
 ];
 
 const markers = [
@@ -29,11 +28,11 @@ const markers = [
   { id: "dishwasher", top: "46.5%", left: "59%" },
   { id: "cabinet", top: "16.8%", left: "90%" },
   { id: "tap", top: "44.4%", left: "44.4%" },
-  { id: "countertop", top: "56.2%", left: "46%" },
+  { id: "countertop", top: "56.5%", left: "46%" },
   { id: "kitchen-island", top: "72%", left: "52%" },
   { id: "bar-stools", top: "63.5%", left: "30.8%" },
   { id: "drawers", top: "64.4%", left: "86.4%" },
-  { id: "stove-burners", top: "44.2%", left: "77%" },
+  { id: "stove-burners", top: "44.7%", left: "77%" },
   { id: "pantry-cabinet", top: "22%", left: "10.5%" },
 ];
 
@@ -45,13 +44,13 @@ export default function KitchenPage() {
   const [placed, setPlaced] = useState<Record<string, string>>({});
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
-  const [shuffled, setShuffled] = useState<FurnitureItem[]>(() =>
-    shuffle(furnitureNames)
+  const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
+    shuffleArray(kitchenItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === furnitureNames.length) {
+    if (matches === kitchenItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -75,7 +74,7 @@ export default function KitchenPage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns", "male");
+      playWord(kitchenItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -91,7 +90,7 @@ export default function KitchenPage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffle(furnitureNames));
+    setShuffled(shuffleArray(kitchenItems));
     setShowWinScreen(false);
   }
 
@@ -104,7 +103,7 @@ export default function KitchenPage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{furnitureNames.length}
+            Matches: {matches}/{kitchenItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -167,7 +166,7 @@ export default function KitchenPage() {
                       key={m.id}
                       onClick={() => handleMarkerClick(m.id)}
                       className={`
-                        absolute w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
+                        absolute w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
                         ${
                           isPlaced
                             ? "correct-match text-xs md:text-base lg:text-xl"
@@ -179,7 +178,7 @@ export default function KitchenPage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? furnitureNames.find((f) => f.id === m.id)?.label
+                        ? kitchenItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );
@@ -219,7 +218,7 @@ export default function KitchenPage() {
                         }
                       `}
                     >
-                      {item.label}
+                      {item.word}
                     </div>
                   );
                 })}

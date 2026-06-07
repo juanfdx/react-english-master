@@ -1,34 +1,33 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffle } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from "../../../../../utils/functions";
 
-type FurnitureItem = {
+type HouseItem = {
   id: string;
-  label: string;
-  word?: string;
+  word: string;
 };
 
-const furnitureNames: FurnitureItem[] = [
-  { id: "washing-machine", label: "Washing Machine", word: "washing-machine" },
-  { id: "dryer", label: "Dryer", word: "dryer" },
-  { id: "ironing-board", label: "Ironing Board", word: "ironing-board" },
-  { id: "detergent", label: "Detergent", word: "detergent" },
-  { id: "softener", label: "Softener", word: "softener" },
-  { id: "laundry-basket", label: "Laundry Basket", word: "laundry-basket" },
-  { id: "clothesline", label: "Clothesline", word: "clothesline" },
-  { id: "sink", label: "Sink", word: "sink" },
-  { id: "iron", label: "Iron", word: "iron" }
+const laundryRoomItems: HouseItem[] = [
+  { id: "washing-machine", word: "Washing Machine" },
+  { id: "dryer", word: "Dryer" },
+  { id: "ironing-board", word: "Ironing Board" },
+  { id: "detergent", word: "Detergent" },
+  { id: "softener", word: "Softener" },
+  { id: "laundry-basket", word: "Laundry Basket" },
+  { id: "clothesline", word: "Clothesline" },
+  { id: "sink", word: "Sink" },
+  { id: "iron", word: "Iron" }
 ];
 
 const markers = [
-  { id: "washing-machine", top: "62%", left: "29.5%" },
+  { id: "washing-machine", top: "62%", left: "29.9%" },
   { id: "dryer", top: "59%", left: "44%" },
-  { id: "ironing-board", top: "43.5%", left: "73%" },
-  { id: "detergent", top: "35%", left: "24.5%" },
-  { id: "softener", top: "29%", left: "19.2%" },
+  { id: "ironing-board", top: "44%", left: "73%" },
+  { id: "detergent", top: "34%", left: "24.9%" },
+  { id: "softener", top: "27%", left: "19.4%" },
   { id: "laundry-basket", top: "74%", left: "59.5%" },
-  { id: "clothesline", top: "08%", left: "53.5%" },
+  { id: "clothesline", top: "7.5%", left: "53.5%" },
   { id: "sink", top: "52.5%", left: "11%" },
-  { id: "iron", top: "39%", left: "86%" }
+  { id: "iron", top: "39%", left: "86.2%" }
 ];
 
 
@@ -39,13 +38,13 @@ export default function LaundryRoomPage() {
   const [placed, setPlaced] = useState<Record<string, string>>({});
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
-  const [shuffled, setShuffled] = useState<FurnitureItem[]>(() =>
-    shuffle(furnitureNames)
+  const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
+    shuffleArray(laundryRoomItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === furnitureNames.length) {
+    if (matches === laundryRoomItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -69,7 +68,7 @@ export default function LaundryRoomPage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns", "male");
+      playWord(laundryRoomItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -85,7 +84,7 @@ export default function LaundryRoomPage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffle(furnitureNames));
+    setShuffled(shuffleArray(laundryRoomItems));
     setShowWinScreen(false);
   }
 
@@ -98,7 +97,7 @@ export default function LaundryRoomPage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{furnitureNames.length}
+            Matches: {matches}/{laundryRoomItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -161,7 +160,7 @@ export default function LaundryRoomPage() {
                       key={m.id}
                       onClick={() => handleMarkerClick(m.id)}
                       className={`
-                        absolute w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
+                        absolute w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
                         ${
                           isPlaced
                             ? "correct-match text-xs md:text-base lg:text-xl"
@@ -173,7 +172,7 @@ export default function LaundryRoomPage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? furnitureNames.find((f) => f.id === m.id)?.label
+                        ? laundryRoomItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );
@@ -213,7 +212,7 @@ export default function LaundryRoomPage() {
                         }
                       `}
                     >
-                      {item.label}
+                      {item.word}
                     </div>
                   );
                 })}

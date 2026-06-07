@@ -1,33 +1,32 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffle } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from "../../../../../utils/functions";
 
-type FurnitureItem = {
+type HouseItem = {
   id: string;
-  label: string;
-  word?: string;
+  word: string;
 };
 
-const furnitureNames: FurnitureItem[] = [
-  { id: "fence", label: "Fence", word: "fence" },
-  { id: "grill", label: "BBQ Grill", word: "bbq-grill" },
-  { id: "patio-swing", label: "Patio Swing", word: "patio-swing" },
-  { id: "watering-can", label: "Watering Can", word: "watering-can" },
-  { id: "patio-chair", label: "Patio Chair", word: "patio-chair" },
-  { id: "birdhouse", label: "Birdhouse", word: "birdhouse" },
-  { id: "fire-pit", label: "Fire Pit", word: "fire-pit" },
-  { id: "lawnmower", label: "Lawnmower", word: "lawnmower" },
-  { id: "grass", label: "Grass", word: "grass" },
+const backyardItems: HouseItem[] = [
+  { id: "fence", word: "Fence" },
+  { id: "grill", word: "BBQ Grill" },
+  { id: "patio-swing", word: "Patio Swing" },
+  { id: "watering-can", word: "Watering Can" },
+  { id: "patio-chair", word: "Patio Chair"  },
+  { id: "birdhouse", word: "Birdhouse"  },
+  { id: "fire-pit", word: "Fire Pit" },
+  { id: "lawnmower", word: "Lawnmower" },
+  { id: "grass", word: "Grass" },
 ];
 
 const markers = [
   { id: "fence", top: "34.5%", left: "85%" },
-  { id: "grill", top: "53%", left: "78.1%" },
+  { id: "grill", top: "53%", left: "78.5%" },
   { id: "patio-swing", top: "49%", left: "31.5%" },
-  { id: "watering-can", top: "76.8%", left: "53.1%" },
+  { id: "watering-can", top: "76.8%", left: "53.5%" },
   { id: "patio-chair", top: "56%", left: "91.5%" },
   { id: "birdhouse", top: "36%", left: "68.8%" },
   { id: "fire-pit", top: "76%", left: "74%" },
-  { id: "lawnmower", top: "62%", left: "21%" },
+  { id: "lawnmower", top: "63.5%", left: "21%" },
   { id: "grass", top: "75%", left: "35%" }
 ];
 
@@ -39,13 +38,13 @@ export default function BackyardPage() {
   const [placed, setPlaced] = useState<Record<string, string>>({});
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
-  const [shuffled, setShuffled] = useState<FurnitureItem[]>(() =>
-    shuffle(furnitureNames)
+  const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
+    shuffleArray(backyardItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === furnitureNames.length) {
+    if (matches === backyardItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -69,7 +68,7 @@ export default function BackyardPage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns", "male");
+      playWord(backyardItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -85,7 +84,7 @@ export default function BackyardPage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffle(furnitureNames));
+    setShuffled(shuffleArray(backyardItems));
     setShowWinScreen(false);
   }
 
@@ -98,7 +97,7 @@ export default function BackyardPage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{furnitureNames.length}
+            Matches: {matches}/{backyardItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -161,7 +160,7 @@ export default function BackyardPage() {
                       key={m.id}
                       onClick={() => handleMarkerClick(m.id)}
                       className={`
-                        absolute w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
+                        absolute w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
                         ${
                           isPlaced
                             ? "correct-match text-xs md:text-base lg:text-xl"
@@ -173,7 +172,7 @@ export default function BackyardPage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? furnitureNames.find((f) => f.id === m.id)?.label
+                        ? backyardItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );
@@ -213,7 +212,7 @@ export default function BackyardPage() {
                         }
                       `}
                     >
-                      {item.label}
+                      {item.word}
                     </div>
                   );
                 })}

@@ -1,34 +1,33 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffle } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from "../../../../../utils/functions";
 
-type FurnitureItem = {
+type HouseItem = {
   id: string;
-  label: string;
-  word?: string;
+  word: string;
 };
 
-const furnitureNames: FurnitureItem[] = [
-  { id: "sofa", label: "Sofa", word: "sofa" },
-  { id: "armchair", label: "Armchair", word: "armchair" },
-  { id: "coffee-table", label: "Coffee Table", word: "coffee-table" },
-  { id: "bookshelf", label: "Bookshelf", word: "bookshelf" },
-  { id: "tv-stand", label: "TV Stand", word: "tv-stand" },
-  { id: "side-table", label: "Side Table", word: "side-table" },
-  { id: "shelf", label: "Shelf", word: "shelf" },
-  { id: "rug", label: "Rug", word: "rug" },
-  { id: "table-lamp", label: "Table Lamp", word: "table-lamp" },
-  { id: "cushions", label: "Cushions", word: "cushions" },
-  { id: "potted-plant", label: "Potted Plant", word: "potted-plant" },
+const livingRoomItems: HouseItem[] = [
+  { id: "sofa", word: "Sofa" },
+  { id: "armchair", word: "Armchair" },
+  { id: "coffee-table", word: "Coffee Table" },
+  { id: "bookshelf", word: "Bookshelf" },
+  { id: "tv-stand", word: "TV Stand" },
+  { id: "side-table", word: "Side Table" },
+  { id: "shelf", word: "Shelf" },
+  { id: "rug", word: "Rug" },
+  { id: "table-lamp", word: "Table Lamp" },
+  { id: "cushions", word: "Cushions" },
+  { id: "potted-plant", word: "Potted Plant" },
 ];
 
 const markers = [
   { id: "sofa", top: "51%", left: "37.5%" },
-  { id: "armchair", top: "69.7%", left: "69.9%" },
+  { id: "armchair", top: "69.7%", left: "69.7%" },
   { id: "coffee-table", top: "66.7%", left: "42.3%" },
-  { id: "bookshelf", top: "26.7%", left: "22.2%" },
+  { id: "bookshelf", top: "26.6%", left: "22.2%" },
   { id: "tv-stand", top: "57%", left: "76.5%" },
   { id: "side-table", top: "62%", left: "19.8%" },
-  { id: "shelf", top: "18.5%", left: "80%" },
+  { id: "shelf", top: "18.4%", left: "80%" },
   { id: "rug", top: "85%", left: "30%" },
   { id: "table-lamp", top: "49%", left: "18.7%" },
   { id: "cushions", top: "50%", left: "51.3%" },
@@ -43,13 +42,13 @@ export default function LivingRoomPage() {
   const [placed, setPlaced] = useState<Record<string, string>>({});
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
-  const [shuffled, setShuffled] = useState<FurnitureItem[]>(() =>
-    shuffle(furnitureNames)
+  const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
+    shuffleArray(livingRoomItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === furnitureNames.length) {
+    if (matches === livingRoomItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -73,7 +72,7 @@ export default function LivingRoomPage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns", "male");
+      playWord(livingRoomItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -89,7 +88,7 @@ export default function LivingRoomPage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffle(furnitureNames));
+    setShuffled(shuffleArray(livingRoomItems));
     setShowWinScreen(false);
   }
 
@@ -102,7 +101,7 @@ export default function LivingRoomPage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{furnitureNames.length}
+            Matches: {matches}/{livingRoomItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -165,7 +164,7 @@ export default function LivingRoomPage() {
                       key={m.id}
                       onClick={() => handleMarkerClick(m.id)}
                       className={`
-                        absolute w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
+                        absolute w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
                         ${
                           isPlaced
                             ? "correct-match text-xs md:text-base lg:text-xl"
@@ -177,7 +176,7 @@ export default function LivingRoomPage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? furnitureNames.find((f) => f.id === m.id)?.label
+                        ? livingRoomItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );
@@ -217,7 +216,7 @@ export default function LivingRoomPage() {
                         }
                       `}
                     >
-                      {item.label}
+                      {item.word}
                     </div>
                   );
                 })}

@@ -1,32 +1,31 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffle } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from "../../../../../utils/functions";
 
-type FurnitureItem = {
+type HouseItem = {
   id: string;
-  label: string;
-  word?: string;
+  word: string;
 };
 
-const furnitureNames: FurnitureItem[] = [
-  { id: "desk", label: "Desk", word: "desk" },
-  { id: "chair", label: "Office Chair", word: "office-chair" },
-  { id: "cabinet", label: "Filing Cabinet", word: "filing-cabinet" },
-  { id: "bookshelf", label: "Bookshelf", word: "bookshelf" },
-  { id: "lamp", label: "Desk Lamp", word: "desk-lamp" },
-  { id: "monitor", label: "Monitor", word: "monitor" },
-  { id: "keyboard", label: "Keyboard", word: "keyboard" },
-  { id: "wastebasket", label: "Wastebasket", word: "wastebasket" },
+const officeItems: HouseItem[] = [
+  { id: "desk", word: "Desk" },
+  { id: "chair", word: "Office Chair" },
+  { id: "cabinet", word: "Filing Cabinet" },
+  { id: "bookshelf", word: "Bookshelf" },
+  { id: "lamp", word: "Desk Lamp" },
+  { id: "monitor", word: "Monitor" },
+  { id: "keyboard", word: "Keyboard" },
+  { id: "wastebasket", word: "Wastebasket" },
 ];
 
 const markers = [
-  { id: "desk", top: "50.5%", left: "30%" },
-  { id: "chair", top: "48%", left: "11.2%" },
-  { id: "cabinet", top: "42.5%", left: "89.3%" },
-  { id: "bookshelf", top: "6.7%", left: "72%" },
+  { id: "desk", top: "50.3%", left: "30%" },
+  { id: "chair", top: "48%", left: "11.3%" },
+  { id: "cabinet", top: "43.5%", left: "89.7%" },
+  { id: "bookshelf", top: "6.8%", left: "72%" },
   { id: "lamp", top: "17.5%", left: "19.5%" },
-  { id: "monitor", top: "24%", left: "50.2%" },
+  { id: "monitor", top: "24%", left: "50.7%" },
   { id: "keyboard", top: "47%", left: "45%" },
-  { id: "wastebasket", top: "85%", left: "63%" },
+  { id: "wastebasket", top: "86%", left: "63.3%" },
 ];
 
 export default function OfficePage() {
@@ -36,13 +35,13 @@ export default function OfficePage() {
   const [placed, setPlaced] = useState<Record<string, string>>({});
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
-  const [shuffled, setShuffled] = useState<FurnitureItem[]>(() =>
-    shuffle(furnitureNames)
+  const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
+    shuffleArray(officeItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === furnitureNames.length) {
+    if (matches === officeItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -67,7 +66,7 @@ export default function OfficePage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns", "male");
+      playWord(officeItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -83,7 +82,7 @@ export default function OfficePage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffle(furnitureNames));
+    setShuffled(shuffleArray(officeItems));
     setShowWinScreen(false);
   }
 
@@ -96,7 +95,7 @@ export default function OfficePage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{furnitureNames.length}
+            Matches: {matches}/{officeItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -159,7 +158,7 @@ export default function OfficePage() {
                       key={m.id}
                       onClick={() => handleMarkerClick(m.id)}
                       className={`
-                        absolute w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
+                        absolute w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
                         ${
                           isPlaced
                             ? "correct-match text-xs md:text-base lg:text-xl"
@@ -171,7 +170,7 @@ export default function OfficePage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? furnitureNames.find((f) => f.id === m.id)?.label
+                        ? officeItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );
@@ -211,7 +210,7 @@ export default function OfficePage() {
                         }
                       `}
                     >
-                      {item.label}
+                      {item.word}
                     </div>
                   );
                 })}

@@ -1,24 +1,23 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffle } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from "../../../../../utils/functions";
 
-type FurnitureItem = {
+type HouseItem = {
   id: string;
-  label: string;
-  word?: string;
+  word: string;
 };
 
-const furnitureNames: FurnitureItem[] = [
-  { id: "shower", label: "Shower", word: "shower" },
-  { id: "sink", label: "Sink", word: "sink" },
-  { id: "mirror-cabinet", label: "Mirror Cabinet", word: "mirror-cabinet" },
-  { id: "toilet", label: "Toilet", word: "toilet" },
-  { id: "towel-bar", label: "Towel Bar", word: "towel-bar" },
-  { id: "showerhead", label: "Showerhead", word: "showerhead" },
-  { id: "bath-mat", label: "Bath Mat", word: "bath-mat" },
-  { id: "laundry-basket", label: "Laundry Basket", word: "laundry-basket" },
-  { id: "shower-curtain", label: "Shower Curtain", word: "shower-curtain" },
-  { id: "towel", label: "Towel", word: "towel" },
-  { id: "toilet-tank", label: "Toilet Tank", word: "toilet-tank" }
+const bathroomItems: HouseItem[] = [
+  { id: "shower", word: "Shower" },
+  { id: "sink", word: "Sink" },
+  { id: "mirror-cabinet", word: "Mirror Cabinet" },
+  { id: "toilet", word: "Toilet" },
+  { id: "towel-bar", word: "Towel Bar" },
+  { id: "showerhead", word: "Showerhead" },
+  { id: "bath-mat", word: "Bath Mat" },
+  { id: "laundry-basket", word: "Laundry Basket" },
+  { id: "shower-curtain", word: "Shower Curtain" },
+  { id: "towel", word: "Towel" },
+  { id: "toilet-tank", word: "Toilet Tank" }
 ];
 
 const markers = [
@@ -42,13 +41,13 @@ export default function BathroomPage() {
   const [placed, setPlaced] = useState<Record<string, string>>({});
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
-  const [shuffled, setShuffled] = useState<FurnitureItem[]>(() =>
-    shuffle(furnitureNames)
+  const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
+    shuffleArray(bathroomItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === furnitureNames.length) {
+    if (matches === bathroomItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -72,7 +71,7 @@ export default function BathroomPage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns", "male");
+      playWord(bathroomItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -88,7 +87,7 @@ export default function BathroomPage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffle(furnitureNames));
+    setShuffled(shuffleArray(bathroomItems));
     setShowWinScreen(false);
   }
 
@@ -101,7 +100,7 @@ export default function BathroomPage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{furnitureNames.length}
+            Matches: {matches}/{bathroomItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -164,7 +163,7 @@ export default function BathroomPage() {
                       key={m.id}
                       onClick={() => handleMarkerClick(m.id)}
                       className={`
-                        absolute w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
+                        absolute w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
                         ${
                           isPlaced
                             ? "correct-match text-xs md:text-base lg:text-xl"
@@ -176,7 +175,7 @@ export default function BathroomPage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? furnitureNames.find((f) => f.id === m.id)?.label
+                        ? bathroomItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );
@@ -216,7 +215,7 @@ export default function BathroomPage() {
                         }
                       `}
                     >
-                      {item.label}
+                      {item.word}
                     </div>
                   );
                 })}

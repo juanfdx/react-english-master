@@ -1,116 +1,7 @@
-import type { Category } from '../../interfaces/category';
-import type { Word } from '../../interfaces/word';
+import type { Word } from '../interfaces/word';
 
 
-export const animalsCategories: Category[] = [
-  {
-    id: "1",
-    name: "Flip Cards",
-    icon: "🃏",
-    href: "flip-cards",
-    type: 'noun',
-    domain: 'animals',
-    activity_type: 'flip-cards',
-    level: 'beginner',
-  },
-  {
-    id: "2",
-    name: "Quiz Card",
-    icon: "🎯",
-    href: "quiz-card",
-    type: "noun",
-    domain: 'animals',
-    activity_type: 'quiz',
-    level: 'beginner',
-  },
-
-];
-
-
-export type AnimalType = "land" | "water" | "fly";
-
-export interface Animal {
-  name: string;
-  icon: string;
-  type: AnimalType;
-}
-
-// src/data/animals.ts
-export const animalData: Animal[] = [
-  { name: "Lion", icon: "🦁", type: "land" },
-  { name: "Tiger", icon: "🐯", type: "land" },
-  { name: "Elephant", icon: "🐘", type: "land" },
-  { name: "Shark", icon: "🦈", type: "water" },
-  { name: "Dolphin", icon: "🐬", type: "water" },
-  { name: "Whale", icon: "🐋", type: "water" },
-  { name: "Eagle", icon: "🦅", type: "fly" },
-  { name: "Owl", icon: "🦉", type: "fly" },
-  { name: "Parrot", icon: "🦜", type: "fly" },
-  { name: "Kangaroo", icon: "🦘", type: "land" },
-  { name: "Octopus", icon: "🐙", type: "water" },
-  { name: "Squid", icon: "🦑", type: "water" },
-  { name: "Bat", icon: "🦇", type: "fly" },
-  { name: "Crab", icon: "🦀", type: "water" },
-  { name: "Lobster", icon: "🦞", type: "water" },
-  { name: "Shrimp", icon: "🦐", type: "water" },
-  { name: "Oyster", icon: "🦪", type: "water" },
-  { name: "Butterfly", icon: "🦋", type: "fly" },
-  { name: "Zebra", icon: "🦓", type: "land" },
-  { name: "Turtle", icon: "🐢", type: "water" },
-  { name: "Fish", icon: "🐟", type: "water" },
-  { name: "Tropical Fish", icon: "🐠", type: "water" },
-  { name: "Blowfish", icon: "🐡", type: "water" },
-  { name: "Dog", icon: "🐶", type: "land" },
-  { name: "Cat", icon: "🐱", type: "land" },
-  { name: "Rat", icon: "🐀", type: "land" },
-  { name: "Bear", icon: "🐻", type: "land" },
-  { name: "Snake", icon: "🐍", type: "land" },
-  { name: "Giraffe", icon: "🦒", type: "land" },
-  { name: "Penguin", icon: "🐧", type: "land" },
-  { name: "Panda", icon: "🐼", type: "land" },
-  { name: "Crocodile", icon: "🐊", type: "water" },
-  { name: "Hippo", icon: "🦛", type: "water" },
-  { name: "Duck", icon: "🦆", type: "fly" },
-  { name: "Frog", icon: "🐸", type: "water" },
-  { name: "Monkey", icon: "🐒", type: "land" },
-  { name: "Gorilla", icon: "🦍", type: "land" },
-  { name: "Wolf", icon: "🐺", type: "land" },
-  { name: "Fox", icon: "🦊", type: "land" },
-  { name: "Horse", icon: "🐎", type: "land" },
-  { name: "Pony", icon: "🐴", type: "land" },
-  { name: "Pig", icon: "🐖", type: "land" },
-  { name: "Cow", icon: "🐮", type: "land" },
-  { name: "Goat", icon: "🐐", type: "land" },
-  { name: "Sheep", icon: "🐑", type: "land" },
-  { name: "Deer", icon: "🦌", type: "land" },
-  { name: "Camel", icon: "🐫", type: "land" },
-  { name: "Rabbit", icon: "🐇", type: "land" },
-  { name: "Squirrel", icon: "🐿️", type: "land" },
-  { name: "Swan", icon: "🦢", type: "fly" },
-  { name: "Flamingo", icon: "🦩", type: "fly" },
-  { name: "Peacock", icon: "🦚", type: "fly" },
-  { name: "Dove", icon: "🕊️", type: "fly" },
-  { name: "Hummingbird", icon: "🐦", type: "fly" },
-  { name: "Turkey", icon: "🦃", type: "fly" },
-  { name: "Rooster", icon: "🐓", type: "fly" },
-  { name: "Chicken", icon: "🐔", type: "fly" },
-  { name: "Baby Chick", icon: "🐥", type: "fly" },
-  { name: "Bee", icon: "🐝", type: "fly" },
-  { name: "Lady Beetle", icon: "🐞", type: "fly" },
-  { name: "Mosquito", icon: "🦟", type: "fly" },
-  { name: "Cricket", icon: "🦗", type: "fly" },
-  { name: "Llama", icon: "🦙", type: "land" },
-  { name: "Seal", icon: "/images/nouns/seal.webp", type: "water" },
-  { name: "Beaver", icon: "/images/nouns/beaver.png", type: "water" },
-];
-
-
-/*  ======================================================= */
-
-
- // Adjust this path to your interface file
-
-export const animalData2: Word[] = [
+export const words: Word[] = [
   { id: "anim-001", word: "lion", type: "noun", category: "land", icon: "🦁", },
   { id: "anim-002", word: "tiger", type: "noun", category: "land", icon: "🐯", },
   { id: "anim-003", word: "elephant", type: "noun", category: "land", icon: "🐘", },
@@ -176,4 +67,27 @@ export const animalData2: Word[] = [
   { id: "anim-063", word: "llama", type: "noun", category: "land", icon: "🦙", },
   { id: "anim-064", word: "seal", type: "noun", category: "water", image: "/images/nouns/seal.webp", },
   { id: "anim-065", word: "beaver", type: "noun", category: "water", image: "/images/nouns/beaver.png", },
+  
+  { id: "hous-001", word: "fence", type: "noun", category: "house", icon: "🚧" },
+  { id: "hous-002", word: "bbq grill", type: "noun", category: "house", icon: "🍖" },
+  { id: "hous-003", word: "patio swing", type: "noun", category: "house", icon: "" },
+  { id: "hous-004", word: "watering Can", type: "noun", category: "house", icon: "" },
+  { id: "hous-005", word: "patio chair", type: "noun", category: "house", icon: "🪑" },
+  { id: "hous-006", word: "birdhouse", type: "noun", category: "house", icon: "🏠" },
+  { id: "hous-007", word: "fire pit", type: "noun", category: "house", icon: "🔥" },
+  { id: "hous-008", word: "lawnmower", type: "noun", category: "house", icon: "🚜" },
+  { id: "hous-009", word: "grass", type: "noun", category: "house", icon: "🌱" },
+  { id: "hous-010", word: "chair", type: "noun", category: "house", icon: "🪑" },
+
+  { id: "hous-011", word: "Shower", type: "noun", category: "house", icon: "🚿" },
+  { id: "hous-012", word: "Sink", type: "noun", category: "house", icon: "🚰" },
+  { id: "hous-013", word: "Mirror Cabinet", type: "noun", category: "house", icon: "🪞" },
+  { id: "hous-014", word: "Toilet", type: "noun", category: "house", icon: "🚽" },
+  { id: "hous-015", word: "Towel Bar", type: "noun", category: "house", icon: "🪵" },
+  { id: "hous-016", word: "Showerhead", type: "noun", category: "house", icon: "🌧️" },
+  { id: "hous-017", word: "Bath Mat", type: "noun", category: "house", icon: "🟩" },
+  { id: "hous-018", word: "Laundry Basket", type: "noun", category: "house", icon: "🧺" },
+  { id: "hous-019", word: "Shower Curtain", type: "noun", category: "house", icon: "🎪" },
+  { id: "hous-020", word: "Towel", type: "noun", category: "house", icon: "🧣" },
+  { id: "hous-021", word: "Toilet Tank", type: "noun", category: "house", icon: "🪠" },
 ];

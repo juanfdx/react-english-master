@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffle } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from "../../../../../utils/functions";
 
-type FurnitureItem = {
+type HouseItem = {
   id: string;
-  label: string;
-  word?: string;
+  word: string;
 };
 
-const furnitureNames: FurnitureItem[] = [
-  { id: "bed", label: "Bed", word: "bed" },
-  { id: "pillow", label: "Pillow", word: "pillow" },
-  { id: "vanity", label: "Vanity", word: "vanity" },
-  { id: "vanity-stool", label: "Vanity Stool", word: "vanity-stool" },
-  { id: "nightstand", label: "Nightstand", word: "nightstand" },
-  { id: "table-lamp", label: "Table Lamp", word: "table-lamp" },
-  { id: "mirror", label: "Mirror", word: "mirror" },
-  { id: "dresser", label: "Dresser", word: "dresser" },
-  { id: "curtain", label: "Curtain", word: "curtain" },
-  { id: "blanket", label: "Blanket", word: "blanket" },
-  { id: "painting", label: "Painting", word: "painting" },
-  { id: "throw-pillows", label: "Throw Pillows", word: "throw-pillows" },
+const bedroomItems: HouseItem[] = [
+  { id: "bed", word: "Bed" },
+  { id: "pillow", word: "Pillow" },
+  { id: "vanity", word: "Vanity" },
+  { id: "vanity-stool", word: "Vanity Stool" },
+  { id: "nightstand", word: "Nightstand" },
+  { id: "table-lamp", word: "Table Lamp" },
+  { id: "mirror", word: "Mirror" },
+  { id: "dresser", word: "Dresser" },
+  { id: "curtain", word: "Curtain" },
+  { id: "blanket", word: "Blanket" },
+  { id: "painting", word: "Painting" },
+  { id: "throw-pillows", word: "Throw Pillows"},
 ];
 
 const markers = [
@@ -32,8 +31,8 @@ const markers = [
   { id: "mirror", top: "29%", left: "87.7%" },
   { id: "dresser", top: "41%", left: "61.2%" },
   { id: "curtain", top: "20%", left: "48%" },
-  { id: "blanket", top: "63%", left: "23.5%" },
-  { id: "painting", top: "16.8%", left: "64.6%" },
+  { id: "blanket", top: "63%", left: "23.8%" },
+  { id: "painting", top: "16.8%", left: "64.8%" },
   { id: "throw-pillows", top: "43%", left: "30%" },
 ];
 
@@ -45,13 +44,13 @@ export default function BedroomPage() {
   const [placed, setPlaced] = useState<Record<string, string>>({});
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
-  const [shuffled, setShuffled] = useState<FurnitureItem[]>(() =>
-    shuffle(furnitureNames)
+  const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
+    shuffleArray(bedroomItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === furnitureNames.length) {
+    if (matches === bedroomItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -75,7 +74,7 @@ export default function BedroomPage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(furnitureNames.find(f => f.id === markerId)?.word || markerId, "nouns", "male");
+      playWord(bedroomItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -91,7 +90,7 @@ export default function BedroomPage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffle(furnitureNames));
+    setShuffled(shuffleArray(bedroomItems));
     setShowWinScreen(false);
   }
 
@@ -104,7 +103,7 @@ export default function BedroomPage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{furnitureNames.length}
+            Matches: {matches}/{bedroomItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -167,7 +166,7 @@ export default function BedroomPage() {
                       key={m.id}
                       onClick={() => handleMarkerClick(m.id)}
                       className={`
-                        absolute w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
+                        absolute w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full flex items-center justify-center border-2 font-bold backdrop-blur-xs whitespace-nowrap hover:scale-110 transition
                         ${
                           isPlaced
                             ? "correct-match text-xs md:text-base lg:text-xl"
@@ -179,7 +178,7 @@ export default function BedroomPage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? furnitureNames.find((f) => f.id === m.id)?.label
+                        ? bedroomItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );
@@ -219,7 +218,7 @@ export default function BedroomPage() {
                         }
                       `}
                     >
-                      {item.label}
+                      {item.word}
                     </div>
                   );
                 })}

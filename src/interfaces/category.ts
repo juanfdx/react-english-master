@@ -3,7 +3,8 @@ type ActivityType =
   | "flip-cards"
   | "quiz"
   | "matching"
-  | "inspector";
+  | "inspector"
+  | "listening";
 
 export interface Category {
   id: string;

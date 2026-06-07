@@ -1,4 +1,4 @@
-import { words } from '../../data/word';
+import { words } from '../../data/words';
 
 
 
