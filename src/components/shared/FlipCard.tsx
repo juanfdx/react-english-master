@@ -1,9 +1,8 @@
 import { useState } from "react";
-import type { Animal } from '../../data/nouns/animals';
-import { isImage } from '../../utils/functions';
+import type { Word } from '../../interfaces/word';
 
 interface Props {
-  animal: Animal;
+  animal: Word;
   onDiscover: (name: string) => void;
 }
 
@@ -16,7 +15,7 @@ export default function FlipCard({ animal, onDiscover }: Props) {
 
     setFlipped(true);
     setLocked(true);
-    onDiscover(animal.name);
+    onDiscover(animal.word);
 
     setTimeout(() => setFlipped(false), 1500);
     setTimeout(() => setLocked(false), 2000);
@@ -37,17 +36,17 @@ export default function FlipCard({ animal, onDiscover }: Props) {
       >
         {/* Front */}
         <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-white rounded-2xl shadow-md">
-          {isImage(animal.icon) ?
-            <img className="w-22" src={animal.icon} alt={animal.name} />
-            :
+          {animal?.icon ?
             <span className="text-6xl">{animal.icon}</span>
+            :
+            <img className="w-22" src={animal.image} alt={animal.word} />
           }
         </div>
 
         {/* Back */}
         <div className="absolute w-full h-full backface-hidden rotate-y-180 flex items-center justify-center bg-indigo-600 text-white rounded-2xl">
           <span className="text-xl font-bold uppercase">
-            {animal.name}
+            {animal.word}
           </span>
         </div>
       </div>

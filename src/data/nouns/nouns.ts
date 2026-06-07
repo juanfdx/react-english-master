@@ -62,11 +62,11 @@ export const nounCategories: Category[] = [
   },
   {
     id: '7',
-    name: 'Home Furniture',
+    name: 'Home',
     icon: '🏠',
-    href: 'home-furniture',
+    href: 'home',
     type: "noun",
-    domain: 'furniture',
+    domain: 'home',
     level: 'beginner',
   },
   {

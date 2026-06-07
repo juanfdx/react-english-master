@@ -1,43 +1,37 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffleArray } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from '../../../../../../utils/functions';
 
 type HouseItem = {
   id: string;
   word: string;
 };
 
-const bedroomItems: HouseItem[] = [
-  { id: "bed", word: "Bed" },
-  { id: "pillow", word: "Pillow" },
-  { id: "vanity", word: "Vanity" },
-  { id: "vanity-stool", word: "Vanity Stool" },
-  { id: "nightstand", word: "Nightstand" },
-  { id: "table-lamp", word: "Table Lamp" },
-  { id: "mirror", word: "Mirror" },
-  { id: "dresser", word: "Dresser" },
-  { id: "curtain", word: "Curtain" },
-  { id: "blanket", word: "Blanket" },
-  { id: "painting", word: "Painting" },
-  { id: "throw-pillows", word: "Throw Pillows"},
+const laundryRoomItems: HouseItem[] = [
+  { id: "washing-machine", word: "Washing Machine" },
+  { id: "dryer", word: "Dryer" },
+  { id: "ironing-board", word: "Ironing Board" },
+  { id: "detergent", word: "Detergent" },
+  { id: "softener", word: "Softener" },
+  { id: "laundry-basket", word: "Laundry Basket" },
+  { id: "clothesline", word: "Clothesline" },
+  { id: "sink", word: "Sink" },
+  { id: "iron", word: "Iron" }
 ];
 
 const markers = [
-  { id: "bed", top: "50%", left: "44.5%" },
-  { id: "pillow", top: "32.7%", left: "22%" },
-  { id: "vanity", top: "47.5%", left: "86%" },
-  { id: "vanity-stool", top: "56%", left: "81.2%" },
-  { id: "nightstand", top: "58%", left: "13.5%" },
-  { id: "table-lamp", top: "45%", left: "7.5%" },
-  { id: "mirror", top: "29%", left: "87.7%" },
-  { id: "dresser", top: "41%", left: "61.2%" },
-  { id: "curtain", top: "20%", left: "48%" },
-  { id: "blanket", top: "63%", left: "23.8%" },
-  { id: "painting", top: "16.8%", left: "64.8%" },
-  { id: "throw-pillows", top: "43%", left: "30%" },
+  { id: "washing-machine", top: "62%", left: "29.9%" },
+  { id: "dryer", top: "59%", left: "44%" },
+  { id: "ironing-board", top: "44%", left: "73%" },
+  { id: "detergent", top: "34%", left: "24.9%" },
+  { id: "softener", top: "27%", left: "19.4%" },
+  { id: "laundry-basket", top: "74%", left: "59.5%" },
+  { id: "clothesline", top: "7.5%", left: "53.5%" },
+  { id: "sink", top: "52.5%", left: "11%" },
+  { id: "iron", top: "39%", left: "86.2%" }
 ];
 
 
-export default function BedroomPage() {
+export default function LaundryRoomPage() {
 
   const [matches, setMatches] = useState(0);
   const [errors, setErrors] = useState(0);
@@ -45,12 +39,12 @@ export default function BedroomPage() {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
   const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
-    shuffleArray(bedroomItems)
+    shuffleArray(laundryRoomItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === bedroomItems.length) {
+    if (matches === laundryRoomItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -74,7 +68,7 @@ export default function BedroomPage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(bedroomItems.find(f => f.id === markerId)?.word || markerId, "male");
+      playWord(laundryRoomItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -90,7 +84,7 @@ export default function BedroomPage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffleArray(bedroomItems));
+    setShuffled(shuffleArray(laundryRoomItems));
     setShowWinScreen(false);
   }
 
@@ -103,7 +97,7 @@ export default function BedroomPage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{bedroomItems.length}
+            Matches: {matches}/{laundryRoomItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -137,7 +131,7 @@ export default function BedroomPage() {
             {/* TITLE */}
             <div className="text-center mb-6">
               <h1 className="text-4xl font-black">
-                The <span className="text-indigo-600">Bedroom</span> Inspector
+                The <span className="text-indigo-600">Laundry Room</span> Inspector
               </h1>
 
               <p className="text-slate-500 text-sm mt-2">
@@ -151,7 +145,7 @@ export default function BedroomPage() {
               <div className="aspect-video w-full rounded-3xl bg-slate-100 border border-slate-200 relative overflow-hidden">
 
                 <img
-                  src="/images/nouns/bedroom.webp"
+                  src="/images/nouns/laundry-room.webp"
                   alt="office"
                   className="w-full h-full object-cover"
                 />
@@ -178,7 +172,7 @@ export default function BedroomPage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? bedroomItems.find((f) => f.id === m.id)?.word
+                        ? laundryRoomItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { shuffleArray } from '../../../../../utils/functions';
+import { shuffleArray } from '../../../../../../utils/functions';
 
 type Animal = {
   name: string;

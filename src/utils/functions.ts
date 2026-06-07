@@ -1,20 +1,5 @@
 import type { Word } from '../interfaces/word';
 
-/*====================================================================
-  SHUFFLE FOR VOCABULARY BANK
-=====================================================================*/
-export const shuffle = <T>(array: T[]) => {
-  const arr = [...array];
-
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-
-  return arr;
-}
-
 
 /*====================================================================
   FILTER WORDS BY LIST
@@ -124,3 +109,11 @@ export const shuffleArray = <T>(array: T[]): T[] => {
 
   return shuffled;
 };
+
+
+/*====================================================================
+  FILTER WORDS BY CATEGORY
+=====================================================================*/
+export const filterWordsByCategory = (allWords: Word[], category: string): Word[] => {
+  return allWords.filter(word => word.category === category);
+}

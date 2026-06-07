@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
-import { formatToSlug, playWord, shuffleArray } from '../../../../../utils/functions';
-import { animalData, type AnimalType } from '../../../../../data/nouns/animals';
+import { filterWordsByCategory, playWord, shuffleArray } from '../../../../../../utils/functions';
+import { type AnimalType } from '../../../../../../data/nouns/animals';
+import { words } from '../../../../../../data/words';
 // components
-import FilterBar from '../../../../../components/shared/FilterBar';
-import FlipCard from '../../../../../components/shared/FlipCard';
+import FilterBar from '../../../../../../components/shared/FilterBar';
+import FlipCard from '../../../../../../components/shared/FlipCard';
 
 
 
@@ -11,17 +12,20 @@ export default function FlipCardsPage() {
 
   const [filter, setFilter] = useState<AnimalType | "all">("all");
 
+  const allAnimals = useMemo(() => {
+    return filterWordsByCategory(words, 'animal');
+  }, []); 
+
   const filteredAnimals = useMemo(() => {
     const animals = filter === "all"
-      ? animalData
-      : animalData.filter((a) => a.type === filter);
+      ? allAnimals
+      : allAnimals.filter((a) => a.tags?.includes(filter));
 
     // Shuffle the array every time the filter changes
-    return shuffleArray(animals); 
-  }, [filter]);
+    return shuffleArray([...animals]); 
+  }, [filter, allAnimals]);
 
-   const handleDiscover = (name: string) => {
-    const word = formatToSlug(name);
+   const handleDiscover = (word: string) => {
     // 🗣️ PRONUNCIATION
     playWord(word, "male");
   };
@@ -51,7 +55,7 @@ export default function FlipCardsPage() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-5xl">
           {filteredAnimals.map((animal) => (
             <FlipCard
-              key={animal.name}
+              key={animal.id}
               animal={animal}
               onDiscover={handleDiscover}
             />

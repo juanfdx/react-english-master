@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffleArray } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from '../../../../../../utils/functions';
 
 type HouseItem = {
   id: string;

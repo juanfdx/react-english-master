@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react';
-import { useDebounce } from '../../../hooks/useDebounce';
-import type { Level } from '../../../interfaces/levels';
+import { useDebounce } from '../../../../hooks/useDebounce';
+import type { Level } from '../../../../interfaces/levels';
 // components
-import { CategoryList } from '../../../components/ui/CategoryList';
-import { Filter } from '../../../components/ui/Filter';
-import { SearchInput } from '../../../components/form/SearchInput';
+import { CategoryList } from '../../../../components/ui/CategoryList';
+import { Filter } from '../../../../components/ui/Filter';
+import { SearchInput } from '../../../../components/form/SearchInput';
 // data
-import { nounCategories } from '../../../data/nouns/nouns';
+import { nounCategories } from '../../../../data/nouns/nouns';
 
 
 

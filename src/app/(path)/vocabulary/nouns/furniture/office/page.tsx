@@ -1,40 +1,34 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffleArray } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from '../../../../../../utils/functions';
 
 type HouseItem = {
   id: string;
   word: string;
 };
 
-const bathroomItems: HouseItem[] = [
-  { id: "shower", word: "Shower" },
-  { id: "sink", word: "Sink" },
-  { id: "mirror-cabinet", word: "Mirror Cabinet" },
-  { id: "toilet", word: "Toilet" },
-  { id: "towel-bar", word: "Towel Bar" },
-  { id: "showerhead", word: "Showerhead" },
-  { id: "bath-mat", word: "Bath Mat" },
-  { id: "laundry-basket", word: "Laundry Basket" },
-  { id: "shower-curtain", word: "Shower Curtain" },
-  { id: "towel", word: "Towel" },
-  { id: "toilet-tank", word: "Toilet Tank" }
+const officeItems: HouseItem[] = [
+  { id: "desk", word: "Desk" },
+  { id: "chair", word: "Office Chair" },
+  { id: "cabinet", word: "Filing Cabinet" },
+  { id: "bookshelf", word: "Bookshelf" },
+  { id: "lamp", word: "Desk Lamp" },
+  { id: "monitor", word: "Monitor" },
+  { id: "keyboard", word: "Keyboard" },
+  { id: "wastebasket", word: "Wastebasket" },
 ];
 
 const markers = [
-  { id: "shower", top: "35%", left: "52%" },
-  { id: "sink", top: "59%", left: "28%" },
-  { id: "mirror-cabinet", top: "25%", left: "24%" },
-  { id: "toilet", top: "74.5%", left: "85.6%" },
-  { id: "towel-bar", top: "36%", left: "64%" },
-  { id: "showerhead", top: "13%", left: "52%" },
-  { id: "bath-mat", top: "91.8%", left: "45.5%" },
-  { id: "laundry-basket", top: "86%", left: "64.5%" },
-  { id: "shower-curtain", top: "45%", left: "41%" },
-  { id: "towel", top: "51%", left: "64%" },
-  { id: "toilet-tank", top: "65%", left: "77%" }
+  { id: "desk", top: "50.3%", left: "30%" },
+  { id: "chair", top: "48%", left: "11.3%" },
+  { id: "cabinet", top: "43.5%", left: "89.7%" },
+  { id: "bookshelf", top: "6.8%", left: "72%" },
+  { id: "lamp", top: "17.5%", left: "19.5%" },
+  { id: "monitor", top: "24%", left: "50.7%" },
+  { id: "keyboard", top: "47%", left: "45%" },
+  { id: "wastebasket", top: "86%", left: "63.3%" },
 ];
 
-export default function BathroomPage() {
+export default function OfficePage() {
 
   const [matches, setMatches] = useState(0);
   const [errors, setErrors] = useState(0);
@@ -42,12 +36,12 @@ export default function BathroomPage() {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
   const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
-    shuffleArray(bathroomItems)
+    shuffleArray(officeItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === bathroomItems.length) {
+    if (matches === officeItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -55,6 +49,7 @@ export default function BathroomPage() {
       return () => clearTimeout(timer);
     }
   }, [matches]);
+
 
 
   function handleMarkerClick(markerId: string) {
@@ -71,7 +66,7 @@ export default function BathroomPage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(bathroomItems.find(f => f.id === markerId)?.word || markerId, "male");
+      playWord(officeItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -87,7 +82,7 @@ export default function BathroomPage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffleArray(bathroomItems));
+    setShuffled(shuffleArray(officeItems));
     setShowWinScreen(false);
   }
 
@@ -100,7 +95,7 @@ export default function BathroomPage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{bathroomItems.length}
+            Matches: {matches}/{officeItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -134,7 +129,7 @@ export default function BathroomPage() {
             {/* TITLE */}
             <div className="text-center mb-6">
               <h1 className="text-4xl font-black">
-                The <span className="text-indigo-600">Bathroom</span> Inspector
+                The <span className="text-indigo-600">Office</span> Inspector
               </h1>
 
               <p className="text-slate-500 text-sm mt-2">
@@ -148,7 +143,7 @@ export default function BathroomPage() {
               <div className="aspect-video w-full rounded-3xl bg-slate-100 border border-slate-200 relative overflow-hidden">
 
                 <img
-                  src="/images/nouns/bathroom.webp"
+                  src="/images/nouns/office.webp"
                   alt="office"
                   className="w-full h-full object-cover"
                 />
@@ -175,7 +170,7 @@ export default function BathroomPage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? bathroomItems.find((f) => f.id === m.id)?.word
+                        ? officeItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );
@@ -227,3 +222,12 @@ export default function BathroomPage() {
     </div>
   );
 }
+
+
+// const oldMarkers = [
+//   { id: "desk", top: "57%", left: "34%" },
+//   { id: "chair", top: "45%", left: "49.6%" },
+//   { id: "cabinet", top: "37.5%", left: "86.5%" },
+//   { id: "bookshelf", top: "22%", left: "61.7%" },
+//   { id: "lamp", top: "34.5%", left: "18.5%" },
+// ];

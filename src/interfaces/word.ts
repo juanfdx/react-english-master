@@ -2,6 +2,7 @@
 export type PartOfSpeech = 'noun' | 'verb' | 'adjective' | 'adverb' | 'preposition';
 export type WordCategory = 
  'house' |
+ 'animal' |
  'food' | 
  'travel' | 
  'emotions' |
@@ -24,6 +25,7 @@ export interface Word {
   word: string;
   type: PartOfSpeech; 
   category: WordCategory; 
+  tags?: string[];
   icon?: string; // URL or icon identifier
   image?: string; // URL to an illustration/photo
   conjugations?: { 

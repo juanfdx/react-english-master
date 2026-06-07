@@ -1,37 +1,43 @@
 import { useEffect, useState } from "react";
-import { playWord, shuffleArray } from "../../../../../utils/functions";
+import { playWord, shuffleArray } from '../../../../../../utils/functions';
 
 type HouseItem = {
   id: string;
   word: string;
 };
 
-const backyardItems: HouseItem[] = [
-  { id: "fence", word: "Fence" },
-  { id: "grill", word: "BBQ Grill" },
-  { id: "patio-swing", word: "Patio Swing" },
-  { id: "watering-can", word: "Watering Can" },
-  { id: "patio-chair", word: "Patio Chair"  },
-  { id: "birdhouse", word: "Birdhouse"  },
-  { id: "fire-pit", word: "Fire Pit" },
-  { id: "lawnmower", word: "Lawnmower" },
-  { id: "grass", word: "Grass" },
+const kitchenItems: HouseItem[] = [
+  { id: "refrigerator", word: "Refrigerator" },
+  { id: "stove", word: "Stove" },
+  { id: "microwave", word: "Microwave" },
+  { id: "dishwasher", word: "Dishwasher" },
+  { id: "cabinet", word: "Cabinet" },
+  { id: "tap", word: "Tap" },
+  { id: "countertop", word: "Countertop" },
+  { id: "kitchen-island", word: "Kitchen Island" },
+  { id: "bar-stools", word: "Bar Stools" },
+  { id: "drawers", word: "Drawers" },
+  { id: "stove-burners", word: "Stove Burners" },
+  { id: "pantry-cabinet", word: "Pantry Cabinet" },
 ];
 
 const markers = [
-  { id: "fence", top: "34.5%", left: "85%" },
-  { id: "grill", top: "53%", left: "78.5%" },
-  { id: "patio-swing", top: "49%", left: "31.5%" },
-  { id: "watering-can", top: "76.8%", left: "53.5%" },
-  { id: "patio-chair", top: "56%", left: "91.5%" },
-  { id: "birdhouse", top: "36%", left: "68.8%" },
-  { id: "fire-pit", top: "76%", left: "74%" },
-  { id: "lawnmower", top: "63.5%", left: "21%" },
-  { id: "grass", top: "75%", left: "35%" }
+  { id: "refrigerator", top: "30%", left: "22.3%" },
+  { id: "stove", top: "61.7%", left: "73.5%" },
+  { id: "microwave", top: "24.7%", left: "76.7%" },
+  { id: "dishwasher", top: "46.5%", left: "59%" },
+  { id: "cabinet", top: "16.8%", left: "90%" },
+  { id: "tap", top: "44.4%", left: "44.4%" },
+  { id: "countertop", top: "56.5%", left: "46%" },
+  { id: "kitchen-island", top: "72%", left: "52%" },
+  { id: "bar-stools", top: "63.5%", left: "30.8%" },
+  { id: "drawers", top: "64.4%", left: "86.4%" },
+  { id: "stove-burners", top: "44.7%", left: "77%" },
+  { id: "pantry-cabinet", top: "22%", left: "10.5%" },
 ];
 
 
-export default function BackyardPage() {
+export default function KitchenPage() {
 
   const [matches, setMatches] = useState(0);
   const [errors, setErrors] = useState(0);
@@ -39,12 +45,12 @@ export default function BackyardPage() {
   const [selectedWord, setSelectedWord] = useState<string | null>(null);
   const [wrongMarker, setWrongMarker] = useState<string | null>(null);
   const [shuffled, setShuffled] = useState<HouseItem[]>(() =>
-    shuffleArray(backyardItems)
+    shuffleArray(kitchenItems)
   );
   const [showWinScreen, setShowWinScreen] = useState(false);
 
   useEffect(() => {
-    if (matches === backyardItems.length) {
+    if (matches === kitchenItems.length) {
       const timer = setTimeout(() => {
         setShowWinScreen(true);
       }, 1500);
@@ -68,7 +74,7 @@ export default function BackyardPage() {
       setSelectedWord(null);
 
       // 🗣️ PRONUNCIATION
-      playWord(backyardItems.find(f => f.id === markerId)?.word || markerId, "male");
+      playWord(kitchenItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
       setErrors((e) => e + 1);
@@ -84,7 +90,7 @@ export default function BackyardPage() {
     setPlaced({});
     setSelectedWord(null);
     setWrongMarker(null);
-    setShuffled(shuffleArray(backyardItems));
+    setShuffled(shuffleArray(kitchenItems));
     setShowWinScreen(false);
   }
 
@@ -97,7 +103,7 @@ export default function BackyardPage() {
       <div className="w-full px-6 py-4 flex justify-end items-center">
         <div className="flex gap-4 text-xs font-bold">
           <div className="bg-emerald-50 text-emerald-700 px-4 py-1 rounded-full border border-emerald-100">
-            Matches: {matches}/{backyardItems.length}
+            Matches: {matches}/{kitchenItems.length}
           </div>
           <div className="bg-rose-50 text-rose-700 px-4 py-1 rounded-full border border-rose-100">
             Errors: {errors}
@@ -131,7 +137,7 @@ export default function BackyardPage() {
             {/* TITLE */}
             <div className="text-center mb-6">
               <h1 className="text-4xl font-black">
-                The <span className="text-indigo-600">Backyard</span> Inspector
+                The <span className="text-indigo-600">Kitchen</span> Inspector
               </h1>
 
               <p className="text-slate-500 text-sm mt-2">
@@ -145,7 +151,7 @@ export default function BackyardPage() {
               <div className="aspect-video w-full rounded-3xl bg-slate-100 border border-slate-200 relative overflow-hidden">
 
                 <img
-                  src="/images/nouns/backyard.webp"
+                  src="/images/nouns/kitchen.webp"
                   alt="office"
                   className="w-full h-full object-cover"
                 />
@@ -172,7 +178,7 @@ export default function BackyardPage() {
                       style={{ top: m.top, left: m.left }}
                     >
                       {isPlaced
-                        ? backyardItems.find((f) => f.id === m.id)?.word
+                        ? kitchenItems.find((f) => f.id === m.id)?.word
                         : "?"}
                     </div>
                   );
