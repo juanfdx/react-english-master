@@ -62,11 +62,11 @@ export const nounCategories: Category[] = [
   },
   {
     id: '7',
-    name: 'Home',
+    name: 'House',
     icon: '🏠',
-    href: 'home',
+    href: 'house',
     type: "noun",
-    domain: 'home',
+    domain: 'house',
     level: 'beginner',
   },
   {
@@ -100,7 +100,7 @@ export const nounCategories: Category[] = [
     id: '11',
     name: 'Work & Jobs',
     icon: '💼',
-    href: '/nouns/intermediate/work',
+    href: 'work-jobs',
     type: "noun",
     domain: 'work',
     level: 'intermediate',

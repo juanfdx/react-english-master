@@ -1,27 +1,32 @@
 import { createBrowserRouter, Navigate } from 'react-router';
-// Layouts
+// LAYOUTS
 import SiteLayout  from './site/layout';
 import PathLayout from './(path)/layout';
-import FurnitureLayout from './(path)/vocabulary/nouns/furniture/layout';
+import HouseLayout from './(path)/vocabulary/nouns/house/layout';
+import WorkLayout from './(path)/vocabulary/nouns/work/layout';
 import AnimalsLayout from './(path)/vocabulary/nouns/animals/layout';
-// Pages
-import HomePage from './site/home/page';
 
+// PAGES
+import HomePage from './site/home/page';
+// NOUNS
 import NounsPage from './(path)/vocabulary/nouns/page';
-import FurniturePage from './(path)/vocabulary/nouns/furniture/page';
-import OfficePage from './(path)/vocabulary/nouns/furniture/office/page';
-import KitchenPage from './(path)/vocabulary/nouns/furniture/kitchen/page';
-import BedroomPage from './(path)/vocabulary/nouns/furniture/bedroom/page';
-import LivingRoomPage from './(path)/vocabulary/nouns/furniture/livingRoom/page';
-import BathroomPage from './(path)/vocabulary/nouns/furniture/bathroom/page';
-import LaundryRoomPage from './(path)/vocabulary/nouns/furniture/laundryRoom/page';
-import BackyardPage from './(path)/vocabulary/nouns/furniture/backyard/page';
+// House
+import HousePage from './(path)/vocabulary/nouns/house/page';
+import KitchenPage from './(path)/vocabulary/nouns/house/kitchen/page';
+import BedroomPage from './(path)/vocabulary/nouns/house/bedroom/page';
+import LivingRoomPage from './(path)/vocabulary/nouns/house/livingRoom/page';
+import BathroomPage from './(path)/vocabulary/nouns/house/bathroom/page';
+import LaundryRoomPage from './(path)/vocabulary/nouns/house/laundryRoom/page';
+import BackyardPage from './(path)/vocabulary/nouns/house/backyard/page';
+// Work
+import WorkPage from './(path)/vocabulary/nouns/work/page';
+import OfficePage from './(path)/vocabulary/nouns/house/office/page';
 // Animals
 import AnimalsPage from './(path)/vocabulary/nouns/animals/page';
 import FlipCardsPage from './(path)/vocabulary/nouns/animals/flipCards/page';
 import QuizCardPage from './(path)/vocabulary/nouns/animals/quizCard/page';
 
-// System
+// SYSTEM
 import ErrorPage from './ErrorPage';
 import NotFound from './NotFound';
 import VerbsPage from './(path)/vocabulary/verbs/page';
@@ -60,16 +65,12 @@ export const router = createBrowserRouter([
                 element: <NounsPage />,
               },
               {
-                path: 'home', 
-                element: <FurnitureLayout />,
+                path: 'house', 
+                element: <HouseLayout />,
                 children: [
                   {
                     index: true,
-                    element: <FurniturePage />,
-                  },
-                  {
-                    path: 'office',
-                    element: <OfficePage />,
+                    element: <HousePage />,
                   },
                   {
                     path: 'kitchen',
@@ -95,6 +96,20 @@ export const router = createBrowserRouter([
                     path: 'backyard',
                     element: <BackyardPage />,
                   },
+                ]
+              },
+              {
+                path: 'work-jobs', 
+                element: <WorkLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <WorkPage />,
+                  },
+                  {
+                    path: 'office',
+                    element: <OfficePage />,
+                  }
                 ]
               },
               {

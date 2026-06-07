@@ -2,7 +2,8 @@ import { Outlet } from 'react-router';
 import { Breadcrumbs } from '../../../../../components/shared/Breadcrumbs';
 
 
-export default function FurnitureLayout() {
+
+export default function WorkLayout() {
 
   return (
     <> 

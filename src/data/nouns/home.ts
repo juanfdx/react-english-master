@@ -1,24 +1,14 @@
 import type { Category } from '../../interfaces/category';
 
 
-export const homeCategories: Category[] = [
-  {
-    id: "1",
-    name: "Office Inspector",
-    icon: "🖥️",
-    href: "office",
-    type: "noun",
-    domain: 'office',
-    activity_type: 'inspector',
-    level: 'beginner',
-  },
+export const houseCategories: Category[] = [
   {
     id: "2",
     name: "Kitchen Inspector",
     icon: "🍳",
     href: "kitchen",
     type: "noun",
-    domain: 'home',
+    domain: 'house',
     activity_type: 'inspector',
     level: 'beginner',
   },
@@ -28,7 +18,7 @@ export const homeCategories: Category[] = [
     icon: "🛏️",
     href: "bedroom",
     type: "noun",
-    domain: 'home',
+    domain: 'house',
     activity_type: 'inspector',
     level: 'beginner',
   },
@@ -38,7 +28,7 @@ export const homeCategories: Category[] = [
     icon: "🛋️",
     href: "living-room",
     type: "noun",
-    domain: 'home',
+    domain: 'house',
     activity_type: 'inspector',
     level: 'beginner',
   },
@@ -48,7 +38,7 @@ export const homeCategories: Category[] = [
     icon: "🚽",
     href: "bathroom",
     type: "noun",
-    domain: 'home',
+    domain: 'house',
     activity_type: 'inspector',
     level: 'beginner',
   },
@@ -58,7 +48,7 @@ export const homeCategories: Category[] = [
     icon: "🧺",
     href: "laundry-room",
     type: "noun",
-    domain: 'home',
+    domain: 'house',
     activity_type: 'inspector',
     level: 'beginner',
   },
@@ -68,7 +58,7 @@ export const homeCategories: Category[] = [
     icon: "🌳",
     href: "backyard",
     type: "noun",
-    domain: 'home',
+    domain: 'house',
     activity_type: 'inspector',
     level: 'beginner',
   }
