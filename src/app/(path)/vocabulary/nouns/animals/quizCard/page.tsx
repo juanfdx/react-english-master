@@ -1,51 +1,57 @@
 import { useMemo, useState } from "react";
-import { shuffleArray } from '../../../../../../utils/functions';
+import { filterWordsByCategory, getRandomWord, playWord, shuffleArray } from '../../../../../../utils/functions';
+import type { Word } from '../../../../../../interfaces/word';
+// data
+import { words } from '../../../../../../data/words';
+// components
+import { QuizFlipCard } from '../../../../../../components/ui/QuizFlipCard';
+import { QuizOptions } from '../../../../../../components/ui/QuizOptions';
+import { Title } from '../../../../../../components/ui/Title';
+import { GameScoreBoard } from '../../../../../../components/ui/GameScoreBoard';
+import { QuizLoseModal } from '../../../../../../components/ui/QuizLoseModal';
 
-type Animal = {
-  name: string;
-  icon: string;
-};
 
-const animalData: Animal[] = [
-  { name: "Lion", icon: "🦁" },
-  { name: "Tiger", icon: "🐯" },
-  { name: "Elephant", icon: "🐘" },
-  { name: "Giraffe", icon: "🦒" },
-  { name: "Monkey", icon: "🐒" },
-  { name: "Penguin", icon: "🐧" },
-  { name: "Panda", icon: "🐼" },
-  { name: "Fox", icon: "🦊" },
-];
 
 export default function QuizCardPage() {
 
-  const [current, setCurrent] = useState<Animal>(getRandomAnimal());
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
   const [flipped, setFlipped] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
+  
+  const allAnimals = useMemo(() => {
+    return filterWordsByCategory(words, 'animal');
+  }, []); 
 
-  function getRandomAnimal(): Animal {
-    return animalData[Math.floor(Math.random() * animalData.length)];
-  }
+  const [current, setCurrent] = useState<Word>(getRandomWord(allAnimals));
 
+  // Bank of word answers
   const options = useMemo(() => {
-    const wrong = animalData
-      .filter((a) => a.name !== current.name)
+    const wrong = allAnimals
+      .filter((a) => a.word !== current.word)
       .slice(0, 3);
 
-    return shuffleArray([current, ...wrong]).map((a) => a.name);
-  }, [current]);
+    return shuffleArray([current, ...wrong]).map((a) => a.word);
+  }, [current, allAnimals]);
 
-  const handleAnswer = (name: string) => {
-    setSelected(name);
+
+  const handleAnswer = (word: string) => {
+    setSelected(word);
     setFlipped(true);
 
-    const isCorrect = name === current.name;
+    const isCorrect = word === current.word;
+
+    if (isCorrect) {
+      // 🗣️ PRONUNCIATION
+      playWord(word, "male");
+    }else {
+      playWord('wrong', "effect");
+    }
 
     setTimeout(() => {
       if (isCorrect) {
         setScore((s) => s + 10);
+
       } else {
         setLives((l) => l - 1);
       }
@@ -56,97 +62,61 @@ export default function QuizCardPage() {
 
   const nextQuestion = () => {
     setFlipped(false);
-    setSelected(null);
-    setCurrent(getRandomAnimal());
+    // to avoid flick effect when changing ✓ Correct! to ✗ Wrong!
+    setTimeout(() => {
+      setSelected(null);
+      setCurrent(getRandomWord(allAnimals));
+    }, 200);
   };
 
-  if (lives <= 0) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="bg-white p-10 rounded-3xl shadow-xl text-center">
-          <h1 className="text-3xl font-black mb-2">Game Over</h1>
-          <p className="text-slate-500 mb-6">Score: {score}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="bg-indigo-600 text-white px-6 py-3 rounded-xl"
-          >
-            Try Again
-          </button>
-        </div>
-      </div>
-    );
+  const resetGame = () => {
+    setScore(0);
+    setLives(3);
   }
 
+
+
+  
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col items-center py-10">
+    <div className="flex flex-col text-slate-900">
 
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-black">
-          Animal <span className="text-indigo-600">Mastery</span>
-        </h1>
+      {/* SCORE */}
+      <GameScoreBoard score={score} lives={lives} marginBottom="mb-4" />
 
-        <div className="flex gap-6 justify-center mt-3 text-sm text-slate-600">
-          <div className="bg-indigo-50 px-4 py-1 rounded-full">
-            Score: {score}
-          </div>
+      <main className="flex-1 max-w-7xl mx-auto flex flex-col items-center">
 
-          <div className="flex gap-1">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <span key={i} className="text-xl">
-                {i < lives ? "❤️" : "🖤"}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
+        {lives <= 0 ? (
+          // LOSE MESSAGE
+          <QuizLoseModal 
+            title="Game Over"
+            score={score}
+            resetGame={resetGame} 
+          />
 
-      {/* Flip Card */}
-      <div className="perspective w-64 h-64 mb-10">
-        <div
-          className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
-            flipped ? "rotate-y-180" : ""
-          }`}
-        >
-          {/* FRONT */}
-          <div className="absolute w-full h-full backface-hidden bg-white rounded-3xl shadow-xl flex items-center justify-center text-8xl">
-            {current.icon}
-          </div>
+        ) : (
+          <>
+            {/* TITLE */}
+            <Title 
+              title="Animal" 
+              subtitle="Mastery Quiz" 
+              description="Identify the animal shown in the card. Don't lose your hearts!"
+              marginBottom="mb-10"
+            />
+      
+            {/* Flip Card */}
+            <QuizFlipCard word={current} selected={selected} flipped={flipped} />
+      
+            {/* Options */}
+            <QuizOptions 
+              options={options} 
+              word={current} 
+              selected={selected} 
+              handleAnswer={handleAnswer} 
+            />            
+          </>
+        )}
+      </main>
 
-          {/* BACK */}
-          <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-indigo-600 rounded-3xl shadow-xl flex items-center justify-center text-white text-2xl font-bold">
-            {selected === current.name ? "✓ Correct!" : "✗ Wrong!"}
-          </div>
-        </div>
-      </div>
-
-      {/* Options */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-md">
-        {options.map((opt) => {
-          const isSelected = selected === opt;
-
-          return (
-            <button
-              key={opt}
-              onClick={() => handleAnswer(opt)}
-              disabled={!!selected}
-              className={`
-                py-4 px-6 rounded-2xl font-bold border-2 transition-all
-                shadow-sm active:scale-95
-                ${
-                  isSelected
-                    ? opt === current.name
-                      ? "bg-emerald-50 border-emerald-500 text-emerald-600"
-                      : "bg-rose-50 border-rose-500 text-rose-600"
-                    : "bg-white border-slate-100 hover:border-indigo-500 hover:text-indigo-600"
-                }
-              `}
-            >
-              {opt}
-            </button>
-          );
-        })}
-      </div>
     </div>
   );
 }

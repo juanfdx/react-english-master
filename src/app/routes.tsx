@@ -20,7 +20,7 @@ import LaundryRoomPage from './(path)/vocabulary/nouns/house/laundryRoom/page';
 import BackyardPage from './(path)/vocabulary/nouns/house/backyard/page';
 // Work
 import WorkPage from './(path)/vocabulary/nouns/work/page';
-import OfficePage from './(path)/vocabulary/nouns/house/office/page';
+import OfficePage from './(path)/vocabulary/nouns/work/office/page';
 // Animals
 import AnimalsPage from './(path)/vocabulary/nouns/animals/page';
 import FlipCardsPage from './(path)/vocabulary/nouns/animals/flipCards/page';

@@ -62,7 +62,7 @@ export const speakWord = (word: string) => {
 /*====================================================================
   PLAY ENGLISH WORD AUDIO 
 =====================================================================*/
-export const playWord = async (word: string, gender: 'male' | 'female') => {
+export const playWord = async (word: string, gender: 'male' | 'female' | 'effect') => {
   // 1. Safe Formatting: "Tropical Fish" -> "tropical_fish"
   const formattedWord = word.toLowerCase().trim().replace(/\s+/g, '-');
   
@@ -116,4 +116,12 @@ export const shuffleArray = <T>(array: T[]): T[] => {
 =====================================================================*/
 export const filterWordsByCategory = (allWords: Word[], category: string): Word[] => {
   return allWords.filter(word => word.category === category);
+}
+
+
+/*====================================================================
+  GET RANDOM WORD
+=====================================================================*/
+export const getRandomWord = (words: Word[]): Word => {
+  return words[Math.floor(Math.random() * words.length)];
 }

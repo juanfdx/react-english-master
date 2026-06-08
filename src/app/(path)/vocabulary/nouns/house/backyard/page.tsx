@@ -46,6 +46,7 @@ export default function BackyardPage() {
   useEffect(() => {
     if (matches === backyardItems.length) {
       const timer = setTimeout(() => {
+        playWord('success', 'effect');
         setShowWinScreen(true);
       }, 1500);
 

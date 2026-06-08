@@ -52,6 +52,7 @@ export default function KitchenPage() {
   useEffect(() => {
     if (matches === kitchenItems.length) {
       const timer = setTimeout(() => {
+        playWord('success', 'effect');
         setShowWinScreen(true);
       }, 1500);
 

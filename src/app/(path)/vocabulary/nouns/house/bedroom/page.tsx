@@ -52,6 +52,7 @@ export default function BedroomPage() {
   useEffect(() => {
     if (matches === bedroomItems.length) {
       const timer = setTimeout(() => {
+        playWord('success', 'effect');
         setShowWinScreen(true);
       }, 1500);
 

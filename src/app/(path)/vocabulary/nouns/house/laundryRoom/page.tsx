@@ -46,6 +46,7 @@ export default function LaundryRoomPage() {
   useEffect(() => {
     if (matches === laundryRoomItems.length) {
       const timer = setTimeout(() => {
+        playWord('success', 'effect');
         setShowWinScreen(true);
       }, 1500);
 

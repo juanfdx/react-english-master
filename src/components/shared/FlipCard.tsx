@@ -6,6 +6,7 @@ interface Props {
   onDiscover: (name: string) => void;
 }
 
+
 export default function FlipCard({ animal, onDiscover }: Props) {
   const [flipped, setFlipped] = useState(false);
   const [locked, setLocked] = useState(false);
@@ -36,10 +37,12 @@ export default function FlipCard({ animal, onDiscover }: Props) {
       >
         {/* Front */}
         <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-white rounded-2xl shadow-md">
-          {animal?.icon ?
-            <span className="text-6xl">{animal.icon}</span>
-            :
-            <img className="w-22" src={animal.image} alt={animal.word} />
+          {
+            animal?.icon 
+            ? <span className="text-6xl">{animal.icon}</span>
+            : animal?.image 
+            ? <img className="w-22" src={animal.image} alt={animal.word} />
+            : <span className="text-6xl text-indigo-600">?</span>
           }
         </div>
 
