@@ -19,11 +19,7 @@ export const QuizOptions = ({ options, word, selected, handleAnswer }: Props) =>
         return (
           <button
             key={opt}
-            onClick={() => {
-              if (!selected) {
-                handleAnswer(opt);
-              }
-            }}
+            onClick={() => handleAnswer(opt)}
             disabled={!!selected}
             className={`
               py-4 px-6 rounded-2xl font-bold border-2 transition-all

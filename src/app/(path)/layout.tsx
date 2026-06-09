@@ -170,7 +170,7 @@ export default function PathLayout() {
         </aside>
 
         {/* CONTENT */}
-        <main className="flex-1 px-3 sm:px-6 pb-12">
+        <main className="flex-1 px-4 sm:px-6 pb-12">
           {isMenuOpen && (          
             <>
               <nav className='md:hidden flex flex-col items-center gap-3 py-3'>

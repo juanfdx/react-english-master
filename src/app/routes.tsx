@@ -25,6 +25,7 @@ import OfficePage from './(path)/vocabulary/nouns/work/office/page';
 import AnimalsPage from './(path)/vocabulary/nouns/animals/page';
 import FlipCardsPage from './(path)/vocabulary/nouns/animals/flipCards/page';
 import QuizCardPage from './(path)/vocabulary/nouns/animals/quizCard/page';
+import AudioQuizPage from './(path)/vocabulary/nouns/animals/AudioQuiz/page';
 
 // SYSTEM
 import ErrorPage from './ErrorPage';
@@ -127,6 +128,10 @@ export const router = createBrowserRouter([
                   {
                     path: 'quiz-card',
                     element: <QuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <AudioQuizPage />,
                   },
                 ]
               }

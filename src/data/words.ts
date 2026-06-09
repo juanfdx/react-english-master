@@ -2,7 +2,7 @@ import type { Word } from '../interfaces/word';
 
 
 export const words: Word[] = [
-{ id: "anim-001", word: "Lion", type: "noun", category: "animal", tags: ["land"], icon: "🦁" },
+  { id: "anim-001", word: "Lion", type: "noun", category: "animal", tags: ["land"], icon: "🦁" },
   { id: "anim-002", word: "Tiger", type: "noun", category: "animal", tags: ["land"], icon: "🐯" },
   { id: "anim-003", word: "Elephant", type: "noun", category: "animal", tags: ["land"], icon: "🐘" },
   { id: "anim-004", word: "Shark", type: "noun", category: "animal", tags: ["water"], icon: "🦈" },

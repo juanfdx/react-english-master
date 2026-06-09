@@ -26,38 +26,45 @@ export const filterWordsByList = (targetWords: string[], allWords: Word[]): Word
 export const speakWord = (word: string) => {
   if (!("speechSynthesis" in window)) return;
 
-  const utterance = new SpeechSynthesisUtterance(word);
-
-  // Clear previous speech instantly
+  // 1. Instantly clear any ongoing speech
   window.speechSynthesis.cancel(); 
 
-  // Helper to find and set the English voice
+  const utterance = new SpeechSynthesisUtterance(word);
+  
+  // CRITICAL FIX: Explicitly set the target language *before* anything else.
+  // If voice loading fails or is delayed, the browser at least knows the target language.
+  utterance.lang = "en-US"; 
+  utterance.rate = 0.8; 
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
   const setEnglishVoice = () => {
     const voices = window.speechSynthesis.getVoices();
     
-    // Look for a high-quality English voice (US or GB)
-    // You can prioritize 'en-US' or 'en-GB' if you prefer one over the other
+    // Look for preferred English locales
     const englishVoice = voices.find(v => v.lang === 'en-US' || v.lang === 'en-GB') 
                       || voices.find(v => v.lang.startsWith('en'));
 
     if (englishVoice) {
       utterance.voice = englishVoice;
-      utterance.lang = englishVoice.lang; // Match the exact tongue of the voice
-    } else {
-      utterance.lang = "en-US"; // Absolute fallback configuration
+      utterance.lang = englishVoice.lang; 
     }
   };
 
-  // Run it immediately
+  // 2. Try to set the voice immediately (if voices are already loaded)
   setEnglishVoice();
 
-  utterance.rate = 0.8; // Clear and slightly slower, but natural
-  utterance.pitch = 1;
-  utterance.volume = 1;
-
-  window.speechSynthesis.speak(utterance);
+  // 3. CRITICAL FIX: If voices haven't loaded yet, wait for them to load
+  if (window.speechSynthesis.getVoices().length === 0) {
+    window.speechSynthesis.onvoiceschanged = () => {
+      setEnglishVoice();
+      window.speechSynthesis.speak(utterance);
+    };
+  } else {
+    // Voices were already cached/loaded, just speak it
+    window.speechSynthesis.speak(utterance);
+  }
 };
-
 
 /*====================================================================
   PLAY ENGLISH WORD AUDIO 
