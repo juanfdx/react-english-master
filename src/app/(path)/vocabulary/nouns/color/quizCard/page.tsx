@@ -143,7 +143,7 @@ export default function ColorQuizCardPage() {
             />
       
             {/* Flip Card */}
-            <QuizFlipCard word={current} selected={selected} flipped={flipped} variant="svg" />
+            <QuizFlipCard word={current} selected={selected} flipped={flipped} variant="category" />
       
             {/* Options */}
             <QuizOptions 

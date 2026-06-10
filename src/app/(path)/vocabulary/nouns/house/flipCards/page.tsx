@@ -7,22 +7,22 @@ import FlipCard from '../../../../../../components/shared/FlipCard';
 
 
 
-export default function AnimalFlipCardsPage() {
+export default function ApplianceFlipCardsPage() {
 
   const [filter, setFilter] = useState("all");
 
-  const allAnimals = useMemo(() => {
-    return filterWordsByCategory(words, 'animal');
+  const allAppliances = useMemo(() => {
+    return filterWordsByCategory(words, 'appliance');
   }, []); 
 
-  const filteredAnimals = useMemo(() => {
+  const filteredAppliances = useMemo(() => {
     const animals = filter === "all"
-      ? allAnimals
-      : allAnimals.filter((a) => a.tags?.includes(filter));
+      ? allAppliances
+      : allAppliances.filter((a) => a.tags?.includes(filter));
 
     // Shuffle the array every time the filter changes
     return shuffleArray([...animals]); 
-  }, [filter, allAnimals]);
+  }, [filter, allAppliances]);
 
    const handleDiscover = (word: string) => {
     // 🗣️ PRONUNCIATION
@@ -40,22 +40,22 @@ export default function AnimalFlipCardsPage() {
         {/* TITLE */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-black">
-            The <span className="text-indigo-600">Animal</span> Explorer
+            The <span className="text-indigo-600">Appliance</span> Explorer
           </h1>
 
           <p className="text-slate-500 text-sm mt-2">
-            Filter by habitat and flip to learn their names.
+            Filter by category and flip to learn their names.
           </p>
         </div>
 
-        <FilterBar current={filter} onChange={setFilter} words={allAnimals} />
+        <FilterBar words={allAppliances} current={filter} onChange={setFilter} />
 
         {/* Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-5xl">
-          {filteredAnimals.map((animal) => (
+          {filteredAppliances.map((appliance) => (
             <FlipCard
-              key={animal.id}
-              word={animal}
+              key={appliance.id}
+              word={appliance}
               onDiscover={handleDiscover}
             />
           ))}

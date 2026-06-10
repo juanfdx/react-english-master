@@ -38,7 +38,7 @@ export default function ColorFlipCardsPage() {
           </h1>
 
           <p className="text-slate-500 text-sm mt-2">
-            Filter by habitat and flip to learn their names.
+            Flip to learn color names.
           </p>
         </div>
 
@@ -49,7 +49,7 @@ export default function ColorFlipCardsPage() {
               key={color.id}
               word={color}
               onDiscover={handleDiscover}
-              variant="svg"
+              variant="category"
             />
           ))}
         </div>

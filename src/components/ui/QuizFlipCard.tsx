@@ -5,11 +5,11 @@ interface Props {
   word: Word
   selected: string | null
   flipped: boolean
-  variant?: 'image' | 'svg';
+  variant?: 'word' | 'category';
 }
 
 
-export const QuizFlipCard = ({ word, selected, flipped, variant = 'image' }: Props) => {
+export const QuizFlipCard = ({ word, selected, flipped, variant = 'word' }: Props) => {
 
   return (
     <div className="perspective w-64 h-64 mb-10">
@@ -19,22 +19,24 @@ export const QuizFlipCard = ({ word, selected, flipped, variant = 'image' }: Pro
         }`}
       >
         
-        {/* FRONT */}   
-        {variant === 'image' && (
-          <div className="absolute w-full h-full backface-hidden bg-white rounded-3xl shadow-xl flex items-center justify-center text-8xl">
+        {/* FRONT */} 
+        {variant === 'word' && (
+          <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-white rounded-2xl shadow-md">
             {
               word?.icon 
               ? <span className="text-6xl">{word.icon}</span>
               : word?.image 
               ? <img className="w-22 h-22" src={word.image} alt={word.word} />
+              : word?.svg 
+              ? <Icon type={word.word} className={`w-18 h-18 ${word.svg}`}  />
               : <span className="text-6xl text-indigo-600">?</span>
             }
           </div>
         )}
-        {variant === 'svg' && (
-          <div className="absolute w-full h-full backface-hidden bg-white rounded-3xl shadow-xl flex items-center justify-center text-8xl">
+        {variant === 'category' && (
+          <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-white rounded-2xl shadow-md">
             <Icon 
-              type="drops" 
+              type={word.category} 
               className={`w-18 h-18 ${word.svg}`} 
               strokeColor={word.word === 'white' ? 'black' : 'none'}
             />

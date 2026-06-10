@@ -1,24 +1,32 @@
-import type { AnimalType } from '../../data/nouns/animals';
+import type { Word } from '../../interfaces/word';
+import { capitalizeAllWords } from '../../utils/strings';
 
 
 interface Props {
-  current: AnimalType | "all";
-  onChange: (value: AnimalType | "all") => void;
+  words: Word[];
+  current: string | "all";
+  onChange: (value: string | "all") => void;
 }
 
-const buttons: { label: string; value: AnimalType | "all" }[] = [
-  { label: "All", value: "all" },
-  { label: "⛰️ Land", value: "land" },
-  { label: "🌊 Water", value: "water" },
-  { label: "☁️ Flying", value: "fly" }
-];
+const tagEmojis: Record<string, string> = {
+  water: "🌊",
+  land: "⛰️",
+  fly: "☁️",
+};
 
 
-export default function FilterBar({ current, onChange }: Props) {
+
+export default function FilterBar({ words, current, onChange }: Props) {
+
+  const setOfTags = new Set(words.flatMap(word => word.tags ?? []));
+  const filterButtons = [ "all", ...setOfTags].map(tag => ({
+     label: `${tagEmojis[tag] ?? ""} ${capitalizeAllWords(tag)}`, 
+     value: tag 
+  }));
 
   return (
     <div className="flex flex-wrap justify-center gap-3 mb-10">
-      {buttons.map((btn) => (
+      {filterButtons.map((btn) => (
         <button
           key={btn.value}
           onClick={() => onChange(btn.value)}

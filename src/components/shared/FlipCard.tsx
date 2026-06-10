@@ -5,11 +5,11 @@ import { Icon } from '../ui/Icon';
 interface Props {
   word: Word;
   onDiscover: (name: string) => void;
-  variant?: 'image' | 'svg';
+  variant?: 'word' | 'category';
 }
 
 
-export default function FlipCard({ word, onDiscover, variant = 'image' }: Props) {
+export default function FlipCard({ word, onDiscover, variant = 'word' }: Props) {
   const [flipped, setFlipped] = useState(false);
   const [locked, setLocked] = useState(false);
 
@@ -37,22 +37,25 @@ export default function FlipCard({ word, onDiscover, variant = 'image' }: Props)
         `}
         style={{ transformStyle: "preserve-3d" }}
       >
-        {/* Front */}
-        {variant === 'image' && (
+        
+        {/* FRONT */} 
+        {variant === 'word' && (
           <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-white rounded-2xl shadow-md">
             {
               word?.icon 
               ? <span className="text-6xl">{word.icon}</span>
               : word?.image 
               ? <img className="w-22 h-22" src={word.image} alt={word.word} />
+              : word?.svg 
+              ? <Icon type={word.word} className={`w-18 h-18 ${word.svg}`}  />
               : <span className="text-6xl text-indigo-600">?</span>
             }
           </div>
         )}
-        {variant === 'svg' && (
+        {variant === 'category' && (
           <div className="absolute w-full h-full backface-hidden flex items-center justify-center bg-white rounded-2xl shadow-md">
             <Icon 
-              type="drops" 
+              type={word.category} 
               className={`w-18 h-18 ${word.svg}`} 
               strokeColor={word.word === 'white' ? 'black' : 'none'}
             />
@@ -61,9 +64,9 @@ export default function FlipCard({ word, onDiscover, variant = 'image' }: Props)
 
         {/* Back */}
         <div className="absolute w-full h-full backface-hidden rotate-y-180 flex items-center justify-center bg-indigo-600 text-white rounded-2xl">
-          <span className="text-xl font-bold uppercase">
+          <p className="text-xl text-center font-bold uppercase px-4">
             {word.word}
-          </span>
+          </p>
         </div>
       </div>
     </div>

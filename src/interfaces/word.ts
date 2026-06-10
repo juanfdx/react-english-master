@@ -7,6 +7,7 @@ export type WordCategory =
  'color' |
  'food' | 
  'travel' | 
+ 'appliance' |
 //  'emotions' |
 //  'land' | 
 //  'fly' | 

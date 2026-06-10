@@ -61,5 +61,25 @@ export const houseCategories: Category[] = [
     domain: 'house',
     activity_type: 'inspector',
     level: 'beginner',
-  }
+  },
+  {
+    id: "8",
+    name: "Flip Cards",
+    icon: "🃏",
+    href: "flip-cards",
+    type: 'noun',
+    domain: 'house',
+    activity_type: 'flip-cards',
+    level: 'beginner',
+  },
 ];
+
+
+
+export type ApplianceType = "kitchen" | "cooling" | "heating" | "laundry" | "cleaning" | "bathroom" | "bedroom" | "living-room" | "backyard" | "time" | "outdoor";
+
+export interface Animal {
+  name: string;
+  icon: string;
+  type: ApplianceType;
+}

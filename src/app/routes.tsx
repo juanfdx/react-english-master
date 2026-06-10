@@ -19,6 +19,7 @@ import LivingRoomPage from './(path)/vocabulary/nouns/house/livingRoom/page';
 import BathroomPage from './(path)/vocabulary/nouns/house/bathroom/page';
 import LaundryRoomPage from './(path)/vocabulary/nouns/house/laundryRoom/page';
 import BackyardPage from './(path)/vocabulary/nouns/house/backyard/page';
+import ApplianceFlipCardsPage from './(path)/vocabulary/nouns/house/flipCards/page';
 // Work
 import WorkPage from './(path)/vocabulary/nouns/work/page';
 import OfficePage from './(path)/vocabulary/nouns/work/office/page';
@@ -101,6 +102,10 @@ export const router = createBrowserRouter([
                   {
                     path: 'backyard',
                     element: <BackyardPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <ApplianceFlipCardsPage />,
                   },
                 ]
               },

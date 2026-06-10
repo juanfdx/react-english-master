@@ -10,7 +10,7 @@ type Props = {
 export const Icon = ({ type, className, strokeColor }: Props) => {
   return (
     <>
-      {(type === 'drops') &&
+      {(type === 'color') &&
         <DropsIcon 
           width={32}
           height={32}
