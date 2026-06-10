@@ -1,14 +1,14 @@
 import type { Category } from '../../interfaces/category';
 
 
-export const animalsCategories: Category[] = [
+export const colorCategories: Category[] = [
   {
     id: "1",
     name: "Flip Cards",
     icon: "🃏",
     href: "flip-cards",
-    type: 'noun',
-    domain: 'animals',
+    type: "noun",
+    domain: 'colors',
     activity_type: 'flip-cards',
     level: 'beginner',
   },
@@ -18,7 +18,7 @@ export const animalsCategories: Category[] = [
     icon: "🎯",
     href: "quiz-card",
     type: "noun",
-    domain: 'animals',
+    domain: 'colors',
     activity_type: 'quiz',
     level: 'beginner',
   },
@@ -28,18 +28,8 @@ export const animalsCategories: Category[] = [
     icon: "🔊",
     href: "audio-quiz",
     type: "noun",
-    domain: 'animals',
+    domain: 'colors',
     activity_type: 'quiz',
     level: 'beginner',
   },
-
 ];
-
-
-export type AnimalType = "land" | "water" | "fly";
-
-export interface Animal {
-  name: string;
-  icon: string;
-  type: AnimalType;
-}

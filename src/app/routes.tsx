@@ -5,6 +5,7 @@ import PathLayout from './(path)/layout';
 import HouseLayout from './(path)/vocabulary/nouns/house/layout';
 import WorkLayout from './(path)/vocabulary/nouns/work/layout';
 import AnimalsLayout from './(path)/vocabulary/nouns/animals/layout';
+import ColorsLayout from './(path)/vocabulary/nouns/color/layout';
 
 // PAGES
 import HomePage from './site/home/page';
@@ -23,10 +24,14 @@ import WorkPage from './(path)/vocabulary/nouns/work/page';
 import OfficePage from './(path)/vocabulary/nouns/work/office/page';
 // Animals
 import AnimalsPage from './(path)/vocabulary/nouns/animals/page';
-import FlipCardsPage from './(path)/vocabulary/nouns/animals/flipCards/page';
-import QuizCardPage from './(path)/vocabulary/nouns/animals/quizCard/page';
-import AudioQuizPage from './(path)/vocabulary/nouns/animals/AudioQuiz/page';
-
+import AnimalFlipCardsPage from './(path)/vocabulary/nouns/animals/flipCards/page';
+import AnimalQuizCardPage from './(path)/vocabulary/nouns/animals/quizCard/page';
+import AnimalAudioQuizPage from './(path)/vocabulary/nouns/animals/AudioQuiz/page';
+// Colors
+import ColorsPage from './(path)/vocabulary/nouns/color/page';
+import ColorFlipCardsPage from './(path)/vocabulary/nouns/color/flipCards/page';
+import ColorQuizCardPage from './(path)/vocabulary/nouns/color/quizCard/page';
+import ColorAudioQuizPage from './(path)/vocabulary/nouns/color/AudioQuiz/page';
 // SYSTEM
 import ErrorPage from './ErrorPage';
 import NotFound from './NotFound';
@@ -123,15 +128,37 @@ export const router = createBrowserRouter([
                   },
                   {
                     path: 'flip-cards',
-                    element: <FlipCardsPage />,
+                    element: <AnimalFlipCardsPage />,
                   },
                   {
                     path: 'quiz-card',
-                    element: <QuizCardPage />,
+                    element: <AnimalQuizCardPage />,
                   },
                   {
                     path: 'audio-quiz',
-                    element: <AudioQuizPage />,
+                    element: <AnimalAudioQuizPage />,
+                  },
+                ]
+              },
+              {
+                path: 'colors', 
+                element: <ColorsLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <ColorsPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <ColorFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <ColorQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <ColorAudioQuizPage />,
                   },
                 ]
               }

@@ -1,30 +1,23 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { filterWordsByCategory, playWord, shuffleArray } from '../../../../../../utils/functions';
-import { type AnimalType } from '../../../../../../data/nouns/animals';
 import { words } from '../../../../../../data/words';
 // components
-import FilterBar from '../../../../../../components/shared/FilterBar';
 import FlipCard from '../../../../../../components/shared/FlipCard';
 
 
 
-export default function AnimalFlipCardsPage() {
+export default function ColorFlipCardsPage() {
 
-  const [filter, setFilter] = useState<AnimalType | "all">("all");
 
-  const allAnimals = useMemo(() => {
-    return filterWordsByCategory(words, 'animal');
+  const allColors = useMemo(() => {
+    return filterWordsByCategory(words, 'color');
   }, []); 
 
-  const filteredAnimals = useMemo(() => {
-    const animals = filter === "all"
-      ? allAnimals
-      : allAnimals.filter((a) => a.tags?.includes(filter));
+  const shuffledColors = useMemo(() => {
+    return shuffleArray([...allColors]);
+  }, [allColors]);
 
-    // Shuffle the array every time the filter changes
-    return shuffleArray([...animals]); 
-  }, [filter, allAnimals]);
-
+  
    const handleDiscover = (word: string) => {
     // 🗣️ PRONUNCIATION
     playWord(word, "male");
@@ -41,7 +34,7 @@ export default function AnimalFlipCardsPage() {
         {/* TITLE */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-black">
-            The <span className="text-indigo-600">Animal</span> Explorer
+            The <span className="text-indigo-600">Color</span> Explorer
           </h1>
 
           <p className="text-slate-500 text-sm mt-2">
@@ -49,15 +42,14 @@ export default function AnimalFlipCardsPage() {
           </p>
         </div>
 
-        <FilterBar current={filter} onChange={setFilter} />
-
         {/* Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-5xl">
-          {filteredAnimals.map((animal) => (
+          {shuffledColors.map((color) => (
             <FlipCard
-              key={animal.id}
-              word={animal}
+              key={color.id}
+              word={color}
               onDiscover={handleDiscover}
+              variant="svg"
             />
           ))}
         </div>

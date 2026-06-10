@@ -1,47 +1,42 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from "react";
 import { filterWordsByCategory, getRandomWord, playWord, shuffleArray } from '../../../../../../utils/functions';
 import type { Word } from '../../../../../../interfaces/word';
 // data
 import { words } from '../../../../../../data/words';
 // components
+import { QuizFlipCard } from '../../../../../../components/ui/QuizFlipCard';
 import { QuizOptions } from '../../../../../../components/ui/QuizOptions';
 import { Title } from '../../../../../../components/ui/Title';
-import { QuizResultModal } from '../../../../../../components/ui/QuizResultModal';
 import { GameScoreBoard } from '../../../../../../components/ui/GameScoreBoard';
+import { QuizResultModal } from '../../../../../../components/ui/QuizResultModal';
 
 
 
-export default function AnimalAudioQuizPage() {
+export default function ColorQuizCardPage() {
 
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
+  const [flipped, setFlipped] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
   
-  const allAnimals = useMemo(() => {
-    return filterWordsByCategory(words, 'animal');
+  const allColors = useMemo(() => {
+    return filterWordsByCategory(words, 'color');
   }, []); 
 
-  const [animals, setAnimals] = useState([...allAnimals]);
-  const [current, setCurrent] = useState<Word>(getRandomWord(animals));
+  const [colors, setColors] = useState([...allColors]);
+  const [current, setCurrent] = useState<Word>(getRandomWord(colors));
   const [displayedOptions, setDisplayedOptions] = useState<string[]>([]);
 
-  const isGameOver = lives <= 0 || animals.length < 4;
-
-
-  useEffect(() => {  
-    
-    if (isGameOver) return;
-    
+  // Bank of word answers
+  // update options with a delay when `current` or `colors` change
+  useEffect(() => {   
     const timeout = setTimeout(() => {
-      
-      playWord(current.word, "male");
-
-      const wrong = animals
-        .filter((a) => a.word !== current.word)
+      const wrong = colors
+        .filter((c) => c.word !== current.word)
         .slice(0, 3);
 
       const shuffledOptions = shuffleArray([current, ...wrong]).map(
-        (a) => a.word
+        (c) => c.word
       );
 
       setDisplayedOptions(shuffledOptions);
@@ -49,7 +44,7 @@ export default function AnimalAudioQuizPage() {
 
     return () => clearTimeout(timeout);
 
-  }, [current, animals, isGameOver]);
+  }, [current, colors]);
 
 
   const handleAnswer = (word: string) => {
@@ -57,21 +52,25 @@ export default function AnimalAudioQuizPage() {
     if (selected !== null) return;
 
     setSelected(word);
+    setFlipped(true);
 
     const isCorrect = word === current.word;
 
-    if (!isCorrect) {
+    if (isCorrect) {
+      // 🗣️ PRONUNCIATION
+      playWord(word, "male");
+    }else {
       playWord('wrong', "effect");
     }
 
 
-    // Always remove the current animal
-    const updatedAnimals = animals.filter(
-      (animal) => animal.word !== current.word
+    // Always remove the current color
+    const updatedColors = colors.filter(
+      (c) => c.word !== current.word
     );
 
     setTimeout(() => {
-      setAnimals(updatedAnimals);
+      setColors(updatedColors);
 
       if (isCorrect) {
         setScore((s) => s + 10);
@@ -79,17 +78,18 @@ export default function AnimalAudioQuizPage() {
         setLives((l) => l - 1);
       }
 
-      nextQuestion(updatedAnimals);
+      nextQuestion(updatedColors);
     }, 900);
   };
 
-  const nextQuestion = (availableAnimals: Word[]) => {
+  const nextQuestion = (availableColors: Word[]) => {
+    setFlipped(false);
     // to avoid flick effect when changing ✓ Correct! to ✗ Wrong!
     setTimeout(() => {
       setSelected(null);
       // Don't load another card if game is finished
-      if (availableAnimals.length >= 4) {
-        setCurrent(getRandomWord(availableAnimals));
+      if (availableColors.length >= 4) {
+        setCurrent(getRandomWord(availableColors));
       }
     }, 200);
   };
@@ -97,9 +97,10 @@ export default function AnimalAudioQuizPage() {
   const resetGame = () => {
     setScore(0);
     setLives(3);
-    setAnimals([...allAnimals]);
+    setColors([...allColors]);
+    setFlipped(false);
     setSelected(null);
-    setCurrent(getRandomWord([...allAnimals]));
+    setCurrent(getRandomWord([...allColors]));
   }
 
 
@@ -111,7 +112,7 @@ export default function AnimalAudioQuizPage() {
       {/* SCORE */}
       <GameScoreBoard score={score} lives={lives} marginBottom="mb-4" />
 
-      <main className="flex-1 w-full max-w-2xl mx-auto flex flex-col items-center">
+      <main className="flex-1 max-w-7xl mx-auto flex flex-col items-center">
 
         {lives <= 0 ? (
           // LOSE MESSAGE
@@ -122,7 +123,7 @@ export default function AnimalAudioQuizPage() {
             resetGame={resetGame} 
           />
 
-        ) : animals?.length < 4 ? (
+        ) : colors?.length < 4 ? (
           // WIN MESSAGE
           <QuizResultModal 
             success={true}
@@ -135,29 +136,14 @@ export default function AnimalAudioQuizPage() {
           <>
             {/* TITLE */}
             <Title 
-              title="Animal" 
-              subtitle="Audio Quiz" 
-              description="Identify the word spoken. Don't lose your hearts!"
+              title="Color" 
+              subtitle="Flip Quiz" 
+              description="Identify the color shown in the card. Don't lose your hearts!"
               marginBottom="mb-10"
             />
       
-            {/* Listening Card */}
-            <div className="w-full bg-white rounded-[3rem] p-12 shadow-xl shadow-slate-200/50 border border-slate-100 text-center mb-12">
-              <div className="mb-6">
-                <span className="text-slate-400 font-bold uppercase tracking-widest text-xs">Listening Lab</span>
-                <h1 className="text-3xl font-extrabold mt-2">What did you hear?</h1>
-              </div>
-
-              <button 
-                onClick={() => {
-                  if (isGameOver) return;
-                  playWord(current.word, "male");
-                }}
-                className="w-24 h-24 bg-indigo-600 text-white rounded-full text-4xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 flex items-center justify-center mx-auto pulse cursor-pointer">
-                🔊
-              </button>
-              <p className="mt-6 text-slate-500 font-medium">Click the button to listen again</p>
-            </div>
+            {/* Flip Card */}
+            <QuizFlipCard word={current} selected={selected} flipped={flipped} variant="svg" />
       
             {/* Options */}
             <QuizOptions 

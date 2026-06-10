@@ -11,21 +11,21 @@ import { GameScoreBoard } from '../../../../../../components/ui/GameScoreBoard';
 
 
 
-export default function AnimalAudioQuizPage() {
+export default function ColorAudioQuizPage() {
 
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
   const [selected, setSelected] = useState<string | null>(null);
   
-  const allAnimals = useMemo(() => {
-    return filterWordsByCategory(words, 'animal');
+  const allColors = useMemo(() => {
+    return filterWordsByCategory(words, 'color');
   }, []); 
 
-  const [animals, setAnimals] = useState([...allAnimals]);
-  const [current, setCurrent] = useState<Word>(getRandomWord(animals));
+  const [colors, setColors] = useState([...allColors]);
+  const [current, setCurrent] = useState<Word>(getRandomWord(colors));
   const [displayedOptions, setDisplayedOptions] = useState<string[]>([]);
 
-  const isGameOver = lives <= 0 || animals.length < 4;
+  const isGameOver = lives <= 0 || colors.length < 4;
 
 
   useEffect(() => {  
@@ -36,8 +36,8 @@ export default function AnimalAudioQuizPage() {
       
       playWord(current.word, "male");
 
-      const wrong = animals
-        .filter((a) => a.word !== current.word)
+      const wrong = colors
+        .filter((c) => c.word !== current.word)
         .slice(0, 3);
 
       const shuffledOptions = shuffleArray([current, ...wrong]).map(
@@ -49,7 +49,7 @@ export default function AnimalAudioQuizPage() {
 
     return () => clearTimeout(timeout);
 
-  }, [current, animals, isGameOver]);
+  }, [current, colors, isGameOver]);
 
 
   const handleAnswer = (word: string) => {
@@ -66,12 +66,12 @@ export default function AnimalAudioQuizPage() {
 
 
     // Always remove the current animal
-    const updatedAnimals = animals.filter(
-      (animal) => animal.word !== current.word
+    const updatedAnimals = colors.filter(
+      (c) => c.word !== current.word
     );
 
     setTimeout(() => {
-      setAnimals(updatedAnimals);
+      setColors(updatedAnimals);
 
       if (isCorrect) {
         setScore((s) => s + 10);
@@ -97,9 +97,9 @@ export default function AnimalAudioQuizPage() {
   const resetGame = () => {
     setScore(0);
     setLives(3);
-    setAnimals([...allAnimals]);
+    setColors([...allColors]);
     setSelected(null);
-    setCurrent(getRandomWord([...allAnimals]));
+    setCurrent(getRandomWord([...allColors]));
   }
 
 
@@ -122,7 +122,7 @@ export default function AnimalAudioQuizPage() {
             resetGame={resetGame} 
           />
 
-        ) : animals?.length < 4 ? (
+        ) : colors?.length < 4 ? (
           // WIN MESSAGE
           <QuizResultModal 
             success={true}

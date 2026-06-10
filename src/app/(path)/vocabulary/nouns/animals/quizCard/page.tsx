@@ -12,7 +12,7 @@ import { QuizResultModal } from '../../../../../../components/ui/QuizResultModal
 
 
 
-export default function QuizCardPage() {
+export default function AnimalQuizCardPage() {
 
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);

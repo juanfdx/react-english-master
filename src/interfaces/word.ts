@@ -4,6 +4,7 @@ export type WordCategory =
  'house' |
  'work' |
  'animal' |
+ 'color' |
  'food' | 
  'travel' | 
 //  'emotions' |
@@ -34,6 +35,7 @@ export interface Word {
   tags?: string[];
   icon?: string; // URL or icon identifier
   image?: string; // URL to an illustration/photo
+  svg?: string;
   conjugations?: { 
     past?: string; 
     participle?: string; 

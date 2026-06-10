@@ -17,11 +17,11 @@ export const nounCategories: Category[] = [
   },
   {
     id: '2',
-    name: 'Places',
-    icon: '🏠',
-    href: '/nouns/places',
+    name: 'Colors',
+    icon: '🌈',
+    href: 'colors',
     type: "noun",
-    domain: 'places',
+    domain: 'colors',
     level: 'beginner',
   },
   {
@@ -277,4 +277,3 @@ export const nounCategories: Category[] = [
     level: 'advanced',
   },
 ];
-
