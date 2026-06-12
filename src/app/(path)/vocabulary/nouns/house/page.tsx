@@ -1,6 +1,6 @@
 import { CategoryList } from '../../../../../components/ui/CategoryList';
 // data
-import { houseCategories } from '../../../../../data/nouns/home';
+import { houseCategories } from '../../../../../data/nouns/house';
 
 
 
