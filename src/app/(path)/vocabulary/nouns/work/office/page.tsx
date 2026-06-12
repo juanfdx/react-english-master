@@ -75,6 +75,7 @@ export default function OfficePage() {
       playWord(officeItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
+      playWord('wrong', "effect");
       setErrors((e) => e + 1);
 
       playWord('wrong', 'effect');

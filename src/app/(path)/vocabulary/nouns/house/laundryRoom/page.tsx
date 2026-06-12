@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { playWord, shuffleArray } from '../../../../../../utils/functions';
+// components
+import { Title } from '../../../../../../components/ui/Title';
 
 type HouseItem = {
   id: string;
@@ -72,6 +74,7 @@ export default function LaundryRoomPage() {
       playWord(laundryRoomItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
+      playWord('wrong', "effect");
       setErrors((e) => e + 1);
 
       setWrongMarker(markerId);
@@ -130,15 +133,11 @@ export default function LaundryRoomPage() {
         ) : (
           <>
             {/* TITLE */}
-            <div className="text-center mb-6">
-              <h1 className="text-4xl font-black">
-                The <span className="text-indigo-600">Laundry Room</span> Inspector
-              </h1>
-
-              <p className="text-slate-500 text-sm mt-2">
-                Tap a word, then tap the correct object.
-              </p>
-            </div>
+            <Title
+              title="Laundry Room"
+              subtitle="Inspector"
+              description="Tap a word, then tap the correct object."
+            />
 
             {/* IMAGE AREA */}
             <div className="w-full bg-white rounded-4xl md:rounded-[3rem] p-4 md:p-6 shadow-2xl border border-slate-100 relative mb-12 overflow-hidden">

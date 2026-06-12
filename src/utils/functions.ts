@@ -1,3 +1,4 @@
+import type { Language } from '../interfaces/language';
 import type { Word } from '../interfaces/word';
 
 
@@ -69,11 +70,11 @@ export const speakWord = (word: string) => {
 /*====================================================================
   PLAY ENGLISH WORD AUDIO 
 =====================================================================*/
-export const playWord = async (word: string, gender: 'male' | 'female' | 'effect') => {
+export const playWord = async (word: string, gender: 'male' | 'female' | 'effect', language: Language = 'en') => {
   // 1. Safe Formatting: "Tropical Fish" -> "tropical_fish"
   const formattedWord = word.toLowerCase().trim().replace(/\s+/g, '-');
   
-  const audioPath = `/audio/${gender}/${formattedWord}.mp3`;
+  const audioPath = `/audio/${language}/${gender}/${formattedWord}.mp3`;
   const audio = new Audio(audioPath);
 
   try {

@@ -35,11 +35,3 @@ export const animalsCategories: Category[] = [
 
 ];
 
-
-export type AnimalType = "land" | "water" | "fly";
-
-export interface Animal {
-  name: string;
-  icon: string;
-  type: AnimalType;
-}

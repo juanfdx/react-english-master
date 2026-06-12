@@ -10,7 +10,7 @@ interface Props {
 
 
 export const QuizOptions = ({ options, word, selected, handleAnswer }: Props) => {
-
+console.log(options);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-md">
       {options.map((opt) => {

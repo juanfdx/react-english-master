@@ -72,6 +72,26 @@ export const houseCategories: Category[] = [
     activity_type: 'flip-cards',
     level: 'beginner',
   },
+  {
+    id: "9",
+    name: "Card Quiz",
+    icon: "🎯",
+    href: "quiz-card",
+    type: "noun",
+    domain: 'house',
+    activity_type: 'quiz',
+    level: 'beginner',
+  },
+  {
+    id: "10",
+    name: "Audio Quiz",
+    icon: "🔊",
+    href: "audio-quiz",
+    type: "noun",
+    domain: 'house',
+    activity_type: 'quiz',
+    level: 'beginner',
+  },
 ];
 
 

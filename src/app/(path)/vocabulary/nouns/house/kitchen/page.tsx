@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { playWord, shuffleArray } from '../../../../../../utils/functions';
+// components
+import { Title } from '../../../../../../components/ui/Title';
 
 type HouseItem = {
   id: string;
@@ -8,7 +10,7 @@ type HouseItem = {
 
 const kitchenItems: HouseItem[] = [
   { id: "refrigerator", word: "Refrigerator" },
-  { id: "stove", word: "Stove" },
+  { id: "oven", word: "Oven" },
   { id: "microwave", word: "Microwave" },
   { id: "dishwasher", word: "Dishwasher" },
   { id: "cabinet", word: "Cabinet" },
@@ -23,7 +25,7 @@ const kitchenItems: HouseItem[] = [
 
 const markers = [
   { id: "refrigerator", top: "30%", left: "22.3%" },
-  { id: "stove", top: "61.7%", left: "73.5%" },
+  { id: "oven", top: "61.7%", left: "73.5%" },
   { id: "microwave", top: "24.7%", left: "76.7%" },
   { id: "dishwasher", top: "46.5%", left: "59%" },
   { id: "cabinet", top: "16.8%", left: "90%" },
@@ -78,6 +80,7 @@ export default function KitchenPage() {
       playWord(kitchenItems.find(f => f.id === markerId)?.word || markerId, "male");
 
     } else {
+      playWord('wrong', "effect");
       setErrors((e) => e + 1);
 
       setWrongMarker(markerId);
@@ -136,15 +139,11 @@ export default function KitchenPage() {
         ) : (
           <>
             {/* TITLE */}
-            <div className="text-center mb-6">
-              <h1 className="text-4xl font-black">
-                The <span className="text-indigo-600">Kitchen</span> Inspector
-              </h1>
-
-              <p className="text-slate-500 text-sm mt-2">
-                Tap a word, then tap the correct object.
-              </p>
-            </div>
+            <Title
+              title="Kitchen"
+              subtitle="Inspector"
+              description="Tap a word, then tap the correct object."
+            />
 
             {/* IMAGE AREA */}
             <div className="w-full bg-white rounded-4xl md:rounded-[3rem] p-4 md:p-6 shadow-2xl border border-slate-100 relative mb-12 overflow-hidden">
