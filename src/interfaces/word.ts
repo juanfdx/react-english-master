@@ -8,17 +8,6 @@ export type WordCategory =
  'food' | 
  'travel' | 
  'appliance' |
-//  'emotions' |
-//  'land' | 
-//  'fly' | 
-//  'water' |
-//  'movement' |
-//  'people' |
-//  'body' |
-//  'nature' |
-//  'time' |
-//  'business' |
-//  'transport' |
  'general';
 
 
