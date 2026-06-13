@@ -67,6 +67,10 @@ export const AudioQuizGame = ({ title, category }: Props) => {
     if (!isCorrect) {
       playWord('wrong', "effect");
     }
+    // if noise can be removed
+    else {
+      playWord('correct-1', 'effect');
+    }
 
 
     // Always remove the current word

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Word } from '../../interfaces/word';
-import { Icon } from '../ui/Icon';
+import { Icon } from './Icon';
 
 interface Props {
   word: Word;

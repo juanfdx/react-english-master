@@ -35,10 +35,15 @@ import ColorsPage from './(path)/vocabulary/nouns/color/page';
 import ColorFlipCardsPage from './(path)/vocabulary/nouns/color/flipCards/page';
 import ColorQuizCardPage from './(path)/vocabulary/nouns/color/quizCard/page';
 import ColorAudioQuizPage from './(path)/vocabulary/nouns/color/AudioQuiz/page';
+// food
+import FoodAndDrinksPage from './(path)/vocabulary/nouns/food/page';
+import FoodFlipCardsPage from './(path)/vocabulary/nouns/food/flipCards/page';
+
 // SYSTEM
 import ErrorPage from './ErrorPage';
 import NotFound from './NotFound';
 import VerbsPage from './(path)/vocabulary/verbs/page';
+import FoodAndDrinksLayout from './(path)/vocabulary/nouns/food/Layout';
 
 
 
@@ -176,7 +181,29 @@ export const router = createBrowserRouter([
                     element: <ColorAudioQuizPage />,
                   },
                 ]
-              }
+              },
+              {
+                path: 'food-drinks', 
+                element: <FoodAndDrinksLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <FoodAndDrinksPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <FoodFlipCardsPage />,
+                  },
+                  // {
+                  //   path: 'quiz-card',
+                  //   element: <FoodQuizCardPage />,
+                  // },
+                  // {
+                  //   path: 'audio-quiz',
+                  //   element: <FoodAudioQuizPage />,
+                  // },
+                ]
+              },
             ]
           },
           {

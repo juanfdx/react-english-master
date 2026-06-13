@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { playWord } from '../../utils/functions';
+
 
 interface Props {
   title: string
@@ -5,9 +8,13 @@ interface Props {
   resetGame: () => void
 }
 
-
 export const QuizWinModal = ({ title, errors, resetGame }: Props) => {
 
+  useEffect(() => {
+    playWord('success', 'effect');
+  }, []);
+
+  
   return (
     <div className="mt-10 sm:mt-14 text-center bg-white p-10 rounded-3xl shadow-xl border border-slate-100">
      

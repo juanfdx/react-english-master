@@ -3,7 +3,7 @@ import { filterWordsByCategory, playWord, shuffleArray } from '../../utils/funct
 import { words } from '../../data/words';
 // components
 import FilterBar from './FilterBar';
-import FlipCard from './FlipCard';
+import FlipCard from '../ui/FlipCard';
 import { Title } from '../ui/Title';
 
 

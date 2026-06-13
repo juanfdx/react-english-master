@@ -2,7 +2,7 @@ import { Outlet } from 'react-router';
 import { Breadcrumbs } from '../../../../../components/shared/Breadcrumbs';
 
 
-export default function ColorsLayout() {
+export default function FoodAndDrinksLayout() {
 
   return (
     <> 

@@ -37,7 +37,7 @@ export const nounCategories: Category[] = [
     id: '4',
     name: 'Food & Drinks',
     icon: '🍎',
-    href: '/nouns/food',
+    href: 'food-drinks',
     type: "noun",
     domain: 'food',
     level: 'beginner',

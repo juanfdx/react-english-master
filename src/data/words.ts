@@ -77,14 +77,16 @@ export const words: Word[] = [
   { id: "colo-005", word: "yellow", type: "noun", category: "color", svg: "text-yellow-400" },
   { id: "colo-006", word: "purple", type: "noun", category: "color", svg: "text-purple-500" },
   { id: "colo-007", word: "pink", type: "noun", category: "color", svg: "text-pink-400" },
-  { id: "colo-008", word: "violet", type: "noun", category: "color", svg: "text-violet-500" },
-  { id: "colo-009", word: "cyan", type: "noun", category: "color", svg: "text-cyan-500" },
+  { id: "colo-008", word: "violet", type: "noun", category: "color", svg: "text-violet-600" },
+  { id: "colo-009", word: "beige", type: "noun", category: "color", svg: "text-amber-200" },
   { id: "colo-010", word: "teal", type: "noun", category: "color", svg: "text-teal-500" },
   { id: "colo-011", word: "brown", type: "noun", category: "color", svg: "text-amber-800" },
   { id: "colo-012", word: "gray", type: "noun", category: "color", svg: "text-gray-400" },
   { id: "colo-013", word: "black", type: "noun", category: "color", svg: "text-black" },
   { id: "colo-014", word: "white", type: "noun", category: "color", svg: "text-white" },
-// Appliances
+  { id: "colo-015", word: "sky blue", type: "noun", category: "color", svg: "text-sky-300" },
+
+  // Appliances
   { id: "app-001", word: "refrigerator", type: "noun", category: "appliance", tags: ["kitchen"], image: "/images/nouns/appliances/refrigerator.webp" },
   { id: "app-002", word: "freezer", type: "noun", category: "appliance", tags: ["kitchen"], image: "/images/nouns/appliances/freezer.png" },
   { id: "app-003", word: "microwave", type: "noun", category: "appliance", tags: ["kitchen"], image: "/images/nouns/appliances/microwave.webp" },
@@ -125,4 +127,31 @@ export const words: Word[] = [
   { id: "app-039", word: "sound system", type: "noun", category: "appliance", tags: ["entertainment"], image: "/images/nouns/appliances/sound-system.png" },
   { id: "app-040", word: "pressure cooker", type: "noun", category: "appliance", tags: ["kitchen"], image: "/images/nouns/appliances/pressure-cooker.png" },
 
+  // Food and Drinks
+  { id: "food-001", word: "apple", type: "noun", category: "food", tags: ["fruit"], icon: "🍎" },
+  { id: "food-002", word: "banana", type: "noun", category: "food", tags: ["fruit"], icon: "🍌" },
+  { id: "food-003", word: "orange", type: "noun", category: "food", tags: ["fruit"], icon: "🍊" },
+  { id: "food-004", word: "grape", type: "noun", category: "food", tags: ["fruit"], icon: "🍇" },
+  { id: "food-005", word: "lemon", type: "noun", category: "food", tags: ["fruit"], icon: "🍋" },
+  { id: "food-006", word: "kiwi", type: "noun", category: "food", tags: ["fruit"], icon: "🥝" },
+  { id: "food-007", word: "mango", type: "noun", category: "food", tags: ["fruit"], icon: "🥭" },
+  { id: "food-008", word: "pineapple", type: "noun", category: "food", tags: ["fruit"], icon: "🍍" },
+  { id: "food-009", word: "peach", type: "noun", category: "food", tags: ["fruit"], icon: "🍑" },
+  { id: "food-010", word: "pear", type: "noun", category: "food", tags: ["fruit"], icon: "🍐" },
+  { id: "food-011", word: "watermelon", type: "noun", category: "food", tags: ["fruit"], icon: "🍉" },
+  { id: "food-012", word: "cherry", type: "noun", category: "food", tags: ["fruit"], icon: "🍒" },
+  { id: "food-013", word: "coconut", type: "noun", category: "food", tags: ["fruit"], icon: "🥥" },
+  { id: "food-014", word: "strawberry", type: "noun", category: "food", tags: ["fruit"], icon: "🍓" },
+  { id: "food-015", word: "avocado", type: "noun", category: "food", tags: ["fruit"], icon: "🥑" },
+  { id: "food-016", word: "blueberry", type: "noun", category: "food", tags: ["fruit"], icon: "🫐" },
+
+
+
+  
+  // { id: "food-012", word: "tomato", type: "noun", category: "food", tags: ["vegetable"], icon: "🍅" },
+  // { id: "food-013", word: "carrot", type: "noun", category: "food", tags: ["vegetable"], icon: "🥕" },
+  // { id: "food-014", word: "lettuce", type: "noun", category: "food", tags: ["vegetable"], icon: "🥬" },
+  // { id: "food-015", word: "onion", type: "noun", category: "food", tags: ["vegetable"], icon: "🧅" },
+  // { id: "food-016", word: "potato", type: "noun", category: "food", tags: ["vegetable"], icon: "🥔" },
+  // { id: "food-017", word: "spinach", type: "noun", category: "food", tags: ["vegetable"], icon: "🥬" },
 ];
