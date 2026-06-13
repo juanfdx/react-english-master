@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import type { Word } from '../../interfaces/word';
 import { Icon } from './Icon';
 
@@ -12,26 +13,63 @@ interface Props {
 
 
 export const QuizOptions = ({ variant = 'text', options, word, selected, handleAnswer }: Props) => {
+  
+  // to control disable time when user can click on option button after new question is loaded
+  const [canAnswer, setCanAnswer] = useState(true);
+  const timeoutRef = useRef<number | null>(null);
+
+
+  const handleCanAnswer = () => {
+    setCanAnswer(false);
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
+      setCanAnswer(true);
+    }, 2000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  // classes
+  const defaultClasses = canAnswer
+  ? 'bg-white border-slate-100 hover:border-indigo-500 hover:text-indigo-600'
+  : 'bg-white border-slate-100';
+
+  const interactionClasses = canAnswer
+    ? 'active:scale-95'
+    : 'cursor-not-allowed';
+
+
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-lg">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
       {options.map((opt) => {
         const isSelected = selected === opt.word;
 
         return (
           <button
             key={opt.id}
-            onClick={() => handleAnswer(opt.word)}
-            disabled={!!selected}
+            onClick={() => {handleAnswer(opt.word); handleCanAnswer();}}
+            disabled={!canAnswer || !!selected}
             className={`
               py-4 px-6 flex items-center justify-center rounded-2xl font-bold border-2 transition-all
-              shadow-sm active:scale-95
+              shadow-sm
+              ${interactionClasses}
               ${
                 isSelected
                   ? opt.word === word.word
-                    ? "bg-emerald-50 border-emerald-500 text-emerald-600"
-                    : "bg-rose-50 border-rose-500 text-rose-600 shake"
-                  : "bg-white border-slate-100 hover:border-indigo-500 hover:text-indigo-600"
+                    ? 'bg-emerald-50 border-emerald-500 text-emerald-600'
+                    : 'bg-rose-50 border-rose-500 text-rose-600 shake'
+                  : defaultClasses
               }
             `}
           >
