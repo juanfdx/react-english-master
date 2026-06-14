@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Word } from '../../interfaces/word';
+// components
 import { Icon } from './Icon';
+import { FlashcardImage } from './FlashcardImage';
 
 
 interface Props {
@@ -63,6 +65,7 @@ export const QuizOptions = ({ variant = 'text', options, word, selected, handleA
             className={`
               py-4 px-6 flex items-center justify-center rounded-2xl font-bold border-2 transition-all
               shadow-sm
+              ${variant === 'image' ? 'min-h-27.5' : ''}
               ${interactionClasses}
               ${
                 isSelected
@@ -78,7 +81,7 @@ export const QuizOptions = ({ variant = 'text', options, word, selected, handleA
                 : opt.icon
                 ? <span className="text-[46px]">{opt.icon}</span>
                 : opt.image
-                ? <img className="w-20 h-20" src={opt.image} alt={opt.word} />
+                ? <FlashcardImage src={opt.image} alt={opt.word} category={opt.category} />
                 : opt?.svg 
                 ? <Icon 
                     type={opt.category} 

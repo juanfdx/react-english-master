@@ -13,10 +13,11 @@ import { QuizOptions } from '../ui/QuizOptions';
 interface Props {
   title: string;
   category: string;
+  description: string;
   variant?: 'word' | 'category';
 }
 
-export const FlipQuizGame = ({ title, category, variant }: Props) => {
+export const FlipQuizGame = ({ title, category, description, variant }: Props) => {
 
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
@@ -143,7 +144,7 @@ export const FlipQuizGame = ({ title, category, variant }: Props) => {
             <Title 
               title={title} 
               subtitle="Flip Quiz" 
-              description="Identify the animal shown in the card. Don't lose your hearts!"
+              description={description}
               marginBottom="mb-10"
             />
       

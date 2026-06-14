@@ -1,6 +1,8 @@
 import { useState } from "react";
 import type { Word } from '../../interfaces/word';
+// components
 import { Icon } from './Icon';
+import { FlashcardImage } from './FlashcardImage';
 
 interface Props {
   word: Word;
@@ -45,7 +47,7 @@ export default function FlipCard({ word, onDiscover, variant = 'word' }: Props) 
               word?.icon 
               ? <span className="text-6xl">{word.icon}</span>
               : word?.image 
-              ? <img className="w-22 h-22" src={word.image} alt={word.word} />
+              ? <FlashcardImage src={word.image} alt={word.word} category={word.category} />
               : word?.svg 
               ? <Icon type={word.word} className={`w-18 h-18 ${word.svg}`}  />
               : <span className="text-6xl text-indigo-600">?</span>
