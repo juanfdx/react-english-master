@@ -1,19 +1,24 @@
 interface Props {
   src: string
   alt: string
-  category?: string
-}
-
-const categoryClasses: Record<string, string> = {
-  food: 'w-18 h-18',
-  default: 'w-22 h-22',
+  scale?: number
 }
 
 
+export const FlashcardImage = ({ src, alt, scale = 1 }: Props) => {
 
-export const FlashcardImage = ({ src, alt, category = 'default' }: Props) => {
 
-  const className = categoryClasses[category] ?? categoryClasses.default
-
-  return <img src={src} alt={alt} className={className} />
+  return (
+    <div className="w-24 h-24 flex items-center justify-center">
+      <img
+        src={src}
+        alt={alt}
+        className="object-contain"
+        style={{
+          width: `${96 * scale}px`,
+          height: `${96 * scale}px`
+        }}
+      />
+    </div>
+  )
 }

@@ -28,7 +28,7 @@ export const QuizFlipCard = ({ word, selected, flipped, variant = 'word' }: Prop
               word?.icon 
               ? <span className="text-6xl">{word.icon}</span>
               : word?.image 
-              ? <FlashcardImage src={word.image} alt={word.word} category={word.category} />
+              ? <FlashcardImage src={word.image} alt={word.word} scale={word.scale} />
               : word?.svg 
               ? <Icon type={word.word} className={`w-18 h-18 ${word.svg}`}  />
               : <span className="text-6xl text-indigo-600">?</span>

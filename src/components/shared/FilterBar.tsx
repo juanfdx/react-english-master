@@ -12,6 +12,7 @@ const tagEmojis: Record<string, string> = {
   water: "🌊",
   land: "⛰️",
   fly: "☁️",
+  insects: "🦋",
 };
 
 

@@ -65,7 +65,7 @@ export const QuizOptions = ({ variant = 'text', options, word, selected, handleA
             className={`
               py-4 px-6 flex items-center justify-center rounded-2xl font-bold border-2 transition-all
               shadow-sm
-              ${variant === 'image' ? 'min-h-27.5' : ''}
+              ${variant === 'image' ? 'min-h-33' : ''}
               ${interactionClasses}
               ${
                 isSelected
@@ -79,9 +79,9 @@ export const QuizOptions = ({ variant = 'text', options, word, selected, handleA
             {variant === 'text' 
               ? <span className="capitalize">{opt.word}</span>
                 : opt.icon
-                ? <span className="text-[46px]">{opt.icon}</span>
+                ? <span className="text-6xl">{opt.icon}</span>
                 : opt.image
-                ? <FlashcardImage src={opt.image} alt={opt.word} category={opt.category} />
+                ? <FlashcardImage src={opt.image} alt={opt.word} scale={opt.scale} />
                 : opt?.svg 
                 ? <Icon 
                     type={opt.category} 

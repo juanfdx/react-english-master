@@ -11,11 +11,6 @@ export type WordCategory =
  'general';
 
 
- export type WordTag = 
-  | 'land' | 'fly' | 'water'           // Animals
-  | 'indoor' | 'outdoor'               // Location context
-  | 'office' | 'career' | 'tools';     // Work filters
-
 
 export interface Word {
   id: string;
@@ -26,6 +21,7 @@ export interface Word {
   icon?: string; // URL or icon identifier
   image?: string; // URL to an illustration/photo
   svg?: string;
+  scale?: number;
   conjugations?: { 
     past?: string; 
     participle?: string; 
