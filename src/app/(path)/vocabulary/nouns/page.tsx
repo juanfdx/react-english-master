@@ -6,7 +6,7 @@ import { CategoryList } from '../../../../components/ui/CategoryList';
 import { Filter } from '../../../../components/ui/Filter';
 import { SearchInput } from '../../../../components/form/SearchInput';
 // data
-import { nounCategories } from '../../../../data/nouns/nouns';
+import { categories } from '../../../../data/categories';
 
 
 
@@ -18,7 +18,7 @@ export default function NounsPage() {
   const debouncedSearch = useDebounce(search, 400);
 
   const filteredNouns = useMemo(() => {
-    return nounCategories.filter((noun) => {
+    return categories.filter((noun) => {
       const matchesSearch =
         noun.name.toLowerCase().includes(debouncedSearch.toLowerCase());
       
@@ -51,7 +51,7 @@ export default function NounsPage() {
         />
       </div>
     
-      <CategoryList categories={filteredNouns} />
+      <CategoryList categories={filteredNouns} domain="nouns" />
   
     </section>
   );

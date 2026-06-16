@@ -1,12 +1,12 @@
 import { CategoryList } from '../../../../../components/ui/CategoryList';
 // data
-import { workCategories } from '../../../../../data/nouns/office';
+import { categories } from '../../../../../data/categories';
 
 
 
 export default function WorkPage() {
   
   return (
-    <CategoryList categories={workCategories} className="mt-10" />
+    <CategoryList categories={categories} domain="work" className="mt-10" />
   );
 }

@@ -1,12 +1,12 @@
 import { CategoryList } from '../../../../../components/ui/CategoryList';
 // data
-import { foodDrinksCategories } from '../../../../../data/nouns/foodDrinks';
+import { categories } from '../../../../../data/categories';
 
 
 
 export default function FoodAndDrinksPage() {
   
   return (
-    <CategoryList categories={foodDrinksCategories} className="mt-10" />
+    <CategoryList categories={categories} domain="food" className="mt-10" />
   );
 }

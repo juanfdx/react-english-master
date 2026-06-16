@@ -30,6 +30,12 @@ import AnimalsPage from './(path)/vocabulary/nouns/animals/page';
 import AnimalFlipCardsPage from './(path)/vocabulary/nouns/animals/flipCards/page';
 import AnimalQuizCardPage from './(path)/vocabulary/nouns/animals/quizCard/page';
 import AnimalAudioQuizPage from './(path)/vocabulary/nouns/animals/AudioQuiz/page';
+// Clothes
+import ClothesLayout from './(path)/vocabulary/nouns/clothes/layout';
+import ClothesPage from './(path)/vocabulary/nouns/clothes/page';
+import ClothesFlipCardsPage from './(path)/vocabulary/nouns/clothes/flipCards/page';
+import ClothesQuizCardPage from './(path)/vocabulary/nouns/clothes/quizCard/page';
+import ClothesAudioQuizPage from './(path)/vocabulary/nouns/clothes/AudioQuiz/page';
 // Colors
 import ColorsPage from './(path)/vocabulary/nouns/color/page';
 import ColorFlipCardsPage from './(path)/vocabulary/nouns/color/flipCards/page';
@@ -159,6 +165,28 @@ export const router = createBrowserRouter([
                   {
                     path: 'audio-quiz',
                     element: <AnimalAudioQuizPage />,
+                  },
+                ]
+              },
+              {
+                path: 'clothes', 
+                element: <ClothesLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <ClothesPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <ClothesFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <ClothesQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <ClothesAudioQuizPage />,
                   },
                 ]
               },

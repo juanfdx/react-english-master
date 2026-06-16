@@ -4,6 +4,7 @@ export type WordCategory =
  'house' |
  'work' |
  'animal' |
+ 'clothes' |
  'color' |
  'food' | 
  'travel' | 

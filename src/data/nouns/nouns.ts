@@ -12,7 +12,7 @@ export const nounCategories: Category[] = [
     icon: '👨‍👩‍👧‍👦',
     href: '/nouns/people',
     type: "noun",
-    domain: 'people',
+    domain: 'nouns',
     level: 'beginner',
   },
   {
@@ -21,7 +21,7 @@ export const nounCategories: Category[] = [
     icon: '🌈',
     href: 'colors',
     type: "noun",
-    domain: 'colors',
+    domain: 'nouns',
     level: 'beginner',
   },
   {
@@ -30,7 +30,7 @@ export const nounCategories: Category[] = [
     icon: '⏰',
     href: '/nouns/time',
     type: "noun",
-    domain: 'time',
+    domain: 'nouns',
     level: 'beginner',
   },
   {
@@ -39,7 +39,7 @@ export const nounCategories: Category[] = [
     icon: '🍎',
     href: 'food-drinks',
     type: "noun",
-    domain: 'food',
+    domain: 'nouns',
     level: 'beginner',
   },
   {
@@ -48,7 +48,7 @@ export const nounCategories: Category[] = [
     icon: '🐶',
     href: 'animals',
     type: "noun",
-    domain: 'animals',
+    domain: 'nouns',
     level: 'beginner',
   },
   {
@@ -57,7 +57,7 @@ export const nounCategories: Category[] = [
     icon: '👕',
     href: '/nouns/clothes',
     type: "noun",
-    domain: 'clothes',
+    domain: 'nouns',
     level: 'beginner',
   },
   {
@@ -66,7 +66,7 @@ export const nounCategories: Category[] = [
     icon: '🏠',
     href: 'house',
     type: "noun",
-    domain: 'house',
+    domain: 'nouns',
     level: 'beginner',
   },
   {
@@ -75,7 +75,7 @@ export const nounCategories: Category[] = [
     icon: '📚',
     href: '/nouns/school',
     type: "noun",
-    domain: 'school',
+    domain: 'nouns',
     level: 'beginner',
   },
   {
@@ -84,7 +84,7 @@ export const nounCategories: Category[] = [
     icon: '🚗',
     href: '/nouns/transport',
     type: "noun",
-    domain: 'transport',
+    domain: 'nouns',
     level: 'beginner',
   },
   {
@@ -93,7 +93,7 @@ export const nounCategories: Category[] = [
     icon: '🌤️',
     href: '/nouns/weather',
     type: "noun",
-    domain: 'weather',
+    domain: 'nouns',
     level: 'beginner',
   },
     {
@@ -102,7 +102,7 @@ export const nounCategories: Category[] = [
     icon: '💼',
     href: 'work-jobs',
     type: "noun",
-    domain: 'work',
+    domain: 'nouns',
     level: 'intermediate',
   },
   {
@@ -111,7 +111,7 @@ export const nounCategories: Category[] = [
     icon: '🎓',
     href: '/nouns/intermediate/education',
     type: "noun",
-    domain: 'education',
+    domain: 'nouns',
     level: 'intermediate',
   },
   {
@@ -120,7 +120,7 @@ export const nounCategories: Category[] = [
     icon: '💻',
     href: '/nouns/intermediate/technology',
     type: "noun",
-    domain: 'technology',
+    domain: 'nouns',
     level: 'intermediate',
   },
   {
@@ -129,7 +129,7 @@ export const nounCategories: Category[] = [
     icon: '🏥',
     href: '/nouns/intermediate/health',
     type: "noun",
-    domain: 'health',
+    domain: 'nouns',
     level: 'intermediate',
   },
   {
@@ -138,7 +138,7 @@ export const nounCategories: Category[] = [
     icon: '✈️',
     href: '/nouns/intermediate/travel',
     type: "noun",
-    domain: 'travel',
+    domain: 'nouns',
     level: 'intermediate',
   },
   {
@@ -147,7 +147,7 @@ export const nounCategories: Category[] = [
     icon: '🛒',
     href: '/nouns/intermediate/money',
     type: "noun",
-    domain: 'money',
+    domain: 'nouns',
     level: 'intermediate',
   },
   {
@@ -156,7 +156,7 @@ export const nounCategories: Category[] = [
     icon: '🌍',
     href: '/nouns/intermediate/environment',
     type: "noun",
-    domain: 'environment',
+    domain: 'nouns',
     level: 'intermediate',
   },
   {
@@ -165,7 +165,7 @@ export const nounCategories: Category[] = [
     icon: '📱',
     href: '/nouns/intermediate/media',
     type: "noun",
-    domain: 'media',
+    domain: 'nouns',
     level: 'intermediate',
   },
   {
@@ -174,7 +174,7 @@ export const nounCategories: Category[] = [
     icon: '❤️',
     href: '/nouns/intermediate/relationships',
     type: "noun",
-    domain: 'relationships',
+    domain: 'nouns',
     level: 'intermediate',
   },
   {
@@ -183,7 +183,7 @@ export const nounCategories: Category[] = [
     icon: '🏙️',
     href: '/nouns/intermediate/society',
     type: "noun",
-    domain: 'society',
+    domain: 'nouns',
     level: 'intermediate',
   },
     {
@@ -192,7 +192,7 @@ export const nounCategories: Category[] = [
     icon: '🧠',
     href: '/nouns/advanced/abstract',
     type: "noun",
-    domain: 'abstract',
+    domain: 'nouns',
     level: 'advanced',
   },
   {
@@ -201,7 +201,7 @@ export const nounCategories: Category[] = [
     icon: '🎓',
     href: '/nouns/advanced/academic',
     type: "noun",
-    domain: 'academic',
+    domain: 'nouns',
     level: 'advanced',
   },
   {
@@ -210,7 +210,7 @@ export const nounCategories: Category[] = [
     icon: '📊',
     href: '/nouns/advanced/business',
     type: "noun",
-    domain: 'business',
+    domain: 'nouns',
     level: 'advanced',
   },
   {
@@ -219,7 +219,7 @@ export const nounCategories: Category[] = [
     icon: '🔬',
     href: '/nouns/advanced/science',
     type: "noun",
-    domain: 'science',
+    domain: 'nouns',
     level: 'advanced',
   },
   {
@@ -228,7 +228,7 @@ export const nounCategories: Category[] = [
     icon: '⚖️',
     href: '/nouns/advanced/politics',
     type: "noun",
-    domain: 'politics',
+    domain: 'nouns',
     level: 'advanced',
   },
   {
@@ -237,7 +237,7 @@ export const nounCategories: Category[] = [
     icon: '💭',
     href: '/nouns/advanced/philosophy',
     type: "noun",
-    domain: 'philosophy',
+    domain: 'nouns',
     level: 'advanced',
   },
   {
@@ -246,7 +246,7 @@ export const nounCategories: Category[] = [
     icon: '🧬',
     href: '/nouns/advanced/psychology',
     type: "noun",
-    domain: 'psychology',
+    domain: 'nouns',
     level: 'advanced',
   },
   {
@@ -255,7 +255,7 @@ export const nounCategories: Category[] = [
     icon: '🌐',
     href: '/nouns/advanced/culture',
     type: "noun",
-    domain: 'culture',
+    domain: 'nouns',
     level: 'advanced',
   },
   {
@@ -264,7 +264,7 @@ export const nounCategories: Category[] = [
     icon: '📰',
     href: '/nouns/advanced/media',
     type: "noun",
-    domain: 'media',
+    domain: 'nouns',
     level: 'advanced',
   },
   {
@@ -273,7 +273,7 @@ export const nounCategories: Category[] = [
     icon: '📐',
     href: '/nouns/advanced/technical',
     type: "noun",
-    domain: 'technical',
+    domain: 'nouns',
     level: 'advanced',
   },
 ];

@@ -2,6 +2,7 @@ import type { Word } from '../interfaces/word';
 
 
 export const words: Word[] = [
+  // Animals
   { id: "anim-001", word: "lion", type: "noun", category: "animal", tags: ["land"], icon: "🦁" },
   { id: "anim-002", word: "tiger", type: "noun", category: "animal", tags: ["land"], icon: "🐯" },
   { id: "anim-003", word: "elephant", type: "noun", category: "animal", tags: ["land"], icon: "🐘" },
@@ -63,7 +64,7 @@ export const words: Word[] = [
   { id: "anim-059", word: "bee", type: "noun", category: "animal", tags: ["insects"], icon: "🐝" },
   { id: "anim-060", word: "lady Beetle", type: "noun", category: "animal", tags: ["insects"], icon: "🐞" },
   { id: "anim-061", word: "mosquito", type: "noun", category: "animal", tags: ["insects"], icon: "🦟" },
-  { id: "anim-062", word: "cricket", type: "noun", category: "animal", tags: ["insects"], icon: "🦗" },
+  { id: "anim-062", word: "grasshopper", type: "noun", category: "animal", tags: ["insects"], image: "/images/nouns/animals/grasshopper.png", scale: 0.8 },
   { id: "anim-063", word: "llama", type: "noun", category: "animal", tags: ["land"], icon: "🦙" },
   { id: "anim-064", word: "seal", type: "noun", category: "animal", tags: ["water", "land"], image: "/images/nouns/animals/seal.png", scale: 0.9 },
   { id: "anim-065", word: "beaver", type: "noun", category: "animal", tags: ["water", "land"], image: "/images/nouns/animals/beaver.png", scale: 0.8 },
@@ -83,6 +84,59 @@ export const words: Word[] = [
   { id: "anim-079", word: "wild boar", type: "noun", category: "animal", tags: ["land"], image: "/images/nouns/animals/wild-boar.png", scale: 0.9 },
   { id: "anim-080", word: "cockroach", type: "noun", category: "animal", tags: ["insects"], image: "/images/nouns/animals/cockroach.png", scale: 0.9 },
   { id: "anim-081", word: "fly", type: "noun", category: "animal", tags: ["insects"], image: "/images/nouns/animals/fly.png", scale: 0.9 },
+  { id: "anim-082", word: "cricket", type: "noun", category: "animal", tags: ["insects"], image: "/images/nouns/animals/cricket.png", scale: 0.9 },
+  // Clothes
+  { id: "clot-001", word: "shirt", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn"], image: "/images/nouns/clothes/shirt.png", scale: 0.85 },
+  { id: "clot-002", word: "pants", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn"], image: "/images/nouns/clothes/pants.png", scale: 0.85 },
+  { id: "clot-003", word: "dress", type: "noun", category: "clothes", tags: ["spring", "summer"], image: "/images/nouns/clothes/dress.png" },
+
+  { id: "clot-004", word: "jacket", type: "noun", category: "clothes", tags: ["spring", "autumn"], image: "/images/nouns/clothes/jacket.png" },
+  { id: "clot-005", word: "coat", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/coat.png" },
+  { id: "clot-006", word: "t-shirt", type: "noun", category: "clothes", tags: ["summer", "spring"], image: "/images/nouns/clothes/t-shirt.png" },
+
+  { id: "clot-007", word: "shorts", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/shorts.png" },
+  { id: "clot-008", word: "skirt", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/skirt.png" },
+
+  { id: "clot-009", word: "sweater", type: "noun", category: "clothes", tags: ["spring", "autumn", "winter"], image: "/images/nouns/clothes/sweater.png" },
+  { id: "clot-010", word: "hoodie", type: "noun", category: "clothes", tags: ["spring", "autumn"], image: "/images/nouns/clothes/hoodie.png" },
+
+  { id: "clot-011", word: "blazer", type: "noun", category: "clothes", tags: ["spring"], image: "/images/nouns/clothes/blazer.png", scale: 0.8 },
+  { id: "clot-012", word: "suit", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn", "winter"], image: "/images/nouns/clothes/suit.png", scale: 0.8 },
+
+  { id: "clot-013", word: "swimsuit", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/swimsuit.png", scale: 0.9 },
+  { id: "clot-014", word: "raincoat", type: "noun", category: "clothes", tags: ["spring", "autumn"], image: "/images/nouns/clothes/raincoat.png", scale: 0.9 },
+
+  { id: "clot-015", word: "tracksuit", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/tracksuit.png", scale: 0.9 },
+  { id: "clot-016", word: "socks", type: "noun", category: "clothes", tags: ["spring", "autumn", "winter"], image: "/images/nouns/clothes/socks.png", scale: 0.9 },
+
+  { id: "clot-017", word: "tie", type: "noun", category: "clothes", tags: ["spring", "autumn", "winter"], image: "/images/nouns/clothes/tie.png", scale: 0.9 },
+  { id: "clot-018", word: "boots", type: "noun", category: "clothes", tags: ["spring", "autumn", "winter"], image: "/images/nouns/clothes/boots.png", scale: 0.8 },
+  { id: "clot-019", word: "jeans", type: "noun", category: "clothes", tags: ["spring", "summer","autumn"], image: "/images/nouns/clothes/jeans.png" },
+  { id: "clot-020", word: "bikini", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/bikini.png" },
+  { id: "clot-021", word: "running shoes", type: "noun", category: "clothes", tags: ["summer", "spring"], image: "/images/nouns/clothes/running-shoes.png", scale: 0.9 },
+  { id: "clot-022", word: "men's shoes", type: "noun", category: "clothes", tags: ["spring", "summer"], image: "/images/nouns/clothes/men-shoes.png", scale: 0.9 },
+  { id: "clot-023", word: "women's boots", type: "noun", category: "clothes", tags: ["spring", "autumn", "winter"], image: "/images/nouns/clothes/women-boots.png" },
+  { id: "clot-024", word: "women's sandals", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/women-sandals.png", scale: 0.9 },
+  { id: "clot-025", word: "high heels", type: "noun", category: "clothes", tags: ["spring", "summer"], image: "/images/nouns/clothes/high-heels.png" },
+  { id: "clot-026", word: "ice skates", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/ice-skates.png", scale: 0.95 },
+  { id: "clot-027", word: "ski boots", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/ski-boots.png", scale: 0.95 },
+  { id: "clot-028", word: "watch", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn", "winter"], image: "/images/nouns/clothes/watch.png", scale: 0.8 },
+  { id: "clot-029", word: "women's hat", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/women-hat.png" },
+  { id: "clot-030", word: "cap", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/cap.png", scale: 0.90 },
+  { id: "clot-031", word: "ballet shoes", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn", "winter"], image: "/images/nouns/clothes/ballet-shoes.png", scale: 0.90 },
+  { id: "clot-032", word: "blouse", type: "noun", category: "clothes", tags: ["spring", "summer"], image: "/images/nouns/clothes/blouse.png", scale: 0.90 },
+  { id: "clot-033", word: "flip flops", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/flip-flops.png", scale: 0.85 },
+  { id: "clot-034", word: "winter boots", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/winter-boots.png", scale: 0.9 },
+  { id: "clot-035", word: "scarf", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/scarf.png", scale: 0.9 },
+  { id: "clot-036", word: "vest", type: "noun", category: "clothes", tags: ["spring", "autumn","winter"], image: "/images/nouns/clothes/vest.png", scale: 0.8 },
+  { id: "clot-037", word: "thermal pants", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/thermal-pants.png", scale: 0.8 },
+  { id: "clot-038", word: "graduation cap", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/graduation-cap.png", scale: 0.8 },
+  { id: "clot-039", word: "bow tie", type: "noun", category: "clothes", tags: ["spring", "autumn", "winter"], image: "/images/nouns/clothes/bow-tie.png", scale: 0.7 },
+  { id: "clot-040", word: "winter hat", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/winter-hat.png", scale: 0.7 },
+  { id: "clot-041", word: "winter gloves", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/winter-gloves.png", scale: 0.7 },
+  { id: "clot-042", word: "sunglasses", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn","winter"], image: "/images/nouns/clothes/sunglasses.png", scale: 0.7 },
+
+
 
   // Colors
   { id: "colo-001", word: "orange", type: "noun", category: "color", svg: "text-orange-500" },
@@ -212,7 +266,7 @@ export const words: Word[] = [
   { id: "food-064", word: "wrap", type: "noun", category: "food", tags: ["meal"], icon: "🌯" },
   { id: "food-065", word: "kebab", type: "noun", category: "food", tags: ["meal"], icon: "🥙" },
   { id: "food-066", word: "donut", type: "noun", category: "food", tags: ["meal"], icon: "🍩" },
-  { id: "food-068", word: "bagel", type: "noun", category: "food", tags: ["meal"], image: "/images/nouns/food/bagel.png", scale: 0.7 },
+  { id: "food-068", word: "bagel", type: "noun", category: "food", tags: ["meal"], icon: "🥯" },
   { id: "food-070", word: "falafel", type: "noun", category: "food", tags: ["meal"], icon: "🧆" },
   { id: "food-071", word: "bun", type: "noun", category: "food", tags: ["meal"], image: "/images/nouns/food/bun.png", scale: 0.9 },
   { id: "food-074", word: "baguette", type: "noun", category: "food", tags: ["meal"], icon: "🥖" },

@@ -4,9 +4,9 @@ import { categories } from '../../../../../data/categories';
 
 
 
-export default function ColorsPage() {
+export default function ClothesPage() {
   
   return (
-    <CategoryList categories={categories} domain="colors" className="mt-10" />
+    <CategoryList categories={categories} domain="clothes" className="mt-10" />
   );
 }

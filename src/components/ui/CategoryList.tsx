@@ -3,15 +3,19 @@ import type { Category } from '../../interfaces/category';
 
 interface Props {
   categories: Category[];
+  domain: string
   className?: string
 }
 
 
-export const CategoryList = ({ categories, className }: Props) => {
+export const CategoryList = ({ categories, domain, className }: Props) => {
+
+  const filteredCategories = categories.filter((category) => category.domain === domain);
+
   
   return (
     <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 ${className}`}>
-      {categories.map((category) => (
+      {filteredCategories.map((category) => (
         <Link
           key={category.id}
           to={category.href}

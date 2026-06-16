@@ -1,12 +1,12 @@
 import { CategoryList } from '../../../../../components/ui/CategoryList';
 // data
-import { animalsCategories } from '../../../../../data/nouns/animals';
+import { categories } from '../../../../../data/categories';
 
 
 
 export default function AnimalsPage() {
   
   return (
-    <CategoryList categories={animalsCategories} className="mt-10" />
+    <CategoryList categories={categories} domain="animals" className="mt-10" />
   );
 }
