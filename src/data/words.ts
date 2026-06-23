@@ -43,7 +43,7 @@ export const words: Word[] = [
   { id: "anim-038", word: "wolf", type: "noun", category: "animal", tags: ["land"], icon: "🐺" },
   { id: "anim-039", word: "fox", type: "noun", category: "animal", tags: ["land"], icon: "🦊" },
   { id: "anim-040", word: "horse", type: "noun", category: "animal", tags: ["land"], icon: "🐎" },
-  { id: "anim-041", word: "pony", type: "noun", category: "animal", tags: ["land"], icon: "🐴" },
+  { id: "anim-041", word: "pony", type: "noun", category: "animal", tags: ["land"], image: "/images/nouns/animals/pony.png", scale: 1 },
   { id: "anim-042", word: "pig", type: "noun", category: "animal", tags: ["land"], icon: "🐖" },
   { id: "anim-043", word: "cow", type: "noun", category: "animal", tags: ["land"], icon: "🐮" },
   { id: "anim-044", word: "goat", type: "noun", category: "animal", tags: ["land"], icon: "🐐" },
@@ -59,10 +59,10 @@ export const words: Word[] = [
   { id: "anim-054", word: "hummingbird", type: "noun", category: "animal", tags: ["fly"], icon: "🐦" },
   { id: "anim-055", word: "turkey", type: "noun", category: "animal", tags: ["land"], icon: "🦃" },
   { id: "anim-056", word: "rooster", type: "noun", category: "animal", tags: ["land"], icon: "🐓" },
-  { id: "anim-057", word: "chicken", type: "noun", category: "animal", tags: ["land"], image: "/images/nouns/animals/chicken.webp" },
-  { id: "anim-058", word: "baby Chick", type: "noun", category: "animal", tags: ["land"], icon: "🐥" },
+  { id: "anim-057", word: "hen", type: "noun", category: "animal", tags: ["land"], image: "/images/nouns/animals/chicken.webp" },
+  { id: "anim-058", word: "chick", type: "noun", category: "animal", tags: ["land"], icon: "🐥" },
   { id: "anim-059", word: "bee", type: "noun", category: "animal", tags: ["insects"], icon: "🐝" },
-  { id: "anim-060", word: "lady Beetle", type: "noun", category: "animal", tags: ["insects"], icon: "🐞" },
+  { id: "anim-060", word: "lady bug", type: "noun", category: "animal", tags: ["insects"], icon: "🐞" },
   { id: "anim-061", word: "mosquito", type: "noun", category: "animal", tags: ["insects"], icon: "🦟" },
   { id: "anim-062", word: "grasshopper", type: "noun", category: "animal", tags: ["insects"], image: "/images/nouns/animals/grasshopper.png", scale: 0.8 },
   { id: "anim-063", word: "llama", type: "noun", category: "animal", tags: ["land"], icon: "🦙" },
@@ -90,7 +90,7 @@ export const words: Word[] = [
   { id: "clot-002", word: "pants", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn"], image: "/images/nouns/clothes/pants.png", scale: 0.85 },
   { id: "clot-003", word: "dress", type: "noun", category: "clothes", tags: ["spring", "summer"], image: "/images/nouns/clothes/dress.png" },
 
-  { id: "clot-004", word: "jacket", type: "noun", category: "clothes", tags: ["spring", "autumn"], image: "/images/nouns/clothes/jacket.png" },
+  { id: "clot-004", word: "jacket", type: "noun", category: "clothes", tags: ["spring", "autumn"], image: "/images/nouns/clothes/jacket.png", scale: 0.9 },
   { id: "clot-005", word: "coat", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/coat.png" },
   { id: "clot-006", word: "t-shirt", type: "noun", category: "clothes", tags: ["summer", "spring"], image: "/images/nouns/clothes/t-shirt.png" },
 
@@ -117,7 +117,7 @@ export const words: Word[] = [
   { id: "clot-022", word: "men's shoes", type: "noun", category: "clothes", tags: ["spring", "summer"], image: "/images/nouns/clothes/men-shoes.png", scale: 0.9 },
   { id: "clot-023", word: "women's boots", type: "noun", category: "clothes", tags: ["spring", "autumn", "winter"], image: "/images/nouns/clothes/women-boots.png" },
   { id: "clot-024", word: "women's sandals", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/women-sandals.png", scale: 0.9 },
-  { id: "clot-025", word: "high heels", type: "noun", category: "clothes", tags: ["spring", "summer"], image: "/images/nouns/clothes/high-heels.png" },
+  { id: "clot-025", word: "high heels", type: "noun", category: "clothes", tags: ["spring", "summer"], image: "/images/nouns/clothes/high-heels.png", scale: 0.9 },
   { id: "clot-026", word: "ice skates", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/ice-skates.png", scale: 0.95 },
   { id: "clot-027", word: "ski boots", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/ski-boots.png", scale: 0.95 },
   { id: "clot-028", word: "watch", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn", "winter"], image: "/images/nouns/clothes/watch.png", scale: 0.8 },
@@ -135,8 +135,9 @@ export const words: Word[] = [
   { id: "clot-040", word: "winter hat", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/winter-hat.png", scale: 0.7 },
   { id: "clot-041", word: "winter gloves", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/winter-gloves.png", scale: 0.7 },
   { id: "clot-042", word: "sunglasses", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn","winter"], image: "/images/nouns/clothes/sunglasses.png", scale: 0.7 },
-
-
+  { id: "clot-043", word: "tank top", type: "noun", category: "clothes", tags: ["summer"], image: "/images/nouns/clothes/tank-top.png", scale: 0.8 },
+  { id: "clot-044", word: "ski goggles", type: "noun", category: "clothes", tags: ["winter"], image: "/images/nouns/clothes/ski-goggles.png", scale: 0.7 },
+  { id: "clot-045", word: "underwear", type: "noun", category: "clothes", tags: ["spring", "summer", "autumn", "winter"], image: "/images/nouns/clothes/underwear.png", scale: 0.8 },
 
   // Colors
   { id: "colo-001", word: "orange", type: "noun", category: "color", svg: "text-orange-500" },
@@ -154,6 +155,7 @@ export const words: Word[] = [
   { id: "colo-013", word: "black", type: "noun", category: "color", svg: "text-black" },
   { id: "colo-014", word: "white", type: "noun", category: "color", svg: "text-white" },
   { id: "colo-015", word: "sky blue", type: "noun", category: "color", svg: "text-sky-300" },
+  { id: "colo-016", word: "burgundy", type: "noun", category: "color", svg: "text-rose-900" },
 
   // Appliances
   { id: "app-001", word: "refrigerator", type: "noun", category: "appliance", tags: ["kitchen"], image: "/images/nouns/appliances/refrigerator.webp" },
