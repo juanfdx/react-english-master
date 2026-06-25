@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { filterWordsByCategory, getRandomWord, playWord, shuffleArray } from '../../utils/functions';
+import { filterWordsByTypeAndCategory, getRandomWord, playWord, shuffleArray } from '../../utils/functions';
 import type { Word } from '../../interfaces/word';
 import { words } from '../../data/words';
 // components
@@ -12,12 +12,13 @@ import { QuizOptions } from '../ui/QuizOptions';
 
 interface Props {
   title: string;
-  category: string;
   description: string;
+  type: string;
+  category: string;
   variant?: 'word' | 'category';
 }
 
-export const FlipQuizGame = ({ title, category, description, variant }: Props) => {
+export const FlipQuizGame = ({ title, type, category, description, variant }: Props) => {
 
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
@@ -25,8 +26,8 @@ export const FlipQuizGame = ({ title, category, description, variant }: Props) =
   const [selected, setSelected] = useState<string | null>(null);
   
   const filteredWords = useMemo(() => {
-    return filterWordsByCategory(words, category);
-  }, [category]); 
+    return filterWordsByTypeAndCategory(words, type, category);
+  }, [type, category]); 
 
   const [selectedWords, setSelectedWords] = useState([...filteredWords]);
   const [current, setCurrent] = useState<Word>(getRandomWord(selectedWords));

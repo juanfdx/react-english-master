@@ -8,6 +8,7 @@ export default function AnimalFlipCardsPage() {
       title="animal" 
       subtitle="explorer" 
       description="Filter by habitat and flip to learn their names." 
+      type="noun"
       category="animal" 
     />
   ) 

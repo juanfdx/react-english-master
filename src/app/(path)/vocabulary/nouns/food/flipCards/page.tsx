@@ -8,6 +8,7 @@ export default function FoodFlipCardsPage() {
       title="food" 
       subtitle="explorer" 
       description="Flip to learn color names." 
+      type="noun"
       category="food" 
     />
   )

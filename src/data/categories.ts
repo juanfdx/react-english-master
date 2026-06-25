@@ -228,12 +228,45 @@ export const categories: Category[] = [
     activity_type: 'quiz',
     level: 'beginner',
   }, 
+
+  // People
+  {
+    id: "cat-023",
+    name: "Flip Cards",
+    icon: "🃏",
+    href: "flip-cards",
+    type: "noun",
+    domain: 'people',
+    activity_type: 'flip-cards',
+    level: 'beginner',
+  },
+  {
+    id: "cat-024",
+    name: "Card Quiz",
+    icon: "🎯",
+    href: "quiz-card",
+    type: "noun",
+    domain: 'people',
+    activity_type: 'quiz',
+    level: 'beginner',
+  },
+  {
+    id: "cat-025",
+    name: "Audio Quiz",
+    icon: "🔊",
+    href: "audio-quiz",
+    type: "noun",
+    domain: 'people',
+    activity_type: 'quiz',
+    level: 'beginner',
+  }, 
+
   // Nouns
   {
     id: '1',
     name: 'People',
     icon: '👨‍👩‍👧‍👦',
-    href: '/nouns/people',
+    href: 'people',
     type: "noun",
     domain: 'nouns',
     level: 'beginner',

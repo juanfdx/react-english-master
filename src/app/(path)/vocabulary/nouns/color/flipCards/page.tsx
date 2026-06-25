@@ -8,6 +8,7 @@ export default function ColorFlipCardsPage() {
       title="color" 
       subtitle="explorer" 
       description="Flip to learn color names." 
+      type="noun"
       category="color" 
       variant="category"
     />

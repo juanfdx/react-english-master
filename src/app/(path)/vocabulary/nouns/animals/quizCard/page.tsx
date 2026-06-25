@@ -7,6 +7,7 @@ export default function AnimalQuizCardPage() {
     <FlipQuizGame 
       title="animal" 
       category="animal" 
+      type="noun"
       description="Identify the animal shown in the card. Don't lose your hearts!"
     />
   )

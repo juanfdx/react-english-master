@@ -2,15 +2,43 @@ import { createBrowserRouter, Navigate } from 'react-router';
 // LAYOUTS
 import SiteLayout  from './site/layout';
 import PathLayout from './(path)/layout';
+import PeopleLayout from './(path)/vocabulary/nouns/people/layout';
+import ColorsLayout from './(path)/vocabulary/nouns/color/layout';
+import FoodAndDrinksLayout from './(path)/vocabulary/nouns/food/Layout';
+import AnimalsLayout from './(path)/vocabulary/nouns/animals/layout';
+import ClothesLayout from './(path)/vocabulary/nouns/clothes/layout';
 import HouseLayout from './(path)/vocabulary/nouns/house/layout';
 import WorkLayout from './(path)/vocabulary/nouns/work/layout';
-import AnimalsLayout from './(path)/vocabulary/nouns/animals/layout';
-import ColorsLayout from './(path)/vocabulary/nouns/color/layout';
 
 // PAGES
 import HomePage from './site/home/page';
 // NOUNS
 import NounsPage from './(path)/vocabulary/nouns/page';
+// People
+import PeoplePage from './(path)/vocabulary/nouns/people/page';
+import PeopleFlipCardsPage from './(path)/vocabulary/nouns/people/flipCards/page';
+import PeopleQuizCardPage from './(path)/vocabulary/nouns/people/quizCard/page';
+import PeopleAudioQuizPage from './(path)/vocabulary/nouns/people/AudioQuiz/page';
+// Colors
+import ColorsPage from './(path)/vocabulary/nouns/color/page';
+import ColorFlipCardsPage from './(path)/vocabulary/nouns/color/flipCards/page';
+import ColorQuizCardPage from './(path)/vocabulary/nouns/color/quizCard/page';
+import ColorAudioQuizPage from './(path)/vocabulary/nouns/color/AudioQuiz/page';
+// Food
+import FoodAndDrinksPage from './(path)/vocabulary/nouns/food/page';
+import FoodFlipCardsPage from './(path)/vocabulary/nouns/food/flipCards/page';
+import FoodQuizCardPage  from './(path)/vocabulary/nouns/food/quizCard/page';
+import FoodAudioQuizPage from './(path)/vocabulary/nouns/food/AudioQuiz/page';
+// Animals
+import AnimalsPage from './(path)/vocabulary/nouns/animals/page';
+import AnimalFlipCardsPage from './(path)/vocabulary/nouns/animals/flipCards/page';
+import AnimalQuizCardPage from './(path)/vocabulary/nouns/animals/quizCard/page';
+import AnimalAudioQuizPage from './(path)/vocabulary/nouns/animals/AudioQuiz/page';
+// Clothes
+import ClothesPage from './(path)/vocabulary/nouns/clothes/page';
+import ClothesFlipCardsPage from './(path)/vocabulary/nouns/clothes/flipCards/page';
+import ClothesQuizCardPage from './(path)/vocabulary/nouns/clothes/quizCard/page';
+import ClothesAudioQuizPage from './(path)/vocabulary/nouns/clothes/AudioQuiz/page';
 // House
 import HousePage from './(path)/vocabulary/nouns/house/page';
 import KitchenPage from './(path)/vocabulary/nouns/house/kitchen/page';
@@ -25,33 +53,11 @@ import ApplianceAudioQuizPage from './(path)/vocabulary/nouns/house/AudioQuiz/pa
 // Work
 import WorkPage from './(path)/vocabulary/nouns/work/page';
 import OfficePage from './(path)/vocabulary/nouns/work/office/page';
-// Animals
-import AnimalsPage from './(path)/vocabulary/nouns/animals/page';
-import AnimalFlipCardsPage from './(path)/vocabulary/nouns/animals/flipCards/page';
-import AnimalQuizCardPage from './(path)/vocabulary/nouns/animals/quizCard/page';
-import AnimalAudioQuizPage from './(path)/vocabulary/nouns/animals/AudioQuiz/page';
-// Clothes
-import ClothesLayout from './(path)/vocabulary/nouns/clothes/layout';
-import ClothesPage from './(path)/vocabulary/nouns/clothes/page';
-import ClothesFlipCardsPage from './(path)/vocabulary/nouns/clothes/flipCards/page';
-import ClothesQuizCardPage from './(path)/vocabulary/nouns/clothes/quizCard/page';
-import ClothesAudioQuizPage from './(path)/vocabulary/nouns/clothes/AudioQuiz/page';
-// Colors
-import ColorsPage from './(path)/vocabulary/nouns/color/page';
-import ColorFlipCardsPage from './(path)/vocabulary/nouns/color/flipCards/page';
-import ColorQuizCardPage from './(path)/vocabulary/nouns/color/quizCard/page';
-import ColorAudioQuizPage from './(path)/vocabulary/nouns/color/AudioQuiz/page';
-// Food
-import FoodAndDrinksPage from './(path)/vocabulary/nouns/food/page';
-import FoodFlipCardsPage from './(path)/vocabulary/nouns/food/flipCards/page';
-import FoodQuizCardPage  from './(path)/vocabulary/nouns/food/quizCard/page';
-import FoodAudioQuizPage from './(path)/vocabulary/nouns/food/AudioQuiz/page';
 
 // SYSTEM
 import ErrorPage from './ErrorPage';
 import NotFound from './NotFound';
 import VerbsPage from './(path)/vocabulary/verbs/page';
-import FoodAndDrinksLayout from './(path)/vocabulary/nouns/food/Layout';
 
 
 
@@ -85,6 +91,116 @@ export const router = createBrowserRouter([
               {
                 index: true,
                 element: <NounsPage />,
+              },
+              {
+                path: 'people', 
+                element: <PeopleLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <PeoplePage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <PeopleFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <PeopleQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <PeopleAudioQuizPage />,
+                  },
+                ]
+              },
+              {
+                path: 'colors', 
+                element: <ColorsLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <ColorsPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <ColorFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <ColorQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <ColorAudioQuizPage />,
+                  },
+                ]
+              },
+              {
+                path: 'food-drinks', 
+                element: <FoodAndDrinksLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <FoodAndDrinksPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <FoodFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <FoodQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <FoodAudioQuizPage />,
+                  },
+                ]
+              },
+              {
+                path: 'animals', 
+                element: <AnimalsLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <AnimalsPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <AnimalFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <AnimalQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <AnimalAudioQuizPage />,
+                  },
+                ]
+              },
+              {
+                path: 'clothes', 
+                element: <ClothesLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <ClothesPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <ClothesFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <ClothesQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <ClothesAudioQuizPage />,
+                  },
+                ]
               },
               {
                 path: 'house', 
@@ -144,94 +260,6 @@ export const router = createBrowserRouter([
                     path: 'office',
                     element: <OfficePage />,
                   }
-                ]
-              },
-              {
-                path: 'animals', 
-                element: <AnimalsLayout />,
-                children: [
-                  {
-                    index: true,
-                    element: <AnimalsPage />,
-                  },
-                  {
-                    path: 'flip-cards',
-                    element: <AnimalFlipCardsPage />,
-                  },
-                  {
-                    path: 'quiz-card',
-                    element: <AnimalQuizCardPage />,
-                  },
-                  {
-                    path: 'audio-quiz',
-                    element: <AnimalAudioQuizPage />,
-                  },
-                ]
-              },
-              {
-                path: 'clothes', 
-                element: <ClothesLayout />,
-                children: [
-                  {
-                    index: true,
-                    element: <ClothesPage />,
-                  },
-                  {
-                    path: 'flip-cards',
-                    element: <ClothesFlipCardsPage />,
-                  },
-                  {
-                    path: 'quiz-card',
-                    element: <ClothesQuizCardPage />,
-                  },
-                  {
-                    path: 'audio-quiz',
-                    element: <ClothesAudioQuizPage />,
-                  },
-                ]
-              },
-              {
-                path: 'colors', 
-                element: <ColorsLayout />,
-                children: [
-                  {
-                    index: true,
-                    element: <ColorsPage />,
-                  },
-                  {
-                    path: 'flip-cards',
-                    element: <ColorFlipCardsPage />,
-                  },
-                  {
-                    path: 'quiz-card',
-                    element: <ColorQuizCardPage />,
-                  },
-                  {
-                    path: 'audio-quiz',
-                    element: <ColorAudioQuizPage />,
-                  },
-                ]
-              },
-              {
-                path: 'food-drinks', 
-                element: <FoodAndDrinksLayout />,
-                children: [
-                  {
-                    index: true,
-                    element: <FoodAndDrinksPage />,
-                  },
-                  {
-                    path: 'flip-cards',
-                    element: <FoodFlipCardsPage />,
-                  },
-                  {
-                    path: 'quiz-card',
-                    element: <FoodQuizCardPage />,
-                  },
-                  {
-                    path: 'audio-quiz',
-                    element: <FoodAudioQuizPage />,
-                  },
                 ]
               },
             ]

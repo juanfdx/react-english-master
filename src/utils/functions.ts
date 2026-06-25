@@ -122,8 +122,8 @@ export const shuffleArray = <T>(array: T[]): T[] => {
 /*====================================================================
   FILTER WORDS BY CATEGORY
 =====================================================================*/
-export const filterWordsByCategory = (allWords: Word[], category: string): Word[] => {
-  return allWords.filter(word => word.category === category);
+export const filterWordsByTypeAndCategory = (allWords: Word[], type: string, category: string): Word[] => {
+  return allWords.filter(word => word.type === type && word.category === category);
 }
 
 

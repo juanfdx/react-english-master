@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { filterWordsByCategory, playWord, shuffleArray } from '../../utils/functions';
+import { filterWordsByTypeAndCategory, playWord, shuffleArray } from '../../utils/functions';
 import { words } from '../../data/words';
 // components
 import FilterBar from './FilterBar';
@@ -11,17 +11,18 @@ interface Props {
   title: string;
   subtitle: string;
   description?: string;
+  type: string;
   category: string;
   variant?: 'word' | 'category'; // category for colors
 }
 
-export const FlipCardExplorer = ({ title, subtitle, description, category, variant = 'word' }: Props) => {
+export const FlipCardExplorer = ({ title, subtitle, description, type, category, variant = 'word' }: Props) => {
 
   const [filter, setFilter] = useState("all");
 
   const allWords = useMemo(() => {
-    return filterWordsByCategory(words, category);
-  }, [category]); 
+    return filterWordsByTypeAndCategory(words, type, category);
+  }, [type, category]); 
 
   const shuffledWords = useMemo(() => {
     const filteredWords = filter === "all"

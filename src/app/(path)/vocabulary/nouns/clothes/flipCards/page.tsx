@@ -8,6 +8,7 @@ export default function ClothesFlipCardsPage() {
       title="clothes" 
       subtitle="explorer" 
       description="Filter by season and flip to learn their names." 
+      type="noun"
       category="clothes" 
     />
   ) 

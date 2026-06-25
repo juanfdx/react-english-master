@@ -8,6 +8,7 @@ export default function ApplianceFlipCardsPage() {
       title="appliance" 
       subtitle="explorer" 
       description="Filter by habitat and flip to learn their names." 
+      type="noun"
       category="appliance" 
     />
   )
