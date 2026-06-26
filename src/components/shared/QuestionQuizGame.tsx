@@ -44,11 +44,8 @@ export const QuestionQuizGame = ({ title, type, category }: Props) => {
 
     const timeout = setTimeout(() => {
 
-      // 🔊 OPTION 1 (recommended): play definition instead of word
-      // playWord(current.definition ?? current.word, "male");
-
-      // 🔊 OPTION 2: keep original word audio
-      playWord(current.word, "male");
+      // 🔊 OPTION 1: play definition instead of word
+      playWord(current.word, 'male', 'en', 'definitions');
 
       const shuffledWords = shuffleArray(selectedWords);
 
@@ -72,7 +69,12 @@ export const QuestionQuizGame = ({ title, type, category }: Props) => {
 
     const isCorrect = word === current.word;
 
-    playWord(isCorrect ? 'correct-1' : 'wrong', "effect");
+    if (!isCorrect) 
+      playWord('wrong', "effect");  
+    else
+      playWord(current.word, "male");
+    
+   
 
     const updatedWords = selectedWords.filter(
       (w) => w.word !== current.word
@@ -112,6 +114,8 @@ export const QuestionQuizGame = ({ title, type, category }: Props) => {
     setCurrent(getRandomWord(fresh));
   };
 
+
+  
   return (
     <div className="flex flex-col text-slate-900">
 
@@ -156,21 +160,22 @@ export const QuestionQuizGame = ({ title, type, category }: Props) => {
               <button
                 onClick={() => {
                   if (isGameOver) return;
-                  playWord(current.word, "male");
+                  playWord(current.word, 'male', 'en', 'definitions');
                 }}
-                className="w-24 h-24 bg-indigo-600 text-white rounded-full text-4xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 flex items-center justify-center mx-auto mt-10 cursor-pointer"
+                className="w-24 h-24 bg-indigo-600 text-white rounded-full text-4xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 flex items-center justify-center mx-auto pulse mt-5 cursor-pointer"
               >
                 🔊
               </button>
 
               <p className="mt-6 text-slate-500 font-medium">
-                Listen again
+                Click the button to listen again
               </p>
             </div>
 
             {/* OPTIONS */}
             <QuizOptions
               variant="image"
+              // py="py-6"
               options={displayedOptions}
               word={current}
               selected={selected}

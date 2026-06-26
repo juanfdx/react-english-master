@@ -7,6 +7,7 @@ import { FlashcardImage } from './FlashcardImage';
 
 interface Props {
   variant?: 'text' | 'image';
+  py?: string;
   options: Word[];
   word: Word;
   selected: string | null;
@@ -14,7 +15,7 @@ interface Props {
 }
 
 
-export const QuizOptions = ({ variant = 'text', options, word, selected, handleAnswer }: Props) => {
+export const QuizOptions = ({ variant = 'text', py = 'py-4', options, word, selected, handleAnswer }: Props) => {
   
   // to control disable time when user can click on option button after new question is loaded
   const [canAnswer, setCanAnswer] = useState(true);
@@ -63,7 +64,7 @@ export const QuizOptions = ({ variant = 'text', options, word, selected, handleA
             onClick={() => {handleAnswer(opt.word); handleCanAnswer();}}
             disabled={!canAnswer || !!selected}
             className={`
-              py-4 px-6 flex items-center justify-center rounded-2xl font-bold border-2 transition-all
+              ${py} px-6 flex items-center justify-center rounded-2xl font-bold border-2 transition-all
               shadow-sm
               ${variant === 'image' ? 'min-h-33' : ''}
               ${interactionClasses}

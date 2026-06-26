@@ -70,11 +70,25 @@ export const speakWord = (word: string) => {
 /*====================================================================
   PLAY ENGLISH WORD AUDIO 
 =====================================================================*/
-export const playWord = async (word: string, gender: 'male' | 'female' | 'effect', language: Language = 'en') => {
+type AudioType = 'words' | 'definitions';
+
+export const playWord = async (
+  word: string, 
+  gender: 'male' | 'female' | 'effect', 
+  language: Language = 'en',
+  audioType: AudioType = 'words'
+) => {
   // 1. Safe Formatting: "Tropical Fish" -> "tropical-fish"
   const formattedWord = word.toLowerCase().trim().replace(/\s+/g, '-');
+
+  let audioPath;
+
+  if (gender === 'effect') {
+    audioPath = `/audio/${language}/${gender}/${formattedWord}.mp3`;
+  } else {
+    audioPath = `/audio/${language}/${gender}/${audioType}/${formattedWord}.mp3`;
+  }
   
-  const audioPath = `/audio/${language}/${gender}/${formattedWord}.mp3`;
   const audio = new Audio(audioPath);
 
   try {
