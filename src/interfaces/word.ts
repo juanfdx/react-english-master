@@ -19,6 +19,7 @@ export interface Word {
   word: string;
   type: PartOfSpeech; 
   category: WordCategory; 
+  definition?: string;
   tags?: string[];
   icon?: string; // URL or icon identifier
   image?: string; // URL to an illustration/photo

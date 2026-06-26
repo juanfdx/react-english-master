@@ -7,7 +7,7 @@ export default function PeopleFlipCardsPage() {
     <FlipCardExplorer 
       title="people" 
       subtitle="explorer" 
-      description="Flip to learn people roles." 
+      description="Flip to learn people." 
       type="noun"
       category="people" 
     />

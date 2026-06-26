@@ -260,6 +260,17 @@ export const categories: Category[] = [
     activity_type: 'quiz',
     level: 'beginner',
   }, 
+  {
+    id: "cat-026",
+    name: "Question Quiz",
+    icon: "❓",
+    href: "question-quiz",
+    type: "noun",
+    domain: 'people',
+    activity_type: 'quiz',
+    level: 'beginner',
+  }, 
+
 
   // Nouns
   {
