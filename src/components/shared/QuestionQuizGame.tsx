@@ -162,7 +162,7 @@ export const QuestionQuizGame = ({ title, type, category }: Props) => {
                   if (isGameOver) return;
                   playWord(current.word, 'male', 'en', 'definitions');
                 }}
-                className="w-24 h-24 bg-indigo-600 text-white rounded-full text-4xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 flex items-center justify-center mx-auto pulse mt-5 cursor-pointer"
+                className="w-24 h-24 bg-indigo-600 text-white rounded-full text-4xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 flex items-center justify-center mx-auto pulse mt-7 cursor-pointer"
               >
                 🔊
               </button>

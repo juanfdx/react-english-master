@@ -10,6 +10,7 @@ export default function PeopleFlipCardsPage() {
       description="Flip to learn people." 
       type="noun"
       category="people" 
+      excludeTag="family"
     />
   )
 }

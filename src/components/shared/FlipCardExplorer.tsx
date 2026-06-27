@@ -14,15 +14,17 @@ interface Props {
   type: string;
   category: string;
   variant?: 'word' | 'category'; // category for colors
+  excludeTag?: string;
 }
 
-export const FlipCardExplorer = ({ title, subtitle, description, type, category, variant = 'word' }: Props) => {
+export const FlipCardExplorer = ({ title, subtitle, description, type, category, variant = 'word', excludeTag = "none" }: Props) => {
 
   const [filter, setFilter] = useState("all");
 
   const allWords = useMemo(() => {
-    return filterWordsByTypeAndCategory(words, type, category);
-  }, [type, category]); 
+    return filterWordsByTypeAndCategory(words, type, category)
+      .filter(word => !word.tags?.includes(excludeTag));
+  }, [type, category, excludeTag]); 
 
   const shuffledWords = useMemo(() => {
     const filteredWords = filter === "all"

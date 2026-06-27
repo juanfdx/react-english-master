@@ -13,17 +13,19 @@ interface Props {
   title: string;
   type: string;
   category: string;
+  excludeTag?: string;
 }
 
-export const AudioQuizGame = ({ title, type, category }: Props) => {
+export const AudioQuizGame = ({ title, type, category, excludeTag = "none" }: Props) => {
 
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
   const [selected, setSelected] = useState<string | null>(null);
   
   const filteredWords = useMemo(() => {
-    return filterWordsByTypeAndCategory(words, type, category);
-  }, [type, category]); 
+    return filterWordsByTypeAndCategory(words, type, category)
+      .filter(word => !word.tags?.includes(excludeTag));
+  }, [type, category, excludeTag]); 
 
   const [selectedWords, setSelectedWords] = useState([...filteredWords]);
   const [current, setCurrent] = useState<Word>(getRandomWord(selectedWords));

@@ -16,9 +16,10 @@ interface Props {
   type: string;
   category: string;
   variant?: 'word' | 'category';
+  excludeTag?: string;
 }
 
-export const FlipQuizGame = ({ title, type, category, description, variant }: Props) => {
+export const FlipQuizGame = ({ title, type, category, description, variant, excludeTag = "none" }: Props) => {
 
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(3);
@@ -26,8 +27,9 @@ export const FlipQuizGame = ({ title, type, category, description, variant }: Pr
   const [selected, setSelected] = useState<string | null>(null);
   
   const filteredWords = useMemo(() => {
-    return filterWordsByTypeAndCategory(words, type, category);
-  }, [type, category]); 
+    return filterWordsByTypeAndCategory(words, type, category)
+      .filter(word => !word.tags?.includes(excludeTag));
+  }, [type, category, excludeTag]); 
 
   const [selectedWords, setSelectedWords] = useState([...filteredWords]);
   const [current, setCurrent] = useState<Word>(getRandomWord(selectedWords));

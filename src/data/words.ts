@@ -172,7 +172,7 @@ export const words: Word[] = [
   { id: "people-015", word: "classmate", type: "noun", category: "people", definition: "A person in the same class as you.", tags: ["relationship"], image: "/images/nouns/people/classmate.png", scale: 0.9 },
   { id: "people-016", word: "colleague", type: "noun", category: "people", definition: "A person you work with.", tags: ["relationship"], image: "/images/nouns/people/colleague.png", scale: 0.9 },
   { id: "people-017", word: "boyfriend", type: "noun", category: "people", definition: "A male romantic partner.", tags: ["relationship"], image: "/images/nouns/people/boyfriend.png", scale: 0.9 },
-  { id: "people-018", word: "girlfriend", type: "noun", category: "people", definition: "A female romantic partner.", tags: ["relationship"], image: "/images/nouns/people/girlfriend.png", scale: 0.9 },
+  { id: "people-018", word: "girlfriend", type: "noun", category: "people", definition: "A female romantic partner.", tags: ["relationship"], image: "/images/nouns/people/girlfriend.png", scale: 0.85 },
   { id: "people-019", word: "husband", type: "noun", category: "people", definition: "A man who is married to someone.", tags: ["relationship"], icon: "🤵" },
   { id: "people-020", word: "wife", type: "noun", category: "people", definition: "A woman who is married to someone.", tags: ["relationship"], icon: "👰" },
   { id: "people-107", word: "best friend", type: "noun", category: "people", definition: "Your closest and most trusted friend.", tags: ["relationship"], image: "/images/nouns/people/best-friend.png" },
@@ -269,7 +269,7 @@ export const words: Word[] = [
   { id: "people-123", word: "actor", type: "noun", category: "people", definition: "A person who performs in movies, television shows, or plays.", tags: ["job"], image: "/images/nouns/people/actor.png", scale: 0.85 },
   { id: "people-124", word: "writer", type: "noun", category: "people", definition: "A person who writes books, stories, or articles.", tags: ["job"], image: "/images/nouns/people/writer.png", scale: 0.8 },
   { id: "people-125", word: "singer", type: "noun", category: "people", definition: "A person who sings songs.", tags: ["job"], image: "/images/nouns/people/singer.png", scale: 0.8 },
-  { id: "people-126", word: "convicted offender", type: "noun", category: "people", definition: "A person convicted of a crime.", tags: ["crime"], image: "/images/nouns/people/convicted-offender.png", scale: 0.9 },
+  { id: "people-126", word: "inmate", type: "noun", category: "people", definition: "A person convicted of a crime.", tags: ["crime"], image: "/images/nouns/people/convicted-offender.png", scale: 0.9 },
   { id: "people-127", word: "smuggler", type: "noun", category: "people", definition: "A person who moves illegal goods secretly.", tags: ["crime"], image: "/images/nouns/people/smuggler.png", scale: 0.9 },
 
   // Colors
