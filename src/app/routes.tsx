@@ -20,6 +20,8 @@ import PeopleFlipCardsPage from './(path)/vocabulary/nouns/people/flipCards/page
 import PeopleQuizCardPage from './(path)/vocabulary/nouns/people/quizCard/page';
 import PeopleAudioQuizPage from './(path)/vocabulary/nouns/people/AudioQuiz/page';
 import PeopleQuestionQuizPage from './(path)/vocabulary/nouns/people/QuestionQuiz/page';
+import PeopleFamilyTreePage from './(path)/vocabulary/nouns/people/familyTree/page';
+import PeopleFatherFamilyTreePage from './(path)/vocabulary/nouns/people/fatherFamilyTree/page';
 // Colors
 import ColorsPage from './(path)/vocabulary/nouns/color/page';
 import ColorFlipCardsPage from './(path)/vocabulary/nouns/color/flipCards/page';
@@ -116,6 +118,14 @@ export const router = createBrowserRouter([
                   {
                     path: 'question-quiz',
                     element: <PeopleQuestionQuizPage />,
+                  },
+                  {
+                    path: 'family-tree',
+                    element: <PeopleFamilyTreePage />,
+                  },
+                  {
+                    path: 'father-family-tree',
+                    element: <PeopleFatherFamilyTreePage />,
                   },
                 ]
               },

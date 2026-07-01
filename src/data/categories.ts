@@ -270,6 +270,26 @@ export const categories: Category[] = [
     activity_type: 'quiz',
     level: 'beginner',
   }, 
+  {
+    id: "cat-027",
+    name: "Son Family Tree",
+    icon: "🌳",
+    href: "family-tree",
+    type: "noun",
+    domain: 'people',
+    activity_type: 'quiz',
+    level: 'beginner',
+  }, 
+  {
+    id: "cat-028",
+    name: "Father Family Tree",
+    icon: "🌳",
+    href: "father-family-tree",
+    type: "noun",
+    domain: 'people',
+    activity_type: 'quiz',
+    level: 'beginner',
+  }, 
 
 
   // Nouns
