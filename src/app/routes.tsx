@@ -9,6 +9,9 @@ import AnimalsLayout from './(path)/vocabulary/nouns/animals/layout';
 import ClothesLayout from './(path)/vocabulary/nouns/clothes/layout';
 import HouseLayout from './(path)/vocabulary/nouns/house/layout';
 import WorkLayout from './(path)/vocabulary/nouns/work/layout';
+import TransportLayout from './(path)/vocabulary/nouns/transport/layout';
+import WeatherLayout from './(path)/vocabulary/nouns/weather/layout';
+import HealthAndBodyLayout from './(path)/vocabulary/nouns/body/layout';
 
 // PAGES
 import HomePage from './site/home/page';
@@ -56,6 +59,21 @@ import ApplianceAudioQuizPage from './(path)/vocabulary/nouns/house/AudioQuiz/pa
 // Work
 import WorkPage from './(path)/vocabulary/nouns/work/page';
 import OfficePage from './(path)/vocabulary/nouns/work/office/page';
+// Transport
+import TransportPage from './(path)/vocabulary/nouns/transport/page';
+import TransportFlipCardsPage from './(path)/vocabulary/nouns/transport/flipCards/page';
+import TransportQuizCardPage from './(path)/vocabulary/nouns/transport/quizCard/page';
+import TransportAudioQuizPage from './(path)/vocabulary/nouns/transport/audioQuiz/page';
+// Weather
+import WeatherPage from './(path)/vocabulary/nouns/weather/page';
+import WeatherFlipCardsPage from './(path)/vocabulary/nouns/weather/flipCards/page';
+import WeatherQuizCardPage from './(path)/vocabulary/nouns/weather/quizCard/page';
+import WeatherAudioQuizPage from './(path)/vocabulary/nouns/weather/audioQuiz/page';
+// Health & Body
+import HealthAndBodyPage from './(path)/vocabulary/nouns/body/page';
+import HealthAndBodyFlipCardsPage from './(path)/vocabulary/nouns/body/flipCards/page';
+import HealthAndBodyQuizCardPage from './(path)/vocabulary/nouns/body/quizCard/page';
+import HealthAndBodyAudioQuizPage from './(path)/vocabulary/nouns/body/audioQuiz/page';
 
 // SYSTEM
 import ErrorPage from './ErrorPage';
@@ -277,6 +295,72 @@ export const router = createBrowserRouter([
                   }
                 ]
               },
+              {
+                path: 'transport', 
+                element: <TransportLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <TransportPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <TransportFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <TransportQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <TransportAudioQuizPage />,
+                  },
+                ]
+              },
+              {
+                path: 'weather', 
+                element: <WeatherLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <WeatherPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <WeatherFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <WeatherQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <WeatherAudioQuizPage />,
+                  },
+                ]
+              },
+              {
+                path: 'health-body', 
+                element: <HealthAndBodyLayout />, 
+                children: [
+                  {
+                    index: true,
+                    element: <HealthAndBodyPage />,
+                  },
+                  {
+                    path: 'flip-cards',
+                    element: <HealthAndBodyFlipCardsPage />,
+                  },
+                  {
+                    path: 'quiz-card',
+                    element: <HealthAndBodyQuizCardPage />,
+                  },
+                  {
+                    path: 'audio-quiz',
+                    element: <HealthAndBodyAudioQuizPage />,
+                  },
+                ]               
+              }
             ]
           },
           {

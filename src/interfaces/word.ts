@@ -7,9 +7,12 @@ export type WordCategory =
  'clothes' |
  'people' |
  'color' |
- 'food' | 
+ 'food' |
+ 'transport' |
+ 'weather' | 
  'travel' | 
  'appliance' |
+ 'body' |
  'general';
 
 
