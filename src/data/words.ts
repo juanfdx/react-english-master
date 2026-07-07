@@ -431,7 +431,7 @@ export const words: Word[] = [
   { id: "weather-003", word: "rainy", type: "adjective", category: "weather", tags: ["condition"], icon: "🌧️" },
   { id: "weather-004", word: "stormy", type: "adjective", category: "weather", tags: ["condition"], icon: "⛈️" },
   { id: "weather-005", word: "snowy", type: "adjective", category: "weather", tags: ["condition"], icon: "❄️" },
-  { id: "weather-006", word: "windy", type: "adjective", category: "weather", tags: ["condition"], icon: "💨" },
+  { id: "weather-006", word: "windy", type: "adjective", category: "weather", tags: ["condition"], image: "/images/nouns/weather/wind.png", scale: 0.75 },
   { id: "weather-007", word: "foggy", type: "adjective", category: "weather", tags: ["condition"], icon: "🌫️" },
   { id: "weather-008", word: "hot", type: "adjective", category: "weather", tags: ["temperature"], icon: "🥵" },
   { id: "weather-009", word: "warm", type: "adjective", category: "weather", tags: ["temperature"], icon: "😊" },
@@ -446,7 +446,7 @@ export const words: Word[] = [
   { id: "weather-017", word: "hail", type: "noun", category: "weather",  icon: "🧊" },
   { id: "weather-018", word: "thunder", type: "noun", category: "weather",  icon: "⚡" },
   { id: "weather-019", word: "lightning", type: "noun", category: "weather",  icon: "🌩️" },
-  { id: "weather-020", word: "wind", type: "noun", category: "weather", icon: "💨" },
+  { id: "weather-020", word: "wind", type: "noun", category: "weather", image: "/images/nouns/weather/wind.png", scale: 0.75 },
   { id: "weather-021", word: "cloud", type: "noun", category: "weather",  icon: "☁️" },
   { id: "weather-022", word: "sun", type: "noun", category: "weather",  icon: "☀️" },
   { id: "weather-023", word: "rainbow", type: "noun", category: "weather",  icon: "🌈" },
@@ -456,7 +456,7 @@ export const words: Word[] = [
   { id: "weather-026", word: "rain", type: "verb", category: "weather", tags: ["action"], icon: "🌧️" },
   { id: "weather-027", word: "snow", type: "verb", category: "weather", tags: ["action"], icon: "❄️" },
   { id: "weather-028", word: "shine", type: "verb", category: "weather", tags: ["action"], icon: "☀️" },
-  { id: "weather-029", word: "blow", type: "verb", category: "weather", tags: ["wind"], icon: "💨" },
+  { id: "weather-029", word: "blow", type: "verb", category: "weather", tags: ["wind"], image: "/images/nouns/weather/wind.png", scale: 0.75 },
   { id: "weather-030", word: "freeze", type: "verb", category: "weather", tags: ["temperature"], icon: "🧊" },
 
   // Transport
@@ -566,4 +566,79 @@ export const words: Word[] = [
   { id: "verb-011", word: "eat", type: "verb", category: "body", tags: ["health"], icon: "🍽️" },
   { id: "verb-012", word: "drink", type: "verb", category: "body", tags: ["health"], icon: "🥤" },
   { id: "verb-013", word: "take medicine", type: "verb", category: "body", tags: ["health"], icon: "💊" },
+
+  // Gym & Places
+  { id: "gym-001", word: "gym", type: "noun", category: "gym", tags: ["place"], icon: "🏋️" },
+  { id: "gym-002", word: "fitness center", type: "noun", category: "gym", tags: ["place"], icon: "🏢" },
+  { id: "gym-003", word: "locker room", type: "noun", category: "gym", tags: ["place"], icon: "🚪" },
+
+  // General
+  { id: "gym-004", word: "exercise", type: "noun", category: "gym", tags: ["general"], icon: "🤸" },
+  { id: "gym-005", word: "workout", type: "noun", category: "gym", tags: ["general"], icon: "💪" },
+  { id: "gym-006", word: "warm-up", type: "noun", category: "gym", tags: ["general"], icon: "🔥" },
+  { id: "gym-007", word: "cool-down", type: "noun", category: "gym", tags: ["general"], icon: "❄️" },
+  { id: "gym-008", word: "stretch", type: "verb", category: "gym", tags: ["action"], icon: "🤸" },
+  { id: "gym-009", word: "cardio", type: "noun", category: "gym", tags: ["training"], icon: "❤️" },
+  { id: "gym-010", word: "strength training", type: "noun", category: "gym", tags: ["training"], icon: "🏋️" },
+
+  // Equipment
+  { id: "gym-011", word: "dumbbell", type: "noun", category: "gym", tags: ["equipment"], icon: "🏋️" },
+  { id: "gym-012", word: "barbell", type: "noun", category: "gym", tags: ["equipment"], icon: "🏋️‍♂️" },
+  { id: "gym-013", word: "kettlebell", type: "noun", category: "gym", tags: ["equipment"], icon: "🔔" },
+  { id: "gym-014", word: "weight plate", type: "noun", category: "gym", tags: ["equipment"], icon: "⚫" },
+  { id: "gym-015", word: "bench", type: "noun", category: "gym", tags: ["equipment"], icon: "🪑" },
+  { id: "gym-016", word: "squat rack", type: "noun", category: "gym", tags: ["equipment"], icon: "🦾" },
+  { id: "gym-017", word: "cable machine", type: "noun", category: "gym", tags: ["equipment"], icon: "🎛️" },
+  { id: "gym-018", word: "smith machine", type: "noun", category: "gym", tags: ["equipment"], icon: "⚙️" },
+  { id: "gym-019", word: "leg press", type: "noun", category: "gym", tags: ["equipment"], icon: "🦵" },
+  { id: "gym-020", word: "pull-up bar", type: "noun", category: "gym", tags: ["equipment"], icon: "➖" },
+  { id: "gym-021", word: "resistance band", type: "noun", category: "gym", tags: ["equipment"], icon: "🟣" },
+  { id: "gym-022", word: "jump rope", type: "noun", category: "gym", tags: ["equipment"], icon: "🪢" },
+  { id: "gym-023", word: "exercise mat", type: "noun", category: "gym", tags: ["equipment"], icon: "🟩" },
+
+  // Cardio Machines
+  { id: "gym-024", word: "treadmill", type: "noun", category: "gym", tags: ["machine"], icon: "🏃" },
+  { id: "gym-025", word: "exercise bike", type: "noun", category: "gym", tags: ["machine"], icon: "🚴" },
+  { id: "gym-026", word: "elliptical", type: "noun", category: "gym", tags: ["machine"], icon: "🚶" },
+  { id: "gym-027", word: "rowing machine", type: "noun", category: "gym", tags: ["machine"], icon: "🚣" },
+  { id: "gym-028", word: "stair climber", type: "noun", category: "gym", tags: ["machine"], icon: "🪜" },
+
+  // Exercises
+  { id: "gym-029", word: "push-up", type: "noun", category: "gym", tags: ["exercise"], icon: "⬇️" },
+  { id: "gym-030", word: "pull-up", type: "noun", category: "gym", tags: ["exercise"], icon: "⬆️" },
+  { id: "gym-031", word: "squat", type: "noun", category: "gym", tags: ["exercise"], icon: "🦵" },
+  { id: "gym-032", word: "lunge", type: "noun", category: "gym", tags: ["exercise"], icon: "🚶" },
+  { id: "gym-033", word: "plank", type: "noun", category: "gym", tags: ["exercise"], icon: "🟫" },
+  { id: "gym-034", word: "deadlift", type: "noun", category: "gym", tags: ["exercise"], icon: "🏋️‍♂️" },
+  { id: "gym-035", word: "bench press", type: "noun", category: "gym", tags: ["exercise"], icon: "🏋️" },
+  { id: "gym-036", word: "shoulder press", type: "noun", category: "gym", tags: ["exercise"], icon: "🙌" },
+  { id: "gym-037", word: "bicep curl", type: "noun", category: "gym", tags: ["exercise"], icon: "💪" },
+  { id: "gym-038", word: "tricep extension", type: "noun", category: "gym", tags: ["exercise"], icon: "💪" },
+  { id: "gym-039", word: "burpee", type: "noun", category: "gym", tags: ["exercise"], icon: "🤸" },
+  { id: "gym-040", word: "jumping jack", type: "noun", category: "gym", tags: ["exercise"], icon: "⭐" },
+
+  // Verbs
+  { id: "gym-041", word: "lift", type: "verb", category: "gym", tags: ["action"], icon: "🏋️" },
+  { id: "gym-042", word: "run", type: "verb", category: "gym", tags: ["action"], icon: "🏃" },
+  { id: "gym-043", word: "jog", type: "verb", category: "gym", tags: ["action"], icon: "🏃‍♂️" },
+  { id: "gym-044", word: "walk", type: "verb", category: "gym", tags: ["action"], icon: "🚶" },
+  { id: "gym-045", word: "train", type: "verb", category: "gym", tags: ["action"], icon: "🏋️‍♀️" },
+  { id: "gym-046", word: "exercise", type: "verb", category: "gym", tags: ["action"], icon: "🤸" },
+  { id: "gym-047", word: "work out", type: "verb", category: "gym", tags: ["action"], icon: "💪" },
+  { id: "gym-048", word: "build muscle", type: "verb", category: "gym", tags: ["action"], icon: "💪" },
+  { id: "gym-049", word: "lose weight", type: "verb", category: "gym", tags: ["action"], icon: "💪" },
+  { id: "gym-050", word: "gain strength", type: "verb", category: "gym", tags: ["action"], icon: "💪" },
+  { id: "gym-051", word: "stretch", type: "verb", category: "gym", tags: ["action"], icon: "🤸" },
+
+  // People
+  { id: "gym-052", word: "personal trainer", type: "noun", category: "gym", tags: ["people"], icon: "🧑‍🏫" },
+  { id: "gym-053", word: "athlete", type: "noun", category: "gym", tags: ["people"], icon: "🏅" },
+
+  // Goals
+  { id: "gym-054", word: "muscle", type: "noun", category: "gym", tags: ["body"], icon: "💪" },
+  { id: "gym-055", word: "fitness", type: "noun", category: "gym", tags: ["goal"], icon: "❤️" },
+  { id: "gym-056", word: "strength", type: "noun", category: "gym", tags: ["goal"], icon: "🦾" },
+  { id: "gym-057", word: "endurance", type: "noun", category: "gym", tags: ["goal"], icon: "🏃" },
+  { id: "gym-058", word: "balance", type: "noun", category: "gym", tags: ["goal"], icon: "⚖️" },
+  { id: "gym-059", word: "flexibility", type: "noun", category: "gym", tags: ["goal"], icon: "🤸" }
 ];

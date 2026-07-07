@@ -13,6 +13,7 @@ export type WordCategory =
  'travel' | 
  'appliance' |
  'body' |
+ 'gym' |
  'general';
 
 
